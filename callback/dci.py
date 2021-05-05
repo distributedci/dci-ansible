@@ -55,6 +55,7 @@ class CallbackModule(CallbackBase):
         self._current_status = None
         self._dci_context = self._build_dci_context()
         self._explicit = False
+        self._backlog = []
 
     @staticmethod
     def _get_details():
@@ -82,14 +83,20 @@ class CallbackModule(CallbackBase):
                                                        api_secret, user_agent)
 
     def create_file(self, name, content):
-        kwargs = {
-            'name': name,
-            'content': content and content.encode('UTF-8'),
-            'mime': 'application/x-ansible-output'
-        }
-        kwargs['job_id'] = self._job_id
-        kwargs['jobstate_id'] = self._jobstate_id
-        dci_file.create(self._dci_context, **kwargs)
+        if self._job_id is None:
+            self._backlog.append({'type': 'file',
+                                  'data': {'name': name,
+                                           'content': content}})
+        else:
+            kwargs = {
+                'name': name,
+                'content': content and content.encode('UTF-8'),
+                'mime': 'application/x-ansible-output',
+                'job_id': self._job_id,
+                'jobstate_id': self._jobstate_id
+            }
+
+            dci_file.create(self._dci_context, **kwargs)
 
     def post_message(self, result, output):
         name = self.task_name(result)
@@ -111,8 +118,13 @@ class CallbackModule(CallbackBase):
         name = "unreachable/%s" % self.task_name(result)
         self.create_file(name, output)
 
-    def post_item_message(self, result, output, name_prefix=None):
-        name = result._result['item']
+    def post_item_message(self, result, name_prefix=None):
+        output = (result._result['msg']
+                  if 'msg' in result._result else '<no msg>')
+        name = (result._result['item']['name']
+                if ('item' in result._result and
+                    'name' in result._result['item'])
+                else '<no item>')
         if name_prefix:
             name = "%s/%s" % (name_prefix, name)
         self.create_file(name, output)
@@ -124,14 +136,21 @@ class CallbackModule(CallbackBase):
         if status:
             self._current_status = status
 
-        r = dci_jobstate.create(
-            self._dci_context,
-            status=self._current_status,
-            comment=comment,
-            job_id=self._job_id
-        )
-        ns = r.json()
-        self._jobstate_id = ns['jobstate']['id']
+        if self._job_id is None:
+            self._backlog.append({'type': 'jobstate',
+                                  'data': {"status": self._current_status,
+                                           "comment": comment,
+                                           }})
+        else:
+            r = dci_jobstate.create(
+                self._dci_context,
+                status=self._current_status,
+                comment=comment,
+                job_id=self._job_id
+            )
+            ns = r.json()
+            if 'jobstate' in ns and 'id' in ns['jobstate']:
+                self._jobstate_id = ns['jobstate']['id']
 
     def task_name(self, result):
         """Ensure we alway return a string"""
@@ -174,22 +193,29 @@ class CallbackModule(CallbackBase):
                 status='pre-run'
             )
         elif (result._task.action == 'set_fact' and
-              'job_id' in result._result['ansible_facts']):
-            if self._job_id is None:
-                self._job_id = result._result['ansible_facts']['job_id']
-                self.create_jobstate(comment='start up', status='new')
+              'ansible_facts' in result._result and
+              'job_id' in result._result['ansible_facts'] and
+              result._result['ansible_facts']['job_id'] is not None):
+
+            self._job_id = result._result['ansible_facts']['job_id']
+            self.create_jobstate(comment='start up', status='new')
+
+            for rec in self._backlog:
+                if rec['type'] == 'file':
+                    self.create_file(rec['data']['name'],
+                                     rec['data']['content'])
+                else:
+                    self.create_jobstate(rec['data']['comment'],
+                                         rec['data']['status'])
+            self._backlog = []
 
         cleaned_result = remove_duplicated_content(result._result)
         output = json.dumps(cleaned_result, indent=2)
 
-        if result._task.action != 'setup' and self._job_id:
+        if result._task.action != 'setup':
             self.post_message(result, output)
 
     def v2_runner_on_unreachable(self, result):
-
-        if not self._job_id:
-            return
-
         super(CallbackModule, self).v2_runner_on_unreachable(result)
         self.create_jobstate(comment=self.task_name(result), status='failure')
         self.post_unreachable_message(result, "msg:%s\n%s" % json.dumps(result._result['results']))  # noqa
@@ -198,10 +224,6 @@ class CallbackModule(CallbackBase):
         """Event executed after each command when it fails. Get the output
         of the command and create a failure jobstate and a file associated.
         """
-
-        if not self._job_id:
-            return
-
         super(CallbackModule, self).v2_runner_on_failed(result, ignore_errors)
 
         cleaned_result = remove_duplicated_content(result._result)
@@ -216,17 +238,15 @@ class CallbackModule(CallbackBase):
 
     def v2_runner_on_skipped(self, result):
         super(CallbackModule, self).v2_runner_on_skipped(result)
-        if not self._job_id:
-            return
-        self.post_skipped_message(result, result._result['skip_reason'])
+        if 'skip_reason' in result._result:
+            self.post_skipped_message(result, result._result['skip_reason'])
+        else:
+            self.post_skipped_message(result, "msg:%s\n%s" % json.dumps(result._result))  # noqa
 
     def v2_playbook_on_play_start(self, play):
         """Event executed before each play. Create a new jobstate and save
         the current jobstate id.
         """
-
-        if not self._job_id:
-            return
 
         def _get_comment(play):
             """ Return the comment for the new jobstate
@@ -258,22 +278,13 @@ class CallbackModule(CallbackBase):
         )
 
     def v2_runner_item_on_ok(self, result):
-        if not self._job_id:
-            return
-
         super(CallbackModule, self).v2_runner_item_on_ok(result)
-        self.post_item_message(result, result._result['msg'], 'item_ok')
+        self.post_item_message(result, 'item_ok')
 
     def v2_runner_item_on_failed(self, result):
-        if not self._job_id:
-            return
-
         super(CallbackModule, self).v2_runner_item_on_failed(result)
-        self.post_item_message(result, result._result['msg'], 'item_failed')
+        self.post_item_message(result, 'item_failed')
 
     def v2_runner_item_on_skipped(self, result):
-        if not self._job_id:
-            return
-
         super(CallbackModule, self).v2_runner_item_on_skipped(result)
-        self.post_item_message(result, result._result['msg'], 'item_failed')
+        self.post_item_message(result, 'item_failed')
