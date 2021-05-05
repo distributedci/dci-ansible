@@ -55,6 +55,7 @@ class CallbackModule(CallbackBase):
         self._current_status = None
         self._dci_context = self._build_dci_context()
         self._explicit = False
+        self._backlog = []
 
     @staticmethod
     def _get_details():
@@ -85,11 +86,18 @@ class CallbackModule(CallbackBase):
         kwargs = {
             'name': name,
             'content': content and content.encode('UTF-8'),
-            'mime': 'application/x-ansible-output'
+            'mime': 'application/x-ansible-output',
+            'job_id': self._job_id,
+            'jobstate_id': self._jobstate_id
         }
-        kwargs['job_id'] = self._job_id
-        kwargs['jobstate_id'] = self._jobstate_id
-        dci_file.create(self._dci_context, **kwargs)
+        if self._job_id is None:
+            self._backlog.append(kwargs)
+        else:
+            for args in self._backlog:
+                args['job_id'] = self._job_id
+                dci_file.create(self._dci_context, **args)
+            self._backlog = []
+            dci_file.create(self._dci_context, **kwargs)
 
     def post_message(self, result, output):
         name = self.task_name(result)
