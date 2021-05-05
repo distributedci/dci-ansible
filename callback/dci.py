@@ -55,6 +55,7 @@ class CallbackModule(CallbackBase):
         self._current_status = None
         self._dci_context = self._build_dci_context()
         self._explicit = False
+        self._backlog = []
 
     @staticmethod
     def _get_details():
@@ -82,14 +83,20 @@ class CallbackModule(CallbackBase):
                                                        api_secret, user_agent)
 
     def create_file(self, name, content):
-        kwargs = {
-            'name': name,
-            'content': content and content.encode('UTF-8'),
-            'mime': 'application/x-ansible-output'
-        }
-        kwargs['job_id'] = self._job_id
-        kwargs['jobstate_id'] = self._jobstate_id
-        dci_file.create(self._dci_context, **kwargs)
+        if self._job_id is None:
+            self._backlog.append({'type': 'file',
+                                  'data': {'name': name,
+                                           'content': content}})
+        else:
+            kwargs = {
+                'name': name,
+                'content': content and content.encode('UTF-8'),
+                'mime': 'application/x-ansible-output',
+                'job_id': self._job_id,
+                'jobstate_id': self._jobstate_id
+            }
+
+            dci_file.create(self._dci_context, **kwargs)
 
     def post_message(self, result, output):
         name = self.task_name(result)
@@ -124,14 +131,20 @@ class CallbackModule(CallbackBase):
         if status:
             self._current_status = status
 
-        r = dci_jobstate.create(
-            self._dci_context,
-            status=self._current_status,
-            comment=comment,
-            job_id=self._job_id
-        )
-        ns = r.json()
-        self._jobstate_id = ns['jobstate']['id']
+        if self._job_id is None:
+            self._backlog.append({'type': 'jobstate',
+                                  'data': {"status": self._current_status,
+                                           "comment": comment,
+                                           }})
+        else:
+            r = dci_jobstate.create(
+                self._dci_context,
+                status=self._current_status,
+                comment=comment,
+                job_id=self._job_id
+            )
+            ns = r.json()
+            self._jobstate_id = ns['jobstate']['id']
 
     def task_name(self, result):
         """Ensure we alway return a string"""
@@ -174,10 +187,19 @@ class CallbackModule(CallbackBase):
                 status='pre-run'
             )
         elif (result._task.action == 'set_fact' and
-              'job_id' in result._result['ansible_facts']):
-            if self._job_id is None:
-                self._job_id = result._result['ansible_facts']['job_id']
-                self.create_jobstate(comment='start up', status='new')
+              'job_id' in result._result['ansible_facts'] and
+              result._result['ansible_facts']['job_id'] is not None):
+            self._job_id = result._result['ansible_facts']['job_id']
+
+            for rec in self._backlog:
+                if rec['type'] == 'file':
+                    self.create_file(rec['data']['name'],
+                                     rec['data']['content'])
+                else:
+                    self.create_jobstate(rec['data']['comment'],
+                                         rec['data']['status'])
+            self._backlog = []
+            self.create_jobstate(comment='start up', status='new')
 
         cleaned_result = remove_duplicated_content(result._result)
         output = json.dumps(cleaned_result, indent=2)
