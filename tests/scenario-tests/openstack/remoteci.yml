@@ -44,6 +44,9 @@
         embed: files,jobstates
       register: job_info
 
+    - debug:
+        msg: "{{ job_info.job.files|length }}"
+
     - name: Verify that job the right number of files attached
       assert:
         # only job-test-result is a job's file
