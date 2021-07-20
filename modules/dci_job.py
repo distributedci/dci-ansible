@@ -158,10 +158,10 @@ class DciJob(DciBase):
         self.components = params.get('components', [])
         self.components_by_query = params.get('components_by_query', [])
         self.team_id = params.get('team_id')
-        self.url = params.get('url')
-        self.name = params.get('name')
-        self.configuration = params.get('configuration')
-        self.status_reason = params.get('status_reason')
+        self.url = None if not params.get('url') else params.get('url')
+        self.name = None if not params.get('name') else params.get('name')
+        self.configuration = None if not params.get('configuration') else params.get('configuration')  # noqa
+        self.status_reason = None if not params.get('status_reason') else params.get('status_reason')  # noqa
         self.search_criterias = {
             'embed': params.get('embed'),
             'where': params.get('where')
