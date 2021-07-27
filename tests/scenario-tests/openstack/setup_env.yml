@@ -1,6 +1,10 @@
 ---
 - hosts: localhost
   tasks:
+    - name: Ensure dci libraries are installed
+      pip:
+        name: dciclient
+
     - name: Create Product Team
       dci_team:
         name: OpenStack
