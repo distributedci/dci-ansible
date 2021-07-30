@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "89abe0b9_18e3fffd",
+        "filename": "action_plugins/git.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 166
+      },
+      "writtenOn": "2021-07-30T08:47:19Z",
+      "side": 1,
+      "message": "Maybe you should use six.moves here\nAnsible bundles six for that purpose \u003d\u003e https://docs.ansible.com/ansible/latest/dev_guide/developing_python_3.html#import-ansible-s-bundled-python-six-library",
+      "revId": "1b3e6cd69a57e345719eeb640e2763f850a14430",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": true
+    }
+  ]
+}
