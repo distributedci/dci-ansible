@@ -1,0 +1,8 @@
+Verified+2: Zuul CI <zuul@softwarefactory-project.io>
+Code-Review+2: Frederic Lepied <flepied@redhat.com>
+Workflow+1: Frederic Lepied <flepied@redhat.com>
+Submitted-by: Zuul CI <zuul@softwarefactory-project.io>
+Submitted-at: Sat, 09 Oct 2021 07:17:03 +0000
+Reviewed-on: https://softwarefactory-project.io/r/c/dci-ansible/+/22868
+Project: dci-ansible
+Branch: refs/heads/master
