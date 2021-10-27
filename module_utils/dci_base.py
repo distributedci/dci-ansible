@@ -15,6 +15,10 @@
 # under the License.
 
 
+class DciUnauthorizedAccessException(Exception):
+    pass
+
+
 class DciResourceNotFoundException(Exception):
     pass
 
@@ -46,11 +50,14 @@ class DciBase(object):
     def raise_error(self, res):
         """Parse the http response and raise the appropriate error."""
 
-        if res.status_code in [401, 404]:
+        if res.status_code == 404:
             raise DciResourceNotFoundException(
                 '%s: %s resource not found' % (self.resource_name, self.id)
             )
-
+        elif res.status_code == 401:
+            raise DciUnauthorizedAccessException(
+                '%s: %s not authorized' % (self.resource_name, self.id)
+            )
         elif res.status_code == 500:
             raise DciServerErrorException
         else:
