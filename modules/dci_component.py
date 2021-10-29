@@ -109,7 +109,7 @@ def main():
     resource_argument_spec = dict(
         state=dict(
             default='present',
-            choices=['present', 'absent'],
+            choices=['present', 'absent', 'search'],
             type='str'),
         id=dict(type='str'),
         dest=dict(type='str'),
@@ -200,7 +200,7 @@ def main():
     # Endpoint called: /component POST via dci_component.create()
     #
     # Create a new component
-    else:
+    elif module.params['state'] == 'present':
         if not module.params['name']:
             module.fail_json(msg='name parameter must be speficied')
         if not module.params['type']:
@@ -225,6 +225,32 @@ def main():
         kwargs['state'] = 'active' if module.params['active'] else 'inactive'
         res = dci_component.create(ctx, **kwargs)
 
+    # Action required: Search components in a topic
+    # Endpoint called: /topics/list/<id>/components POST
+    # via dci_topic.list_components()
+    #
+    # Search for components in a topic
+    elif module.params['state'] == 'search':
+        if not module.params['topic_id']:
+            module.fail_json(msg='topic_id parameter must be speficied')
+
+        kwargs = {}
+
+        if module.params['name']:
+            kwargs['name'] = module.params['name']
+        if module.params['type']:
+            kwargs['type'] = module.params['type']
+        if module.params['canonical_project_name']:
+            canonical_project_name = module.params['canonical_project_name']
+            kwargs['canonical_project_name'] = canonical_project_name
+        if module.params['team_id']:
+            kwargs['team_id'] = module.params['team_id']
+        res = dci_topic.list_components(
+            ctx, module.params['topic_id'], **kwargs)
+
+    else:
+        module.fail_json(msg='Unknown arguments')
+
     try:
         result = res.json()
         if res.status_code == 404:
@@ -237,7 +263,12 @@ def main():
                 ).json()['components'][0],
             }
         if res.status_code in [400, 401, 409]:
-            result['changed'] = False
+            if module.params['state'] == 'search':
+                module.fail_json(
+                    msg=('The components do not exist in topic %s %s'
+                         % (module.params['topic_id'], kwargs)))
+            else:
+                result['changed'] = False
         else:
             result['changed'] = True
     except Exception:
