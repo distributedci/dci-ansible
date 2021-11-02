@@ -16,6 +16,24 @@
       "revId": "2e2c8ed2adcab712d35349a7610c5b5b6c246ae6",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8233524e_16b5f5f1",
+        "filename": "modules/dci_component.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 20
+      },
+      "writtenOn": "2021-11-02T12:11:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28c97e35_04b496bf",
+      "revId": "2e2c8ed2adcab712d35349a7610c5b5b6c246ae6",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
     }
   ]
 }
