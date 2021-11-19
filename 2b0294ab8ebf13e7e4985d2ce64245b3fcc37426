@@ -1,0 +1,10 @@
+Verified+1: dci-ci-bot <dci-ci-bot@redhat.com>
+Verified+2: Zuul CI <zuul@softwarefactory-project.io>
+Code-Review+1: Guillaume Vincent <gvincent@redhat.com>
+Code-Review+2: Bill Peck <bill@pecknet.com>
+Workflow+1: Jorge Gallegos <jgallego@redhat.com>
+Submitted-by: Zuul CI <zuul@softwarefactory-project.io>
+Submitted-at: Fri, 19 Nov 2021 13:14:33 +0000
+Reviewed-on: https://softwarefactory-project.io/r/c/dci-ansible/+/22991
+Project: dci-ansible
+Branch: refs/heads/master
