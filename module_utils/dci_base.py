@@ -17,22 +17,22 @@
 
 class DciUnauthorizedAccessException(Exception):
     def __init__(self, msg):
-        self.message = msg
+        self.message = "HTTP 401: %s" % (msg,)
 
 
 class DciResourceNotFoundException(Exception):
     def __init__(self, msg):
-        self.message = msg
+        self.message = "HTTP 404: %s" % (msg,)
 
 
 class DciServerErrorException(Exception):
     def __init__(self, msg):
-        self.message = 'Internal Server Error %s' % msg
+        self.message = 'HTTP 500: %s' % (msg,)
 
 
 class DciUnexpectedErrorException(Exception):
-    def __init__(self, msg):
-        self.message = 'Unexpected Error: %s' % msg
+    def __init__(self, rc, msg):
+        self.message = 'Unexpected HTTP %s: %s' % (rc, msg,)
 
 
 class DciParameterError(Exception):
@@ -51,23 +51,27 @@ class DciBase(object):
     def raise_error(self, res):
         """Parse the http response and raise the appropriate error."""
 
+        try:
+            message = res.json()['message']
+        except Exception:
+            message = res.text
+
         if res.status_code == 404:
             raise DciResourceNotFoundException(
-                '%s: %s resource not found' % (self.resource_name, self.id)
+                '%s resource not found (%s)' % (
+                    self.resource_name, message,
+                )
             )
         elif res.status_code == 401:
             raise DciUnauthorizedAccessException(
-                '%s: %s not authorized' % (self.resource_name, self.id)
+                '%s not authorized on %s (%s)' % (
+                    self.id, self.resource_name, message,
+                )
             )
         elif res.status_code == 500:
-            raise DciServerErrorException
+            raise DciServerErrorException(message,)
         else:
-            try:
-                message = res.json()['message']
-            except Exception:
-                message = res.text
-            raise DciUnexpectedErrorException(
-                "Status Code: %d: %s" % (res.status_code, message))
+            raise DciUnexpectedErrorException(res.status_code, message)
 
     def do_delete(self, context):
         """Remove a resource."""
