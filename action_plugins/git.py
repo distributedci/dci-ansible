@@ -104,25 +104,18 @@ class ActionModule(ActionBase):
         repo_name = urlparse(git_args['repo'])
         repo_name = repo_name.path
 
-        cmpt = dci_component.create(
+        cmpt = dci_component.get_or_create(
             ctx,
             name=cmpt_name,
             canonical_project_name="%s %s" % (_project_name, _commit_id[0:7]),
             team_id=team_id,
             topic_id=topic_id,
             url=cmpt_url,
-            type=_project_name)
-        cmpt_id = None
-        if cmpt.status_code == 201:
-            cmpt_id = cmpt.json()['component']['id']
-        else:
-            res = dci_topic.list_components(ctx, topic_id)
-            cmpts = res.json()['components']
-            for cmpt in cmpts:
-                if cmpt['name'] == cmpt_name:
-                    cmpt_id = cmpt['id']
-        if cmpt_id is None:
-            raise ansible_errors.AnsibleError('component %s not found or not created' % cmpt_name)  # noqa
+            type=_project_name,
+            defaults={})
+        if not cmpt.ok:
+            raise ansible_errors.AnsibleError('component %s not found nor created. Message: %s' % (cmpt_name, cmpt.text))  # noqa
+        cmpt_id = cmpt.json()['component']('id')
 
         cmpt = dci_job.add_component(
             ctx,
