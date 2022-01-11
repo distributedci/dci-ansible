@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0351c363_ea9e1cf1",
+        "filename": "action_plugins/git.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 405
+      },
+      "writtenOn": "2022-01-11T21:16:40Z",
+      "side": 1,
+      "message": "cmpt.json()[\u0027component\u0027][\u0027id\u0027] maybe ?",
+      "range": {
+        "startLine": 117,
+        "startChar": 42,
+        "endLine": 117,
+        "endChar": 48
+      },
+      "revId": "632dbd6d81a18481781e7bbbae63c102bed79b0a",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": true
+    }
+  ]
+}
