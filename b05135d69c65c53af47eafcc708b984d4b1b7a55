@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de745345_c9812082",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 648
+      },
+      "writtenOn": "2022-01-18T14:37:49Z",
+      "side": 1,
+      "message": "\u003e Patch Set 1:\n\u003e \n\u003e Would it be possible to remove all these exceptions and have only one DCIException class ? The DCIException class might leverage the status_code field along with the server\u0027s error message to understand the issue.\n\nAh yes, that could work, let me rework the PR",
+      "revId": "b05135d69c65c53af47eafcc708b984d4b1b7a55",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    }
+  ]
+}
