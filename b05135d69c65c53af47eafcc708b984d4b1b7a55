@@ -16,6 +16,23 @@
       "message": "\u003e Patch Set 1:\n\u003e \n\u003e Would it be possible to remove all these exceptions and have only one DCIException class ? The DCIException class might leverage the status_code field along with the server\u0027s error message to understand the issue.\n\nAh yes, that could work, let me rework the PR",
       "revId": "b05135d69c65c53af47eafcc708b984d4b1b7a55",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f398f2a_6cee1386",
+        "filename": "tests/unit-tests/dci_user/playbook.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2022-01-25T14:40:52Z",
+      "side": 1,
+      "message": "why did you remove this one ?",
+      "revId": "b05135d69c65c53af47eafcc708b984d4b1b7a55",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     }
   ]
 }
