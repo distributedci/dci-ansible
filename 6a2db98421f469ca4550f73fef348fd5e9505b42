@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dca5103f_579910fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 667
+      },
+      "writtenOn": "2022-02-01T16:31:49Z",
+      "side": 1,
+      "message": "Thanks Yassine! I\u0027ll change it to +2 once the test comes successful",
+      "revId": "6a2db98421f469ca4550f73fef348fd5e9505b42",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    }
+  ]
+}
