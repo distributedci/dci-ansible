@@ -33,6 +33,24 @@
       "message": "why did you remove this one ?",
       "revId": "b05135d69c65c53af47eafcc708b984d4b1b7a55",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "299235f1_6a7f4e2c",
+        "filename": "tests/unit-tests/dci_user/playbook.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 648
+      },
+      "writtenOn": "2022-02-04T17:05:45Z",
+      "side": 1,
+      "message": "You removed it here https://softwarefactory-project.io/r/c/dci-control-server/+/18552",
+      "parentUuid": "2f398f2a_6cee1386",
+      "revId": "b05135d69c65c53af47eafcc708b984d4b1b7a55",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     }
   ]
 }
