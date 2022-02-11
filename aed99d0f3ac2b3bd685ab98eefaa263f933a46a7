@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "caaaffa0_c78958d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 28
+      },
+      "writtenOn": "2022-02-11T16:37:55Z",
+      "side": 1,
+      "message": "I think there\u0027s a change to do here too: \n`module_utils/dci_common.py:81:    except DciError as exc:`\n\neither make DciError/DciParameterError inherit from one or the other or catch both types",
+      "revId": "aed99d0f3ac2b3bd685ab98eefaa263f933a46a7",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    }
+  ]
+}
