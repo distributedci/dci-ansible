@@ -16,6 +16,24 @@
       "message": "could you check that the status_code \u003d\u003d 200 before accessing \"topics\"",
       "revId": "64f396b7fd84a8dc2f195e75b1538f81365da7ec",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62bb322a_8a4437bc",
+        "filename": "modules/dci_topic.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 20
+      },
+      "writtenOn": "2022-03-03T18:19:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fa9a6bd_d1218f41",
+      "revId": "64f396b7fd84a8dc2f195e75b1538f81365da7ec",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     }
   ]
 }
