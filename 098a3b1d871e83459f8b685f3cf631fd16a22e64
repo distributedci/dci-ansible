@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83ad5214_a9b970c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 648
+      },
+      "writtenOn": "2022-03-10T22:55:47Z",
+      "side": 1,
+      "message": "What\u0027s the changeset with the server changes? So the commit can document the relationship.",
+      "revId": "098a3b1d871e83459f8b685f3cf631fd16a22e64",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    }
+  ]
+}
