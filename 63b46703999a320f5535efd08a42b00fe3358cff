@@ -16,6 +16,24 @@
       "message": "FYI: I had to do ```subscription-manager repos --enable ansible-2.9-for-rhel-8-x86_64-rpms``` because ansible-2.9 was not in the default repo.",
       "revId": "63b46703999a320f5535efd08a42b00fe3358cff",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a9db2b2_8d083988",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 606
+      },
+      "writtenOn": "2022-06-02T15:49:25Z",
+      "side": 1,
+      "message": "Yes, I thoght that would be the case.  We will need to update the docs to cover this for all the agents.",
+      "parentUuid": "8e5eec1d_eea8f6f8",
+      "revId": "63b46703999a320f5535efd08a42b00fe3358cff",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     }
   ]
 }
