@@ -34,6 +34,23 @@
       "parentUuid": "8e5eec1d_eea8f6f8",
       "revId": "63b46703999a320f5535efd08a42b00fe3358cff",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31fcec66_b71a5bac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 606
+      },
+      "writtenOn": "2022-06-02T20:06:48Z",
+      "side": 1,
+      "message": "The docs need to be updated for dci-rhel-agent and dci-openstack-agent.  I\u0027ve done dci-openshift-agent here: https://softwarefactory-project.io/r/c/dci-openshift-agent/+/25205",
+      "revId": "63b46703999a320f5535efd08a42b00fe3358cff",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     }
   ]
 }
