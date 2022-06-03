@@ -51,6 +51,23 @@
       "message": "The docs need to be updated for dci-rhel-agent and dci-openstack-agent.  I\u0027ve done dci-openshift-agent here: https://softwarefactory-project.io/r/c/dci-openshift-agent/+/25205",
       "revId": "63b46703999a320f5535efd08a42b00fe3358cff",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97b55b00_59c12236",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 606
+      },
+      "writtenOn": "2022-06-03T12:51:50Z",
+      "side": 1,
+      "message": "So I just realized that both rhel and openstack agent are on rhel-7.  so there shouldn\u0027t be a need to update any docs for now.",
+      "revId": "63b46703999a320f5535efd08a42b00fe3358cff",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     }
   ]
 }
