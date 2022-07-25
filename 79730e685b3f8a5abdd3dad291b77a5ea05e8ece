@@ -67,6 +67,24 @@
       "message": "ret is a response object (requests) so this snippet can\u0027t be evaluated\nif ret.status_code // 100 !\u003d 2:\n\nMaybe ?",
       "revId": "79730e685b3f8a5abdd3dad291b77a5ea05e8ece",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "286ae846_05a8bb42",
+        "filename": "callback/dci.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 20
+      },
+      "writtenOn": "2022-07-25T12:11:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2c702642_a784f132",
+      "revId": "79730e685b3f8a5abdd3dad291b77a5ea05e8ece",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     }
   ]
 }
