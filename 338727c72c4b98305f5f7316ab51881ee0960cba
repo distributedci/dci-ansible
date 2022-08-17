@@ -51,6 +51,24 @@
       "parentUuid": "b0c58037_8a912dc8",
       "revId": "338727c72c4b98305f5f7316ab51881ee0960cba",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9339864f_debefd45",
+        "filename": "dci-ansible.spec",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 667
+      },
+      "writtenOn": "2022-08-17T15:14:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0979e1f8_8e8e2df7",
+      "revId": "338727c72c4b98305f5f7316ab51881ee0960cba",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     }
   ]
 }

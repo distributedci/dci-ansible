@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4b0b0af_cabf4f40",
+        "filename": "dci-ansible.spec",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 667
+      },
+      "writtenOn": "2022-08-17T15:14:38Z",
+      "side": 1,
+      "message": "Ah perfect, this is what I thought was missing",
+      "revId": "2c425d0e28347fa2bc73ac20e0d40a795ca93e40",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    }
+  ]
+}
