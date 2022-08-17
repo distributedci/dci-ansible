@@ -16,6 +16,23 @@
       "message": "recheck",
       "revId": "338727c72c4b98305f5f7316ab51881ee0960cba",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0c58037_8a912dc8",
+        "filename": "dci-ansible.spec",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 667
+      },
+      "writtenOn": "2022-08-17T12:56:45Z",
+      "side": 1,
+      "message": "Should this be \u003c\u003d 8?",
+      "revId": "338727c72c4b98305f5f7316ab51881ee0960cba",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     }
   ]
 }
