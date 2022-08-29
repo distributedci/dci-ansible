@@ -112,12 +112,18 @@ server."""
         pass
 
     def create_file(self, name, content):
+        def _content_to_utf8():
+            try:
+                return content and content.encode('UTF-8')
+            except ValueError as ve:
+                return "invalid content, not able to encode to utf-8: %s" % str(ve)
+
         if self._job_id is None:
             self._backlog.append({'name': name, 'content': content})
         else:
             kwargs = {
                 'name': name,
-                'content': content and content.encode('UTF-8'),
+                'content': _content_to_utf8(),
                 'mime': 'application/x-ansible-output',
                 'job_id': self._job_id,
                 'jobstate_id': self._jobstate_id
