@@ -33,6 +33,24 @@
       "message": "we\u0027ll have a strange string here as a return value. Should we fail instead?",
       "revId": "0268221cb70b85f79ce9138400f75c2b3a0dd3ff",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2f597bf_f75e2da7",
+        "filename": "callback/dci.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2022-08-29T10:29:05Z",
+      "side": 1,
+      "message": "What do you mean by strange string ?\n\nThe goal is to not fail and let the callback plugin continue to create the upcoming files.",
+      "parentUuid": "e378ac00_5c296fce",
+      "revId": "0268221cb70b85f79ce9138400f75c2b3a0dd3ff",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     }
   ]
 }
