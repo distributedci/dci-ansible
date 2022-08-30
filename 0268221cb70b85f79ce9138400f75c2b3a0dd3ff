@@ -70,6 +70,24 @@
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80fd74ea_ffd831b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 938
+      },
+      "writtenOn": "2022-08-30T13:25:41Z",
+      "side": 1,
+      "message": "Well, bz2 is not an archive, it\u0027s a bzip2-compressed executable. \n\nI\u0027m still not sure to understand the problem you\u0027re trying to fix here: https://www.distributed-ci.io/jobs/6f94ded5-4949-4920-98d2-d46f929c9f82/jobStates\n\nBut it seems like it\u0027s not related to the oscap-podman check, and the oval definition rhel-8.oval.xml.bz2 is used here as an impossible-to-encode-thing.",
+      "parentUuid": "965ad9e9_4b675e84",
+      "revId": "0268221cb70b85f79ce9138400f75c2b3a0dd3ff",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e378ac00_5c296fce",
