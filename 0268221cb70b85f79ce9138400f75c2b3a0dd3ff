@@ -88,6 +88,24 @@
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f7a7c51_2ebe83a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2022-08-30T14:28:19Z",
+      "side": 1,
+      "message": "The purpose of this patch is to not got the callback plugin stuck because of one content log it tries to upload is not utf8 encodable.\n\nTo test this patch Charles triggered a job that tries to upload a non-utf8 encodable content, it could be bz2, bzip2, or whatever doesn\u0027t matter, it just must not be encodable in utf8.",
+      "parentUuid": "80fd74ea_ffd831b5",
+      "revId": "0268221cb70b85f79ce9138400f75c2b3a0dd3ff",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e378ac00_5c296fce",
