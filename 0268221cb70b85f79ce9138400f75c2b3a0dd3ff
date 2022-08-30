@@ -18,6 +18,23 @@
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51e642dc_9d0bc684",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 938
+      },
+      "writtenOn": "2022-08-30T10:16:08Z",
+      "side": 1,
+      "message": "Hi Yassine and Charles, \n\nit seems like you\u0027re trying to upload the file that should never go in the logs.\nYou\u0027re testing with https://www.redhat.com/security/data/oval/v2/RHEL8/rhel-8.oval.xml.bz2 calling it \"chart file\". \nIt\u0027s not a chart file, it\u0027s an oval definition. \n\nIt\u0027s downloaded, unarchived, and then deleted, it should normally never make its path to the logs: https://github.com/redhat-cip/dci-openshift-app-agent/blob/master/roles/preflight/tasks/test_run_health_check.yml#L55-L61 \n\nI didn\u0027t find a link to the exact error you\u0027re trying to fix, but maybe a proper solution would be to add handlers/notify to ensure that this file is always deleted? ",
+      "revId": "0268221cb70b85f79ce9138400f75c2b3a0dd3ff",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e378ac00_5c296fce",
