@@ -35,6 +35,23 @@
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3988dab7_42d52208",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 673
+      },
+      "writtenOn": "2022-08-30T11:41:50Z",
+      "side": 1,
+      "message": "The test has been conclusive.\nThe playbook was trying to download a bin into a variable (that should not happen unless there is a mistake in the code, that\u0027s the case we are covering here). As exepected, a bin variable cannot be encoded as an \u0027utf-8\u0027 string but the callback plugin continue to run after this error and the rest of the tasks are display in the DCI ui.\n\nThen it fails because I have reused the pipeline made few months ago to test ansible vault.",
+      "revId": "0268221cb70b85f79ce9138400f75c2b3a0dd3ff",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e378ac00_5c296fce",
