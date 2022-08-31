@@ -124,6 +124,24 @@
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "206648d4_16dcd3fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 673
+      },
+      "writtenOn": "2022-08-31T12:46:28Z",
+      "side": 1,
+      "message": "yes that\u0027s point, I am using it as an impossible-to-encode-thing to see that callback plugin does not crashed after encountering a such variable",
+      "parentUuid": "80fd74ea_ffd831b5",
+      "revId": "0268221cb70b85f79ce9138400f75c2b3a0dd3ff",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e378ac00_5c296fce",
@@ -173,6 +191,24 @@
       "side": 1,
       "message": "In fact, the goal is to return a value that will be readable like an error message instead of a non understandable content (like a binary for example).",
       "parentUuid": "f2f597bf_f75e2da7",
+      "revId": "0268221cb70b85f79ce9138400f75c2b3a0dd3ff",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b18a67f_cd7f349a",
+        "filename": "callback/dci.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 673
+      },
+      "writtenOn": "2022-08-31T12:46:28Z",
+      "side": 1,
+      "message": "this is the output of the ValueError in a real case scenario:\n\"invalid content, not able to encode to utf-8: \u0027utf-8\u0027 codec can\u0027t encode characters in position 236-238: surrogates not allowed\n\"",
+      "parentUuid": "6ae43f95_b31156a0",
       "revId": "0268221cb70b85f79ce9138400f75c2b3a0dd3ff",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     }

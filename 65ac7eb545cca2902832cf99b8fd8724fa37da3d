@@ -16,6 +16,23 @@
       "message": "Thank you Yassine, LGTM, but maybe Fred could check as well as he knows better the callback.",
       "revId": "65ac7eb545cca2902832cf99b8fd8724fa37da3d",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76d19508_f9298325",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 673
+      },
+      "writtenOn": "2022-08-31T12:46:28Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "65ac7eb545cca2902832cf99b8fd8724fa37da3d",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     }
   ]
 }
