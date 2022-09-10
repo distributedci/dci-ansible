@@ -16,6 +16,24 @@
       "message": "some requests:\n\n- could you add a test?\n- could you use a depends-on on your EUS change and use the filter?",
       "revId": "94664fa9670c2db5875677ec09cd8e3b71798d07",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01f7455c_4927f910",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 667
+      },
+      "writtenOn": "2022-09-10T00:08:43Z",
+      "side": 1,
+      "message": "Both have been added",
+      "parentUuid": "8dbf7ea9_ffdaf054",
+      "revId": "94664fa9670c2db5875677ec09cd8e3b71798d07",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     }
   ]
 }
