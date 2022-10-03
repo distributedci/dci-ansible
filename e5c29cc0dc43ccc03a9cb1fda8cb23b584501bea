@@ -16,6 +16,24 @@
       "message": "Is the code truly doing a retry? or returning earlier?",
       "revId": "e5c29cc0dc43ccc03a9cb1fda8cb23b584501bea",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9cc8a2f_d5f402b3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 821
+      },
+      "writtenOn": "2022-10-03T22:14:20Z",
+      "side": 1,
+      "message": "the code returning earlier :)",
+      "parentUuid": "a7395e38_7ebbab02",
+      "revId": "e5c29cc0dc43ccc03a9cb1fda8cb23b584501bea",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     }
   ]
 }
