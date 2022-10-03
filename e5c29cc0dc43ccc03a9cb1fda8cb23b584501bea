@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "70922130_9bffd5f4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 821
+      },
+      "writtenOn": "2022-10-03T23:08:33Z",
+      "side": 1,
+      "message": "The goal of this patch is to fix a bug.\n\nIf the git module failed due to a time out, it doesn\u0027t retry.\n\nI did my tests with this play, the second and the third tasks should failed :\n```\n- git:\n    repo: \"{{item.repo}}\"\n    dest: \"{{item.dest}}\"\n  loop:\n    - repo: \"https://github.com/ansible/ansible-lint.git\"\n      dest: \"~/ansible-lint\"\n    - repo: \"https://github.com/ansible/ansible-lint_foo.git\"\n      dest: \"~/ansible-lint_foo\"\n    - repo: \"https://github.com/ansible/ansible-lint_bar.git\"\n      dest: \"~/ansible-lint_bar\"\n  register: test_git\n  retries: 3\n  delay: 3\n  until: not test_git.failed\n```\n \nwithout the patch:\nhttps://www.distributed-ci.io/jobs/ba3fc707-36a0-4f18-a5cb-e89ba44d1a88/jobStates?sort\u003ddate\u0026task\u003dacc38148-09fa-4b09-b327-31d6a8614f48\n\nwith the patch:\nhttps://www.distributed-ci.io/jobs/effd7ac8-bc24-4b72-82d0-c30edd957b5f/jobStates?sort\u003ddate\u0026task\u003d41881db2-c1fc-4c01-945d-9ff256f2e79b\n\nThe actual action_plugins crashes when the execution of the git module failed, this patch just add a test to retry the execution of the module.\nThe action_plugin doesn\u0027t manage the retry itself, task_executor manages that for him.",
+      "parentUuid": "df29bb2f_6604a286",
+      "revId": "e5c29cc0dc43ccc03a9cb1fda8cb23b584501bea",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2d029ea0_8bf6c834",
         "filename": "action_plugins/git.py",
         "patchSetId": 2
@@ -67,6 +85,24 @@
       "writtenOn": "2022-10-03T22:45:16Z",
       "side": 1,
       "message": "I see this is helping when doing the retries from the outside, but seems like the  issue is with the way the error coming from the git module is being handled, or not :) as in this case.\n\nThis code seems to assume that module_return will always return \u0027after\u0027, but that\u0027s only true when the git module completes without issues.\n\nWouldn\u0027t it be better to check for the `failed` state in the module_return? Whenever there\u0027s an issue with the module `failed` will return true and a different structure will be included, in your test it is a bit different because you\u0027re doing it in a loop, but if you run it only once the structure I saw is like this:\n\n\n    {\n        \"changed\": false,\n        \"cmd\": [\n            \"/usr/bin/git\",\n            \"fetch\",\n            \"--tags\",\n            \"origin\"\n        ],\n        \"failed\": true,\n        \"msg\": \"Failed to download remote objects and refs:  remote: Repository not found.\\nfatal: Authentication failed for \u0027https://github.com/ansible/ansible-lint_foo.git/\u0027\\n\"\n    }",
+      "revId": "e5c29cc0dc43ccc03a9cb1fda8cb23b584501bea",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb85ba9d_6d87d2cb",
+        "filename": "action_plugins/git.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 821
+      },
+      "writtenOn": "2022-10-03T23:08:33Z",
+      "side": 1,
+      "message": "Thanks Tony for your review !\n\n```\nI see this is helping when doing the retries from the outside, but seems like the  issue is with the way the error coming from the git module is being handled, or not :) as in this case.\n```\nWe prefer use the retry mechanism from ansible, not redo the wheel here :)\n\n\n```\nThis code seems to assume that module_return will always return \u0027after\u0027, but that\u0027s only true when the git module completes without issues.\n```\nThat is correct.\n\n\n```\nWouldn\u0027t it be better to check for the `failed` state in the module_return? Whenever there\u0027s an issue with the module `failed` will return true and a different structure will be included, in your test it is a bit different because you\u0027re doing it in a loop, but if you run it only once the structure I saw is like this:\n```\n\nYes we can also use the failed key, but it is not always present, during a success this value doesn\u0027t exist:\n```\nok: [jumphost] \u003d\u003e (item\u003d{\u0027repo\u0027: \u0027https://github.com/ansible/ansible-lint.git\u0027, \u0027dest\u0027: \u0027~/ansible-lint\u0027}) \u003d\u003e {\"after\": \"224d2eb85bd95b34a4e70cde693cc680a06efa97\", \"ansible_loop_var\": \"item\", \"attempts\": 1, \"before\": \"224d2eb85bd95b34a4e70cde693cc680a06efa97\", \"changed\": false, \"item\": {\"dest\": \"~/ansible-lint\", \"repo\": \"https://github.com/ansible/ansible-lint.git\"}, \"remote_url_changed\": false}\n```",
+      "parentUuid": "2d029ea0_8bf6c834",
       "revId": "e5c29cc0dc43ccc03a9cb1fda8cb23b584501bea",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     }
