@@ -72,6 +72,23 @@
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04d8782e_c3e30618",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 789
+      },
+      "writtenOn": "2022-10-04T08:28:45Z",
+      "side": 1,
+      "message": "I did some tests on my own and, based on Pierre\u0027s jobs output, this change looks OK to me.",
+      "revId": "e5c29cc0dc43ccc03a9cb1fda8cb23b584501bea",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d029ea0_8bf6c834",
