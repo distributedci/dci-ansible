@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b96f8a3_16167f65",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 667
+      },
+      "writtenOn": "2022-10-04T19:23:29Z",
+      "side": 1,
+      "message": "Thanks for getting into the root cause of the issue and thanks for fixing it.\n\nI\u0027ve validated the change, doing two failure scenarios:\n\n- Bad repo or repo with auth: https://www.distributed-ci.io/jobs/f54c5952-2627-4c47-b41a-d3a433c78e4d/jobStates?sort\u003ddate\u0026task\u003d25d6fe71-967b-443f-8862-eb76590f4c99\n- Bad destination (immutable dest): https://www.distributed-ci.io/jobs/4526ee73-2dcb-407c-837c-b4489d280e04/jobStates?sort\u003ddate\u0026task\u003de3246e6d-99b6-46b7-8a08-5e52526b7a37",
+      "revId": "d0bb533562c1ee869e412a75bd298801c0f736c1",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    }
+  ]
+}

@@ -74,6 +74,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "6d23c861_d6a6a7eb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 667
+      },
+      "writtenOn": "2022-10-04T19:23:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70922130_9bffd5f4",
+      "revId": "e5c29cc0dc43ccc03a9cb1fda8cb23b584501bea",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "04d8782e_c3e30618",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -120,6 +138,24 @@
       "side": 1,
       "message": "Thanks Tony for your review !\n\n```\nI see this is helping when doing the retries from the outside, but seems like the  issue is with the way the error coming from the git module is being handled, or not :) as in this case.\n```\nWe prefer use the retry mechanism from ansible, not redo the wheel here :)\n\n\n```\nThis code seems to assume that module_return will always return \u0027after\u0027, but that\u0027s only true when the git module completes without issues.\n```\nThat is correct.\n\n\n```\nWouldn\u0027t it be better to check for the `failed` state in the module_return? Whenever there\u0027s an issue with the module `failed` will return true and a different structure will be included, in your test it is a bit different because you\u0027re doing it in a loop, but if you run it only once the structure I saw is like this:\n```\n\nYes we can also use the failed key, but it is not always present, during a success this value doesn\u0027t exist:\n```\nok: [jumphost] \u003d\u003e (item\u003d{\u0027repo\u0027: \u0027https://github.com/ansible/ansible-lint.git\u0027, \u0027dest\u0027: \u0027~/ansible-lint\u0027}) \u003d\u003e {\"after\": \"224d2eb85bd95b34a4e70cde693cc680a06efa97\", \"ansible_loop_var\": \"item\", \"attempts\": 1, \"before\": \"224d2eb85bd95b34a4e70cde693cc680a06efa97\", \"changed\": false, \"item\": {\"dest\": \"~/ansible-lint\", \"repo\": \"https://github.com/ansible/ansible-lint.git\"}, \"remote_url_changed\": false}\n```",
       "parentUuid": "2d029ea0_8bf6c834",
+      "revId": "e5c29cc0dc43ccc03a9cb1fda8cb23b584501bea",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e633380b_2b6ef54b",
+        "filename": "action_plugins/git.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 667
+      },
+      "writtenOn": "2022-10-04T19:23:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb85ba9d_6d87d2cb",
       "revId": "e5c29cc0dc43ccc03a9cb1fda8cb23b584501bea",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     }
