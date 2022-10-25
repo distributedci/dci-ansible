@@ -85,17 +85,20 @@ def main():
     job_id = module.params['job_id'].strip()
     component_id = module.params['component_id'].strip()
 
-    res = dci_job.add_component(ctx, job_id, component_id)
-
+    nb_retry = 5
     result = {'changed': False}
-    if res.status_code in (201, 409):
-        result = {
-            'component_id': component_id,
-            'job_id': job_id,
-            'changed': True
-        }
-    else:
-        module.fail_json(msg=res.text)
+
+    for i in range(nb_retry):
+        res = dci_job.add_component(ctx, job_id, component_id)
+        if res.status_code in (201, 409):
+            result = {
+                'component_id': component_id,
+                'job_id': job_id,
+                'changed': True
+            }
+            break
+        if i+1 == nb_retry:
+            module.fail_json(msg=res.text)
 
     module.exit_json(**result)
 
