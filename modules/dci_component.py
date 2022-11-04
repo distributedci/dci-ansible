@@ -124,6 +124,7 @@ def main():
         active=dict(default=True, type='bool'),
         embed=dict(type='str'),
         tags=dict(type='str'),
+        sort=dict(type='str')
     )
     resource_argument_spec.update(authentication_argument_spec())
 
@@ -241,6 +242,8 @@ def main():
             if module.params[key]:
                 clause += '%s:%s,' % (key, module.params[key])
         kwargs = {'where': clause[:-1]}
+        if module.params["sort"]:
+            kwargs["sort"] = module.params["sort"]
         res = dci_topic.list_components(
             ctx, module.params['topic_id'], **kwargs)
 
