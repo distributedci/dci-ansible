@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dd13645_022c7cbd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 789
+      },
+      "writtenOn": "2023-02-13T14:40:13Z",
+      "side": 1,
+      "message": "The change works as expected in the target use case (rescued failure within loop).\n\nThis is an example of the use case previous to the change:\n\nhttps://www.distributed-ci.io/jobs/17daaa58-3b28-4067-baed-2d595c6cd79a/jobStates\n\nAnd this is a job with the change in effect:\n\nhttps://www.distributed-ci.io/jobs/abf77ce8-88a1-40de-a39b-87f5fd5cf794/jobStates\n\nWe\u0027re running now a regular execution with the change to see that the happy path is OK.",
+      "revId": "c4e0f5bfd656213ae054019186a68476cf59b02a",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    }
+  ]
+}
