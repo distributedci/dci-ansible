@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ba17ba7_0bbfc825",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 938
+      },
+      "writtenOn": "2023-02-15T11:35:53Z",
+      "side": 1,
+      "message": "Hi Nacho, I added two minor notes about regex usage, nothing critical",
+      "revId": "d681c2aba5e30226c92f8bde0e135ccb6cd603b5",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88463755_25129c65",
+        "filename": "callback/dci.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 938
+      },
+      "writtenOn": "2023-02-15T11:35:53Z",
+      "side": 1,
+      "message": "if `\\n` stands for the beginning of the string, it\u0027s probably better to use the \"the beginning of a line\" character \"^\".\n\n```\nre.compile(r\"^failed: \\[\")\n```\n\nwe could also use \"\\s\" for the whitespace, to avoid parsing discrepancies: \n```\nre.compile(r\"^failed:\\s\\[\")\n```",
+      "revId": "d681c2aba5e30226c92f8bde0e135ccb6cd603b5",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c630d3c_298f3db8",
+        "filename": "callback/dci.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 938
+      },
+      "writtenOn": "2023-02-15T11:35:53Z",
+      "side": 1,
+      "message": "we could rewrite it shorter I think\n\n```\nreturn bool(failed_re.search(content))\n```",
+      "revId": "d681c2aba5e30226c92f8bde0e135ccb6cd603b5",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    }
+  ]
+}
