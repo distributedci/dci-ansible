@@ -18,6 +18,23 @@
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe87e72c_24fb409f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 789
+      },
+      "writtenOn": "2023-02-15T11:57:51Z",
+      "side": 1,
+      "message": "Hi, Tania.\n\nThanks for your comments.\n\nPlease, see my responses below.",
+      "revId": "d681c2aba5e30226c92f8bde0e135ccb6cd603b5",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88463755_25129c65",
@@ -37,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a0a92b1d_33a7de5a",
+        "filename": "callback/dci.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 789
+      },
+      "writtenOn": "2023-02-15T11:57:51Z",
+      "side": 1,
+      "message": "I tried using the beginning of line metacharacter but somehow it failed in my unit tests.\n\nIt may be the problem was in my test content formatting (see below):",
+      "parentUuid": "88463755_25129c65",
+      "revId": "d681c2aba5e30226c92f8bde0e135ccb6cd603b5",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0c630d3c_298f3db8",
         "filename": "callback/dci.py",
         "patchSetId": 2
@@ -48,6 +83,23 @@
       "writtenOn": "2023-02-15T11:35:53Z",
       "side": 1,
       "message": "we could rewrite it shorter I think\n\n```\nreturn bool(failed_re.search(content))\n```",
+      "revId": "d681c2aba5e30226c92f8bde0e135ccb6cd603b5",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b17c2a52_3ce028dc",
+        "filename": "callback/test_dci.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 789
+      },
+      "writtenOn": "2023-02-15T11:57:51Z",
+      "side": 1,
+      "message": "which fails with ^ but works with \\n.\n\nI\u0027ll try your suggestion, nevertheless.",
       "revId": "d681c2aba5e30226c92f8bde0e135ccb6cd603b5",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     }
