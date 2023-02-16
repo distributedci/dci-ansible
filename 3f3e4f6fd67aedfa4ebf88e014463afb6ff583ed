@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bc17daf_7234ee79",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 938
+      },
+      "writtenOn": "2023-02-16T08:42:47Z",
+      "side": 1,
+      "message": "Hi Nacho, thank you for the neat fix! As we discussed, let\u0027s merge the first version to have it working for our dailies.",
+      "revId": "3f3e4f6fd67aedfa4ebf88e014463afb6ff583ed",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    }
+  ]
+}

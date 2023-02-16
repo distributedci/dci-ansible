@@ -70,6 +70,24 @@
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9f5b28d_0605c0cd",
+        "filename": "callback/dci.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 938
+      },
+      "writtenOn": "2023-02-16T08:42:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0a92b1d_33a7de5a",
+      "revId": "d681c2aba5e30226c92f8bde0e135ccb6cd603b5",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c630d3c_298f3db8",
@@ -136,6 +154,24 @@
       "side": 1,
       "message": "You can check this job:\nhttps://www.distributed-ci.io/jobs/ed585b0e-4e81-42c8-9f1b-577f3ef64345/jobStates\nwhere I used ^ instead of \\n and failed to detect the error in the loop item.\nSo, either using \\n is the right way to go, or the \\n is not doing nothing so we may end up having false positives.\nI\u0027m not sure on how determine this, so right now I\u0027m tempted of leaving the change as it is and field test the change to see if we experience any weird behaviors.",
       "parentUuid": "b17c2a52_3ce028dc",
+      "revId": "d681c2aba5e30226c92f8bde0e135ccb6cd603b5",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb916d04_569271ef",
+        "filename": "callback/test_dci.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 938
+      },
+      "writtenOn": "2023-02-16T08:42:47Z",
+      "side": 1,
+      "message": "sure, agree, let\u0027s merge with \\n to get the change at work",
+      "parentUuid": "c507099f_774ea057",
       "revId": "d681c2aba5e30226c92f8bde0e135ccb6cd603b5",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     }
