@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "439407fb_0151bb17",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 667
+      },
+      "writtenOn": "2023-02-22T23:27:19Z",
+      "side": 1,
+      "message": "Thanks Yassine!",
+      "revId": "fc5c2770a34462897434f9e91ea2aa281056c471",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1b425ca_2112d4b7",
+        "filename": "modules/dci_feeder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 667
+      },
+      "writtenOn": "2023-02-22T23:27:19Z",
+      "side": 1,
+      "message": "typo:\n  langage -\u003e language\n  \nApplies to all the other modules as well 😄",
+      "revId": "fc5c2770a34462897434f9e91ea2aa281056c471",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    }
+  ]
+}
