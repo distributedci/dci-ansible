@@ -121,6 +121,8 @@ def main():
         id=dict(type='str'),
         dest=dict(type='str'),
         name=dict(type='str'),
+        display_name=dict(type='str'),
+        version=dict(type='str'),
         type=dict(type='str'),
         canonical_project_name=dict(type='str'),
         url=dict(type='str'),
@@ -226,7 +228,10 @@ def main():
             'name': module.params['name'],
             'type': module.params['type'],
         }
-
+        if module.params['display_name']:
+            kwargs['display_name'] = module.params['display_name']
+        if module.params['version']:
+            kwargs['version'] = module.params['version']
         if module.params['canonical_project_name']:
             canonical_project_name = module.params['canonical_project_name']
             kwargs['canonical_project_name'] = canonical_project_name

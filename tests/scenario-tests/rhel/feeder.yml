@@ -12,7 +12,8 @@
       dci_component:
         name: "{{ _topics.topics[0].name }}.6-20180809.n.0"
         type: Compose
-        canonical_project_name: "{{ _topics.topics[0].name }}.6-20180809.n.0"
+        display_name: "{{ _topics.topics[0].name }}.6-20180809.n.0"
+        version: "6-20180809.n.0"
         url: https://www.example.com
         topic_id: '{{ _topics.topics[0].id }}'
       register: rhel_component
