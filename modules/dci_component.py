@@ -120,7 +120,9 @@ def main():
             type='str'),
         id=dict(type='str'),
         dest=dict(type='str'),
-        name=dict(type='str'),
+        uid=dict(type='str'),
+        display_name=dict(type='str'),
+        version=dict(type='str'),
         type=dict(type='str'),
         canonical_project_name=dict(type='str'),
         url=dict(type='str'),
@@ -217,8 +219,8 @@ def main():
     #
     # Create a new component
     elif module.params['state'] == 'present':
-        if not module.params['name']:
-            module.fail_json(msg='name parameter must be speficied')
+        if not module.params['display_name']:
+            module.fail_json(msg='display_name parameter must be specified')
         if not module.params['type']:
             module.fail_json(msg='type parameter must be speficied')
 
@@ -226,7 +228,12 @@ def main():
             'name': module.params['name'],
             'type': module.params['type'],
         }
-
+        if module.params['display_name']:
+            kwargs['display_name'] = module.params['display_name']
+        if module.params['version']:
+            kwargs['version'] = module.params['version']
+        if module.params['uid']:
+            kwargs['uid'] = module.params['uid']
         if module.params['canonical_project_name']:
             canonical_project_name = module.params['canonical_project_name']
             kwargs['canonical_project_name'] = canonical_project_name
