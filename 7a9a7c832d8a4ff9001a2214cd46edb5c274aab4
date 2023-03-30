@@ -84,6 +84,23 @@
       "message": "Just for context, this is the result of running a job that throws warning message in the failed task and does not include this CR:\n\nhttps://www.distributed-ci.io/jobs/f49fe524-b0fc-4115-80b7-84d995ae056e/jobStates?sort\u003ddate\u0026task\u003def394c11-cc75-4ff1-bc59-7e98bc47dee2\n\nThere, task \"Check on the test URLs\" fails to run a curl command in the second item of the loop.\n\nThe curl command causes ansible to throw a warning suggesting to use the get_url or uri modules instead of shell.\n\nThe result of not capturing these warning messages is that the output gets corrupted and the dci control server fails to highlight the failed task in red.\n\nThis CR\u0027s latest successful test:\n\nhttps://www.distributed-ci.io/jobs/cef47eaa-bc16-48c6-88ce-bf1aa99a22e8/jobStates?sort\u003ddate\u0026task\u003def200960-c95d-435f-85c7-6f75b03854aa\n\nShows how, after adding the missing warning method to the dci callbackmodule, the expected output is printed out in the ansible log and the DCI control server is able to identify and highlight the failed task.",
       "revId": "7a9a7c832d8a4ff9001a2214cd46edb5c274aab4",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d2a9022_a8f6cccd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 789
+      },
+      "writtenOn": "2023-03-30T10:16:07Z",
+      "side": 1,
+      "message": "Thanks for the review.",
+      "revId": "7a9a7c832d8a4ff9001a2214cd46edb5c274aab4",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     }
   ]
 }
