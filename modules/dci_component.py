@@ -50,7 +50,7 @@ options:
     description: Path where to drop the retrieved component
   active:
     required: false
-    description: Wether of not the resource should be active
+    description: Whether or not the resource should be active
   query:
     required: false
     description: query language
