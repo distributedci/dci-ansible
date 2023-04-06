@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97faa572_5d4aa6df",
+        "filename": "modules/dci_component.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 789
+      },
+      "writtenOn": "2023-04-06T11:54:02Z",
+      "side": 1,
+      "message": "Hi Yassine,\nMaybe you can clarify what the \"embed\" parameter is for.",
+      "revId": "f3aa8beaacd9553e7bf752fb8a555f8528c6470d",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    }
+  ]
+}
