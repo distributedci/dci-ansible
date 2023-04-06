@@ -32,10 +32,15 @@ description:
   - DCI module to manage the component resources
 version_added: 2.2
 options:
-  state:
+  active:
     required: false
-    default: present
-    description: Desired state of the resource
+    description: Whether or not the resource should be active
+  canonical_project_name:
+    required: false
+    description: Canonical name of the component being created
+  data:
+    required: false
+    description: Additional data to be attached to the component
   dci_login:
     required: false
     description: User's DCI login
@@ -48,12 +53,40 @@ options:
   dest:
     required: true
     description: Path where to drop the retrieved component
-  active:
+  embed:
     required: false
-    description: Wether of not the resource should be active
+    description: ""
+  id:
+    required: false
+    description: ID of the component if it exists in the DCI Control Server
+  name:
+    required: false
+    description: Name of the component being created
+  path:
+    required: false
+    description: Local path to a file to be attached to the component
   query:
     required: false
     description: query language
+  state:
+    required: false
+    default: present
+    description: Desired state of the resource
+  tags:
+    required: false
+    description: List of tags to be attached to the component
+  team_id:
+    required: false
+    description: Team the component is associated to
+  topic_id:
+    required: false
+    description: Topic the component is associated to
+  type:
+    required: false
+    description: Type of the component being created
+  url:
+    required: false
+    description: Location of the source artifact or project
 '''
 
 EXAMPLES = '''
