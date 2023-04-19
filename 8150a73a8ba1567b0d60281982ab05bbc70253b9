@@ -58,6 +58,30 @@
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ac1493e_f9788970",
+        "filename": "modules/dci_component.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2023-04-19T22:01:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96499fbc_770ac2f0",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 33
+      },
+      "revId": "8150a73a8ba1567b0d60281982ab05bbc70253b9",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe367eb3_e71be3ce",
@@ -71,6 +95,30 @@
       "writtenOn": "2023-04-06T11:41:13Z",
       "side": 1,
       "message": "You should update this one:\nIt should be `if not module.params[\u0027display_name\u0027]:`",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 68
+      },
+      "revId": "8150a73a8ba1567b0d60281982ab05bbc70253b9",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f787864_70e180dc",
+        "filename": "modules/dci_component.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2023-04-19T22:01:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe367eb3_e71be3ce",
       "range": {
         "startLine": 222,
         "startChar": 0,
@@ -104,6 +152,30 @@
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4e85709_11e3b9ff",
+        "filename": "modules/dci_component.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2023-04-19T22:01:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e312ce6_35d5d2b0",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 56
+      },
+      "revId": "8150a73a8ba1567b0d60281982ab05bbc70253b9",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b969e912_bcbe6a96",
@@ -117,6 +189,30 @@
       "writtenOn": "2023-04-06T11:41:13Z",
       "side": 1,
       "message": "name should be removed",
+      "range": {
+        "startLine": 14,
+        "startChar": 8,
+        "endLine": 14,
+        "endChar": 51
+      },
+      "revId": "8150a73a8ba1567b0d60281982ab05bbc70253b9",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "553c9652_be8fdaa3",
+        "filename": "tests/scenario-tests/openstack/feeder.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2023-04-19T22:01:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b969e912_bcbe6a96",
       "range": {
         "startLine": 14,
         "startChar": 8,
@@ -150,6 +246,30 @@
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84bc2926_5690bd69",
+        "filename": "tests/scenario-tests/openstack/feeder.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2023-04-19T22:01:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d755bc9_1a537586",
+      "range": {
+        "startLine": 35,
+        "startChar": 43,
+        "endLine": 35,
+        "endChar": 58
+      },
+      "revId": "8150a73a8ba1567b0d60281982ab05bbc70253b9",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2afc97df_b9b8e7fb",
@@ -173,6 +293,30 @@
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75f0e272_fefe1465",
+        "filename": "tests/scenario-tests/openstack/feeder.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2023-04-19T22:01:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2afc97df_b9b8e7fb",
+      "range": {
+        "startLine": 42,
+        "startChar": 5,
+        "endLine": 97,
+        "endChar": 112
+      },
+      "revId": "8150a73a8ba1567b0d60281982ab05bbc70253b9",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d16fea3_a69a81eb",
@@ -186,6 +330,30 @@
       "writtenOn": "2023-04-06T11:41:13Z",
       "side": 1,
       "message": "you should remove name here",
+      "range": {
+        "startLine": 13,
+        "startChar": 8,
+        "endLine": 13,
+        "endChar": 59
+      },
+      "revId": "8150a73a8ba1567b0d60281982ab05bbc70253b9",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d15a87c_c3f50846",
+        "filename": "tests/scenario-tests/rhel/feeder.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2023-04-19T22:01:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d16fea3_a69a81eb",
       "range": {
         "startLine": 13,
         "startChar": 8,
