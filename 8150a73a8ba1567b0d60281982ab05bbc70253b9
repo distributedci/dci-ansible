@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d98a49d2_d35b4679",
+        "filename": "modules/dci_component.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 789
+      },
+      "writtenOn": "2023-04-19T14:13:08Z",
+      "side": 1,
+      "message": "I see in https://softwarefactory-project.io/r/c/dci-openshift-app-agent/+/27911 that Guillaume recommends not to use \"name\" in favor of \"display_name\". Does this mean the \"name\" argument should be removed here?",
+      "revId": "8150a73a8ba1567b0d60281982ab05bbc70253b9",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "96499fbc_770ac2f0",
         "filename": "modules/dci_component.py",
         "patchSetId": 3
