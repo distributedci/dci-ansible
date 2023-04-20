@@ -40,10 +40,10 @@ server."""
         self._display = self
 
         self._jobstate_id = None
-        self._job_id = None
+        self._job_id = os.getenv("DCI_JOB_ID")
         self._current_status = None
         self._dci_context = self._build_dci_context()
-        self._explicit = False
+        self._explicit = self._job_id is not None
         self._backlog = []
         self._file_backlog = []
         self._name = None
