@@ -384,6 +384,8 @@ def main():
         required_if=[['state', 'absent', ['id']]]
     )
 
+    module.fail_json(msg='fail on purpose')
+
     if not dciclient_found:
         module.fail_json(msg='The python-dciclient module is required')
 
