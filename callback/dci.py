@@ -228,6 +228,10 @@ server."""
 
             self._job_id = result._result['job']['id']
             self.process_backlog()
+        # Get job id from environment
+        elif self._job_id is None and "DCI_JOB_ID" in os.environ:
+            self._job_id = os.environ["DCI_JOB_ID"]
+            self.process_backlog()
 
         super(CallbackModule, self).v2_runner_on_ok(result, **kwargs)
 
