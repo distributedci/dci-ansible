@@ -40,15 +40,20 @@ server."""
         self._display = self
 
         self._jobstate_id = None
-        self._job_id = None
+        self._job_id = os.getenv("DCI_JOB_ID")
+        self._got_env = self._job_id is not None
         self._current_status = None
         self._dci_context = self._build_dci_context()
-        self._explicit = False
+        self._explicit = self._job_id is not None
         self._backlog = []
         self._file_backlog = []
         self._name = None
         self._content = ''
         self._color = None
+
+        if self._got_env:
+            with open("/tmp/dci_job_id.log", "w") as log:
+                log.write("%s %s\n" % (self._job_id, self._dci_context))
 
     def get_option(self, name):
         for key, val in COMPAT_OPTIONS:
@@ -151,6 +156,9 @@ server."""
                     return
             self._file_backlog = []
             ret = dci_file.create(self._dci_context, **kwargs)
+            if self._got_env:
+                with open("/tmp/dci_job_id.log", "a") as log:
+                    log.write("name=%s status=%d\n" % (name, ret.status_code))
             if ret.status_code // 100 != 2:
                 self._file_backlog.append(kwargs)
 
