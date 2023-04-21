@@ -41,6 +41,30 @@
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c51dd0f_0cb88596",
+        "filename": "action_plugins/git.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 20
+      },
+      "writtenOn": "2023-04-21T10:53:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1865277a_95a80bd7",
+      "range": {
+        "startLine": 129,
+        "startChar": 12,
+        "endLine": 129,
+        "endChar": 36
+      },
+      "revId": "c79da5b73f0a8ebfe0a64659110acd916445330e",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44a36815_6c555762",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-04-21T09:22:49Z",
       "side": 1,
       "message": "missing uid",
+      "range": {
+        "startLine": 257,
+        "startChar": 8,
+        "endLine": 258,
+        "endChar": 39
+      },
+      "revId": "c79da5b73f0a8ebfe0a64659110acd916445330e",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e263bd7_535b2c83",
+        "filename": "modules/dci_component.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 20
+      },
+      "writtenOn": "2023-04-21T10:53:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44a36815_6c555762",
       "range": {
         "startLine": 257,
         "startChar": 8,
@@ -87,6 +135,30 @@
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1275f0fc_bcded246",
+        "filename": "samples/sample_3.yml",
+        "patchSetId": 10
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 20
+      },
+      "writtenOn": "2023-04-21T10:53:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16a4c79e_1fea0b2b",
+      "range": {
+        "startLine": 123,
+        "startChar": 59,
+        "endLine": 123,
+        "endChar": 79
+      },
+      "revId": "c79da5b73f0a8ebfe0a64659110acd916445330e",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3c85503_2601188e",
@@ -100,6 +172,30 @@
       "writtenOn": "2023-04-21T09:22:49Z",
       "side": 1,
       "message": "you could remove this one, there is no uid for compose.",
+      "range": {
+        "startLine": 16,
+        "startChar": 8,
+        "endLine": 16,
+        "endChar": 26
+      },
+      "revId": "c79da5b73f0a8ebfe0a64659110acd916445330e",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d9c7cc2_bb578062",
+        "filename": "tests/scenario-tests/rhel/feeder.yml",
+        "patchSetId": 10
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 20
+      },
+      "writtenOn": "2023-04-21T10:53:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3c85503_2601188e",
       "range": {
         "startLine": 16,
         "startChar": 8,
