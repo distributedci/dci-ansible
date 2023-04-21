@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "660df915_389c6204",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1440
+      },
+      "writtenOn": "2023-04-21T09:22:49Z",
+      "side": 1,
+      "message": "Hello Yassine,\nfor this one, we also need to specify the minimum version of dciclient in the spec file.\n\nplus my comments inlined",
+      "revId": "c79da5b73f0a8ebfe0a64659110acd916445330e",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1865277a_95a80bd7",
+        "filename": "action_plugins/git.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1440
+      },
+      "writtenOn": "2023-04-21T09:22:49Z",
+      "side": 1,
+      "message": "missing uid\u003d_commit_id",
+      "range": {
+        "startLine": 129,
+        "startChar": 12,
+        "endLine": 129,
+        "endChar": 36
+      },
+      "revId": "c79da5b73f0a8ebfe0a64659110acd916445330e",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44a36815_6c555762",
+        "filename": "modules/dci_component.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1440
+      },
+      "writtenOn": "2023-04-21T09:22:49Z",
+      "side": 1,
+      "message": "missing uid",
+      "range": {
+        "startLine": 257,
+        "startChar": 8,
+        "endLine": 258,
+        "endChar": 39
+      },
+      "revId": "c79da5b73f0a8ebfe0a64659110acd916445330e",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16a4c79e_1fea0b2b",
+        "filename": "samples/sample_3.yml",
+        "patchSetId": 10
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1440
+      },
+      "writtenOn": "2023-04-21T09:22:49Z",
+      "side": 1,
+      "message": "typo here\n\ndisplay_project_name -\u003e display_name",
+      "range": {
+        "startLine": 123,
+        "startChar": 59,
+        "endLine": 123,
+        "endChar": 79
+      },
+      "revId": "c79da5b73f0a8ebfe0a64659110acd916445330e",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3c85503_2601188e",
+        "filename": "tests/scenario-tests/rhel/feeder.yml",
+        "patchSetId": 10
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1440
+      },
+      "writtenOn": "2023-04-21T09:22:49Z",
+      "side": 1,
+      "message": "you could remove this one, there is no uid for compose.",
+      "range": {
+        "startLine": 16,
+        "startChar": 8,
+        "endLine": 16,
+        "endChar": 26
+      },
+      "revId": "c79da5b73f0a8ebfe0a64659110acd916445330e",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    }
+  ]
+}
