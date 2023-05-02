@@ -49,6 +49,8 @@ server."""
         self._name = None
         self._content = ''
         self._color = None
+        self._warns = {}
+        self._warn_prefix = False
 
     def get_option(self, name):
         for key, val in COMPAT_OPTIONS:
@@ -81,6 +83,24 @@ server."""
             return dci_context.build_signature_context(url, client_id,
                                                        api_secret, user_agent)
 
+    def _handle_warnings(self, res):
+        ''' add warnings to content, if enabled and any exist in the result '''
+        if C.ACTION_WARNINGS:
+            if 'warnings' in res and res['warnings']:
+                for warning in res['warnings']:
+                    if warning not in self._warns:
+                        self._content += "[WARNING]: " + warning + "\n"
+                        self._warns[warning] = 1
+                        self._warn_prefix = True
+                del res['warnings']
+            if 'deprecations' in res and res['deprecations']:
+                for warning in res['deprecations']:
+                    if warning not in self._warns:
+                        self._content += "[DEPRECATION WARNING]: " + warning + "\n"
+                        self._warns[warning] = 1
+                        self._warn_prefix = True
+                del res['deprecations']
+
     def display(self, msg, color=None, screen_only=False, *args, **kwargs):
         if screen_only:
             return
@@ -112,19 +132,23 @@ server."""
             else:
                 prefix = ''
 
+            if self._warn_prefix:
+                prefix = prefix + "warn/"
+                self._warn_prefix = False
+
             self.create_file(prefix + self._name,
                              self._content if self._content != '' else ' ')
             self._content = ''
 
         self._name = msg
 
-    def warning(self, msg):
-        pass
-
     def deprecated(self, *args, **kwargs):
         pass
 
     def create_file(self, name, content):
+        """If the job ID already exists, create task files for every task in the
+        backlog and clear it. If it does not, store the new task content in
+        the backlog."""
         def _content_to_utf8():
             try:
                 return name, content and content.encode('UTF-8')
