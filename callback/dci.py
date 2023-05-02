@@ -119,12 +119,15 @@ server."""
         self._name = msg
 
     def warning(self, msg):
-        pass
+        self._content += "[WARNING]: " + msg + "\n"
 
     def deprecated(self, *args, **kwargs):
         pass
 
     def create_file(self, name, content):
+        # If the job ID already exists, create task files for every task in the
+        # backlog and clear it. If it does not, store the new task content in
+        # the backlog.
         def _content_to_utf8():
             try:
                 return name, content and content.encode('UTF-8')
