@@ -1,0 +1,27 @@
+---
+- hosts: localhost
+  tasks:
+    - block:
+        - name: Schedule the test job
+          dci_job:
+            topic: OCP-4.8
+          register: job_info
+
+        - name: Set global variables
+          set_fact:
+            job_id: "{{ job_info.job.id }}"
+
+      rescue:
+        - name: failed
+          dci_job:
+            id: "{{ job_id }}"
+            status: "failed"
+
+        - name: default failure message
+          fail:
+            msg: broken test
+
+    - name: success
+      dci_job:
+        id: "{{ job_id }}"
+        status: "success"
