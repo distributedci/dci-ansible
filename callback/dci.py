@@ -119,7 +119,7 @@ server."""
         self._name = msg
 
     def warning(self, msg):
-        pass
+        self._content += "[WARNING]: " + msg + "\n"
 
     def deprecated(self, *args, **kwargs):
         pass
@@ -182,6 +182,13 @@ server."""
         super(CallbackModule, self).v2_playbook_on_stats(stats)
         # do a fake call to banner to output the last content
         self.banner('')
+
+    def v2_runner_item_on_ok(self, result, **kwargs):
+        """Event executed after each command item when it succeed. Get the
+        output of the command and append it to the current content."""
+
+        for warning in result._result["warnings"]:
+            self._content += "[WARNING]: " + warning + "\n"
 
     def v2_runner_on_ok(self, result, **kwargs):
         """Event executed after each command when it succeed. Get the output
