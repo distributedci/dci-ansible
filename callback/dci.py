@@ -94,6 +94,8 @@ server."""
         # upload the previous content when we have a new banner (start
         # of task/play/playbook...)
 
+        print("CONTENT: ", self._content)
+
         def check_failed_item(content):
             import re
             failed_re = re.compile(r"\nfailed: \[")
@@ -119,7 +121,7 @@ server."""
         self._name = msg
 
     def warning(self, msg):
-        pass
+        self._content += "[WARNING]: " + msg + "\n"
 
     def deprecated(self, *args, **kwargs):
         pass
@@ -188,6 +190,7 @@ server."""
         of the command and create a file associated to the current
         jobstate.
         """
+        print(result._result["warnings"])
         # Store the jobstate id when the there is an explicit call to
         # set it. Example in a playbook:
         #
@@ -235,6 +238,8 @@ server."""
 
     def process_backlog(self):
         self.create_jobstate(comment='start up', status='new')
+
+        print("BACKLOG")
 
         for rec in self._backlog:
             if 'status' in rec:
