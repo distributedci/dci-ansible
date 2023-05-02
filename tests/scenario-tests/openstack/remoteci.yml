@@ -145,3 +145,16 @@
     - name: Verify that job has 3 tags
       assert:
         that: job_info.job.tags|length == 3
+
+
+- hosts: localhost
+  tasks:
+    - name: Schedule the test job
+      dci_job:
+        topic: OCP-4.8
+        name: "Warning messages"
+      register: warning_job_info
+
+    - name: Set global variables
+      set_fact:
+        job_info: "{{ warning_job_info.job.id }}"

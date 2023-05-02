@@ -34,7 +34,7 @@ function run_unit_tests() {
 # --- Start plugin tests
 function run_plugin_tests() {
     plugins='filter_plugins/version_sort'
-
+    
     for plugin in $plugins; do
         ansible-playbook unit-tests/${plugin}/playbook.yml -v
     done
