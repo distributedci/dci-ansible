@@ -119,7 +119,7 @@ server."""
         self._name = msg
 
     def warning(self, msg):
-        pass
+        self._content += "[WARNING]: " + msg + "\n"
 
     def deprecated(self, *args, **kwargs):
         pass
