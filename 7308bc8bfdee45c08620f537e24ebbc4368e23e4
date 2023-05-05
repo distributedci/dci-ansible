@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a89e11d_34dd367e",
+        "filename": "action_plugins/git.py",
+        "patchSetId": 18
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1440
+      },
+      "writtenOn": "2023-05-05T08:43:57Z",
+      "side": 1,
+      "message": "here it should be \"%s %s\" % (_project_name, _commit_id[0:7])",
+      "range": {
+        "startLine": 128,
+        "startChar": 25,
+        "endLine": 128,
+        "endChar": 38
+      },
+      "revId": "7308bc8bfdee45c08620f537e24ebbc4368e23e4",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    }
+  ]
+}
