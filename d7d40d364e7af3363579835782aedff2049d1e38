@@ -16,6 +16,74 @@
       "message": "This approach reproduces the exact output you\u0027d get from the ansible command line.\n\nAlso, I tested running the analyze_job script against my test jobs and I see the tasks containing warnings are named accordingly:\n\n # ls jobs/openshift-vanilla/2023-05-08T10\\:18\\:59.838685-f57b2419-6e49-4754-b19e-8e21ca032dfe/tasks/\n task0001.json  task0004-warn.json     task0007-failed.json  task0010.json  \ntask0013.json  task0016.json\n task0002.json  task0005-skipped.json  task0008.json         task0011.json  task0014.json\n task0003.json  task0006-skipped.json  task0009-failed.json  task0012.json  task0015.json\n \n Also, please, bear in mind there are to types of warnings, the regular ones plus the \"DEPRECATION WARNINGS\", and both should be highlighted in the CS.",
       "revId": "d7d40d364e7af3363579835782aedff2049d1e38",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7efd395_b3561e6c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 667
+      },
+      "writtenOn": "2023-05-08T20:49:52Z",
+      "side": 1,
+      "message": "Hey Nacho, I\u0027m glad the mob session was valuable 😎, I think some testing is needed, could you please add some?",
+      "revId": "d7d40d364e7af3363579835782aedff2049d1e38",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c67471b0_855024c6",
+        "filename": "callback/dci.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 667
+      },
+      "writtenOn": "2023-05-08T20:49:52Z",
+      "side": 1,
+      "message": "nit: Use consistent docstrings as the rest of the code (double quotes instead of single)",
+      "revId": "d7d40d364e7af3363579835782aedff2049d1e38",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "daa8dae6_41a9d7d9",
+        "filename": "callback/dci.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 667
+      },
+      "writtenOn": "2023-05-08T20:49:52Z",
+      "side": 1,
+      "message": "Do we still need the deprecated method in line 135?",
+      "revId": "d7d40d364e7af3363579835782aedff2049d1e38",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b89bdc16_07fc544e",
+        "filename": "callback/dci.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 667
+      },
+      "writtenOn": "2023-05-08T20:49:52Z",
+      "side": 1,
+      "message": "I don\u0027t get the sue of _warn_prefix, what is it doing at the banner?",
+      "revId": "d7d40d364e7af3363579835782aedff2049d1e38",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     }
   ]
 }
