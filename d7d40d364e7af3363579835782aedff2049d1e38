@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "613a0b00_b817df14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 789
+      },
+      "writtenOn": "2023-05-08T10:27:22Z",
+      "side": 1,
+      "message": "This approach reproduces the exact output you\u0027d get from the ansible command line.\n\nAlso, I tested running the analyze_job script against my test jobs and I see the tasks containing warnings are named accordingly:\n\n # ls jobs/openshift-vanilla/2023-05-08T10\\:18\\:59.838685-f57b2419-6e49-4754-b19e-8e21ca032dfe/tasks/\n task0001.json  task0004-warn.json     task0007-failed.json  task0010.json  \ntask0013.json  task0016.json\n task0002.json  task0005-skipped.json  task0008.json         task0011.json  task0014.json\n task0003.json  task0006-skipped.json  task0009-failed.json  task0012.json  task0015.json\n \n Also, please, bear in mind there are to types of warnings, the regular ones plus the \"DEPRECATION WARNINGS\", and both should be highlighted in the CS.",
+      "revId": "d7d40d364e7af3363579835782aedff2049d1e38",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    }
+  ]
+}
