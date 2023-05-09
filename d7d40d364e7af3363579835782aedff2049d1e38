@@ -124,6 +124,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6a11bcf1_666436fd",
+        "filename": "callback/dci.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 667
+      },
+      "writtenOn": "2023-05-09T18:55:36Z",
+      "side": 1,
+      "message": "Sorry, I meant line 145 in patchset 6, in this patchset is on line 140\n\n    def deprecated(self, *args, **kwargs):\n        pass",
+      "parentUuid": "ac3b206c_115518a6",
+      "revId": "d7d40d364e7af3363579835782aedff2049d1e38",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b89bdc16_07fc544e",
         "filename": "callback/dci.py",
         "patchSetId": 6
@@ -153,6 +171,24 @@
       "side": 1,
       "message": "I\u0027m using _warn_prefix as a flag to indicate that a warning message was found in the current task so, when processing the task\u0027s outputs:\n\n1. In _handle_warnings, if this is the first time this warning message is seen.\n\n2. the message is added to the current content.\n\n3. the _warn_prefix flag is enabled.\n\n4. When the next task starts, the banner function is called on the previous task so:\n\n5. If the _warn_prefix is enabled.\n\n6. The prefix \"warn/\" is added to the file name.\n\n7. The flag is disabled so we start to process the new task.\n\nThe request was to have the task file names using the warn/ prefix so the DCI UI will read the prefix and mark the affected tasks, either with an icon or a change in color.\n\nThis prefix is to be added on top of any other existing prefix, so a task can both be failed and contain a warning message, thus resulting in the task name \"failed/warn/TASK: this is a task\".",
       "parentUuid": "b89bdc16_07fc544e",
+      "revId": "d7d40d364e7af3363579835782aedff2049d1e38",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73258d44_758468dd",
+        "filename": "callback/dci.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 667
+      },
+      "writtenOn": "2023-05-09T18:55:36Z",
+      "side": 1,
+      "message": "Thanks for the detail, now I see its use, and is because banner runs on the next task so the state of the previous task needs to be saved in this _warn_prefix bool.",
+      "parentUuid": "0d3df4ea_8c45e8b9",
       "revId": "d7d40d364e7af3363579835782aedff2049d1e38",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     }

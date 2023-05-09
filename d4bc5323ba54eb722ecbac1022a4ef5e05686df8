@@ -33,6 +33,93 @@
       "message": "Also, in the currently running CI job we have tasks with warnings at:\n\nhttps://www.distributed-ci.io/jobs/8d37e77d-9549-4c3a-b6fb-0b8b92490aab/jobStates?sort\u003ddate\u0026task\u003d4fcc9395-629f-4ba9-b0e9-bbcad1389c3e\n\nhttps://www.distributed-ci.io/jobs/8d37e77d-9549-4c3a-b6fb-0b8b92490aab/jobStates?sort\u003ddate\u0026task\u003dce013899-e330-40b0-ae1c-b59dc0a2d20f",
       "revId": "d4bc5323ba54eb722ecbac1022a4ef5e05686df8",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b6e3fb1_8471c53e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 667
+      },
+      "writtenOn": "2023-05-09T18:55:36Z",
+      "side": 1,
+      "message": "Warnings in poweroff have been there even before this change, this is an example of yesterday\u0027s daily job in 4.12:\n\nhttps://www.distributed-ci.io/jobs/cd743753-7c6c-4eb0-958c-6adf5dfa60ca/jobStates?sort\u003ddate\u0026task\u003dd733e6e0-1fce-4f8e-80c6-eca348dc2220",
+      "parentUuid": "e55121c6_318bc791",
+      "revId": "d4bc5323ba54eb722ecbac1022a4ef5e05686df8",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f27dfb4_5fd16c5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 667
+      },
+      "writtenOn": "2023-05-09T18:55:36Z",
+      "side": 1,
+      "message": "Great, can you add those 4 test cases to the tests? https://softwarefactory-project.io/r/plugins/gitiles/dci-ansible/+/refs/heads/master/tests/run_tests.sh",
+      "parentUuid": "d642b19a_a39942fd",
+      "revId": "d4bc5323ba54eb722ecbac1022a4ef5e05686df8",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c17a2076_3b155262",
+        "filename": "callback/dci.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 667
+      },
+      "writtenOn": "2023-05-09T18:55:36Z",
+      "side": 1,
+      "message": "This could be moved into the conditional for _item_failed or eliminated if overriding the color in v2_runner_item_on_failed",
+      "revId": "d4bc5323ba54eb722ecbac1022a4ef5e05686df8",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d029f712_42448c4a",
+        "filename": "callback/dci.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 667
+      },
+      "writtenOn": "2023-05-09T18:55:36Z",
+      "side": 1,
+      "message": "Whenever there\u0027s a loop that generates warning and fails the prefix will look like:\n    failed/warn/\n\nIs possible that other states may be combined, Is that acceptable?",
+      "revId": "d4bc5323ba54eb722ecbac1022a4ef5e05686df8",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fb563e6_c66d54d2",
+        "filename": "callback/dci.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 667
+      },
+      "writtenOn": "2023-05-09T18:55:36Z",
+      "side": 1,
+      "message": "Would make sense to set\n    self._color \u003d C.COLOR_ERROR\n    \nAnd avoid the need of self._item_failed ?",
+      "revId": "d4bc5323ba54eb722ecbac1022a4ef5e05686df8",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     }
   ]
 }
