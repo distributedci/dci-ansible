@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d642b19a_a39942fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 789
+      },
+      "writtenOn": "2023-05-09T10:48:50Z",
+      "side": 1,
+      "message": "Here are the 4 test cases verified:\n\n1. Single command task, successful: https://www.distributed-ci.io/jobs/39e5bcaa-9b8f-4746-ab23-6798d0ab1ebe/jobStates?sort\u003ddate\u0026task\u003d8a2c377c-9df7-4492-99b6-9cf4b38e0896\n\n2. Loop task, successful: https://www.distributed-ci.io/jobs/59b7966b-cac2-45dc-97e4-79ba43ad33bf/jobStates?sort\u003ddate\u0026task\u003dc33e7c48-6dc2-46a3-a0c6-909f787ef1b1\n\n3. Single command task, failed: https://www.distributed-ci.io/jobs/f685c3f3-5775-4579-86b1-e1ead108167c/jobStates?sort\u003ddate\u0026task\u003dfd03750f-c67d-47b7-8685-71baafee8dbb\n\n4. Loop task, failed: https://www.distributed-ci.io/jobs/8f1554c0-b6dc-4e77-882b-170b9ca1b153/jobStates?sort\u003ddate\u0026task\u003d73e9bfd6-bbb0-4319-ba22-4767d353e404\n\nAs discussed in the mob programming session, and according to Ansible\u0027s command line output, when several tasks trigger the same specific warning message, only the first task in the list will show it in its output.",
+      "revId": "d4bc5323ba54eb722ecbac1022a4ef5e05686df8",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    }
+  ]
+}
