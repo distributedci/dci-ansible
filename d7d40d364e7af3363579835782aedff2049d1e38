@@ -35,6 +35,23 @@
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae946593_fc66223e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 789
+      },
+      "writtenOn": "2023-05-09T08:20:39Z",
+      "side": 1,
+      "message": "Hi Tony,\n\nThanks for your comments.\n\nI hope my responses are clear enough.\n\nI\u0027ll try to reproduce my 4 test cases (single task with warning, loop task with warning, single failed task with warning, loop failed task with warning) in BOS2 and link the results here.\n\nAlso, I\u0027m thinking that this changes actually deprecates my previous change in lines #117 and #129. I\u0027ll test that and update the code accordingly.",
+      "revId": "d7d40d364e7af3363579835782aedff2049d1e38",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c67471b0_855024c6",
@@ -48,6 +65,24 @@
       "writtenOn": "2023-05-08T20:49:52Z",
       "side": 1,
       "message": "nit: Use consistent docstrings as the rest of the code (double quotes instead of single)",
+      "revId": "d7d40d364e7af3363579835782aedff2049d1e38",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe31f8ca_ee281ed5",
+        "filename": "callback/dci.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 789
+      },
+      "writtenOn": "2023-05-09T08:20:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c67471b0_855024c6",
       "revId": "d7d40d364e7af3363579835782aedff2049d1e38",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     },
@@ -71,6 +106,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ac3b206c_115518a6",
+        "filename": "callback/dci.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 789
+      },
+      "writtenOn": "2023-05-09T08:20:39Z",
+      "side": 1,
+      "message": "I believe there\u0027s some mistake here. What deprecated method do you mean?\n\nIf it\u0027s the original warning method, I got it removed.\n\nLine 135 is commented in your following message.",
+      "parentUuid": "daa8dae6_41a9d7d9",
+      "revId": "d7d40d364e7af3363579835782aedff2049d1e38",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b89bdc16_07fc544e",
         "filename": "callback/dci.py",
         "patchSetId": 6
@@ -82,6 +135,24 @@
       "writtenOn": "2023-05-08T20:49:52Z",
       "side": 1,
       "message": "I don\u0027t get the sue of _warn_prefix, what is it doing at the banner?",
+      "revId": "d7d40d364e7af3363579835782aedff2049d1e38",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d3df4ea_8c45e8b9",
+        "filename": "callback/dci.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 789
+      },
+      "writtenOn": "2023-05-09T08:20:39Z",
+      "side": 1,
+      "message": "I\u0027m using _warn_prefix as a flag to indicate that a warning message was found in the current task so, when processing the task\u0027s outputs:\n\n1. In _handle_warnings, if this is the first time this warning message is seen.\n\n2. the message is added to the current content.\n\n3. the _warn_prefix flag is enabled.\n\n4. When the next task starts, the banner function is called on the previous task so:\n\n5. If the _warn_prefix is enabled.\n\n6. The prefix \"warn/\" is added to the file name.\n\n7. The flag is disabled so we start to process the new task.\n\nThe request was to have the task file names using the warn/ prefix so the DCI UI will read the prefix and mark the affected tasks, either with an icon or a change in color.\n\nThis prefix is to be added on top of any other existing prefix, so a task can both be failed and contain a warning message, thus resulting in the task name \"failed/warn/TASK: this is a task\".",
+      "parentUuid": "b89bdc16_07fc544e",
       "revId": "d7d40d364e7af3363579835782aedff2049d1e38",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     }
