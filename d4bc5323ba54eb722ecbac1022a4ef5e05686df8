@@ -71,6 +71,24 @@
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9638530_9372d04c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 789
+      },
+      "writtenOn": "2023-05-10T08:03:28Z",
+      "side": 1,
+      "message": "Yes. My point was that these were some more examples of the change at work.",
+      "parentUuid": "6b6e3fb1_8471c53e",
+      "revId": "d4bc5323ba54eb722ecbac1022a4ef5e05686df8",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c17a2076_3b155262",
@@ -107,6 +125,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f40bdc65_b3f1f886",
+        "filename": "callback/dci.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 789
+      },
+      "writtenOn": "2023-05-10T08:03:28Z",
+      "side": 1,
+      "message": "I checked it with Guillaume and he said that was acceptable. He\u0027ll add the logic to handle file names with several prefixes.\n\nWe have to bear in mind that there can be failed tasks with warnings, and both conditions have to be handled.\n\nThis leads to the discussion of whether using prefixes is the optimal solution or we should start using metadata for the tasks but, to be honest, I\u0027d rather have this CR merged before we open that door.",
+      "parentUuid": "d029f712_42448c4a",
+      "revId": "d4bc5323ba54eb722ecbac1022a4ef5e05686df8",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8fb563e6_c66d54d2",
         "filename": "callback/dci.py",
         "patchSetId": 7
@@ -118,6 +154,24 @@
       "writtenOn": "2023-05-09T18:55:36Z",
       "side": 1,
       "message": "Would make sense to set\n    self._color \u003d C.COLOR_ERROR\n    \nAnd avoid the need of self._item_failed ?",
+      "revId": "d4bc5323ba54eb722ecbac1022a4ef5e05686df8",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5c9742d_0d4fb047",
+        "filename": "callback/dci.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 789
+      },
+      "writtenOn": "2023-05-10T08:03:28Z",
+      "side": 1,
+      "message": "Nice point. I\u0027ll check it out.",
+      "parentUuid": "8fb563e6_c66d54d2",
       "revId": "d4bc5323ba54eb722ecbac1022a4ef5e05686df8",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     }
