@@ -89,6 +89,23 @@
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36835538_b73ad6a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 789
+      },
+      "writtenOn": "2023-05-10T12:36:36Z",
+      "side": 1,
+      "message": "Hi Tony,\n\nI believed I processed all your comments.\n\nI\u0027m about to push a new patchset.\n\nThe only thing missing would be adding the tests to the script you indicate.\n\nNot sure I\u0027ll be able to do it today, but I\u0027ll try tomorrow.",
+      "revId": "d4bc5323ba54eb722ecbac1022a4ef5e05686df8",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c17a2076_3b155262",
@@ -102,6 +119,24 @@
       "writtenOn": "2023-05-09T18:55:36Z",
       "side": 1,
       "message": "This could be moved into the conditional for _item_failed or eliminated if overriding the color in v2_runner_item_on_failed",
+      "revId": "d4bc5323ba54eb722ecbac1022a4ef5e05686df8",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fdef442_c4390520",
+        "filename": "callback/dci.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 789
+      },
+      "writtenOn": "2023-05-10T12:36:36Z",
+      "side": 1,
+      "message": "That was a nice idea, but tested overriding the color and it didn\u0027t work. The UI would print the task in yellow instead of red.",
+      "parentUuid": "c17a2076_3b155262",
       "revId": "d4bc5323ba54eb722ecbac1022a4ef5e05686df8",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     },
@@ -172,6 +207,24 @@
       "side": 1,
       "message": "Nice point. I\u0027ll check it out.",
       "parentUuid": "8fb563e6_c66d54d2",
+      "revId": "d4bc5323ba54eb722ecbac1022a4ef5e05686df8",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed48cfc4_5b257691",
+        "filename": "callback/dci.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 789
+      },
+      "writtenOn": "2023-05-10T12:36:36Z",
+      "side": 1,
+      "message": "As mentioned before, overriding the color is not enough. It looks like any following successful items will override the color in the task.",
+      "parentUuid": "a5c9742d_0d4fb047",
       "revId": "d4bc5323ba54eb722ecbac1022a4ef5e05686df8",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     }

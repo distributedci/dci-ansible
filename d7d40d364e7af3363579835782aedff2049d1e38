@@ -160,6 +160,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "95544e90_018d4cb8",
+        "filename": "callback/dci.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 789
+      },
+      "writtenOn": "2023-05-10T12:36:36Z",
+      "side": 1,
+      "message": "Checked it and the function may be removed.\n\nHad to add a new test case to trigger deprecation warnings and add some extra logic to handle them.",
+      "parentUuid": "93a391c8_50472f59",
+      "revId": "d7d40d364e7af3363579835782aedff2049d1e38",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b89bdc16_07fc544e",
         "filename": "callback/dci.py",
         "patchSetId": 6
