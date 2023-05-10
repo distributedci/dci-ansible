@@ -106,6 +106,24 @@
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e0253bd_0b5087a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 667
+      },
+      "writtenOn": "2023-05-10T13:59:26Z",
+      "side": 1,
+      "message": "Sounds good, thanks for all the work so far.",
+      "parentUuid": "36835538_b73ad6a5",
+      "revId": "d4bc5323ba54eb722ecbac1022a4ef5e05686df8",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c17a2076_3b155262",
@@ -141,6 +159,24 @@
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed7855bf_eef6c2a6",
+        "filename": "callback/dci.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 667
+      },
+      "writtenOn": "2023-05-10T13:59:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1fdef442_c4390520",
+      "revId": "d4bc5323ba54eb722ecbac1022a4ef5e05686df8",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d029f712_42448c4a",
@@ -172,6 +208,24 @@
       "side": 1,
       "message": "I checked it with Guillaume and he said that was acceptable. He\u0027ll add the logic to handle file names with several prefixes.\n\nWe have to bear in mind that there can be failed tasks with warnings, and both conditions have to be handled.\n\nThis leads to the discussion of whether using prefixes is the optimal solution or we should start using metadata for the tasks but, to be honest, I\u0027d rather have this CR merged before we open that door.",
       "parentUuid": "d029f712_42448c4a",
+      "revId": "d4bc5323ba54eb722ecbac1022a4ef5e05686df8",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8f355e9_2fba32f3",
+        "filename": "callback/dci.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 667
+      },
+      "writtenOn": "2023-05-10T13:59:26Z",
+      "side": 1,
+      "message": "That\u0027s fair, I wanted to make sure DCI was OK with this. The details on how to deal with prefixes can be tackled in another change.",
+      "parentUuid": "f40bdc65_b3f1f886",
       "revId": "d4bc5323ba54eb722ecbac1022a4ef5e05686df8",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     },
