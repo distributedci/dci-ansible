@@ -16,6 +16,24 @@
       "message": "Please be mindful that this is the commit message that will go into the repo once merged. It is not a comment in the CR/PR in Gerrit like the one I\u0027m writing here.\n\nIf you need to keep track of the tasks needed use the comment in the Gerrit UI instead.",
       "revId": "9c9f1d2c0b7244836ad15f0b325dde04e14b78a7",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "025b7c41_ea07e8b4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 789
+      },
+      "writtenOn": "2023-05-15T12:26:35Z",
+      "side": 1,
+      "message": "yes, don\u0027t worry.\n\nWas planning on removing the LIST when the 5 tests were drafted.",
+      "parentUuid": "7f125cb6_d4b1284f",
+      "revId": "9c9f1d2c0b7244836ad15f0b325dde04e14b78a7",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     }
   ]
 }
