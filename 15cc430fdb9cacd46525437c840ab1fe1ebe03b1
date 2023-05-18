@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18158e34_2b0cf8de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 648
+      },
+      "writtenOn": "2023-05-18T14:28:59Z",
+      "side": 1,
+      "message": "Added my comments, but I suggest you get input from Guillaume on this",
+      "revId": "15cc430fdb9cacd46525437c840ab1fe1ebe03b1",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9a9b054_10cc9b9e",
+        "filename": "callback/dci.py",
+        "patchSetId": 21
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 648
+      },
+      "writtenOn": "2023-05-18T14:28:59Z",
+      "side": 1,
+      "message": "why use a dict? a list is enough for this case",
+      "revId": "15cc430fdb9cacd46525437c840ab1fe1ebe03b1",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60762ced_10c8bd7c",
+        "filename": "callback/dci.py",
+        "patchSetId": 21
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 648
+      },
+      "writtenOn": "2023-05-18T14:28:59Z",
+      "side": 1,
+      "message": "these 2 conditions are effectively the same, did you mean to test for len(res[\u0027warnings\u0027]) \u003e 0 ? Just leave `if \u0027warnings\u0027 in res:` because the following for loop already handles an empty list",
+      "revId": "15cc430fdb9cacd46525437c840ab1fe1ebe03b1",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "652ed903_102096dc",
+        "filename": "callback/dci.py",
+        "patchSetId": 21
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 648
+      },
+      "writtenOn": "2023-05-18T14:28:59Z",
+      "side": 1,
+      "message": "this feels like golang to me, if you use a list you can do `if warning in self._warns`",
+      "revId": "15cc430fdb9cacd46525437c840ab1fe1ebe03b1",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bedad647_aabe687a",
+        "filename": "callback/dci.py",
+        "patchSetId": 21
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 648
+      },
+      "writtenOn": "2023-05-18T14:28:59Z",
+      "side": 1,
+      "message": "same observations as previous block",
+      "revId": "15cc430fdb9cacd46525437c840ab1fe1ebe03b1",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c1a09fc_534512fe",
+        "filename": "callback/dci.py",
+        "patchSetId": 21
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 648
+      },
+      "writtenOn": "2023-05-18T14:28:59Z",
+      "side": 1,
+      "message": "is the deprecation object different from a warning object? I don\u0027t know myself, just making sure, because the previous block you didn\u0027t handle warning.msg field and warning appears to be a string",
+      "revId": "15cc430fdb9cacd46525437c840ab1fe1ebe03b1",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    }
+  ]
+}
