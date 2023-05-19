@@ -18,6 +18,23 @@
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e98762cc_b7569a29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 789
+      },
+      "writtenOn": "2023-05-19T08:09:32Z",
+      "side": 1,
+      "message": "Hi, Jorge,\n\nThanks a lot for your comments. Please, check my responses below, but basically I wrote the code like that duplicating how they do it in the Ansible project.\n\nI agree the same results can be obtained with simpler code, but at the time I thought it\u0027d be better to follow their \"guidelines\".",
+      "revId": "15cc430fdb9cacd46525437c840ab1fe1ebe03b1",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9a9b054_10cc9b9e",
@@ -31,6 +48,24 @@
       "writtenOn": "2023-05-18T14:28:59Z",
       "side": 1,
       "message": "why use a dict? a list is enough for this case",
+      "revId": "15cc430fdb9cacd46525437c840ab1fe1ebe03b1",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbb977a9_bc27aab8",
+        "filename": "callback/dci.py",
+        "patchSetId": 21
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 789
+      },
+      "writtenOn": "2023-05-19T08:09:32Z",
+      "side": 1,
+      "message": "Yup, I agree with you, but I tried to reproduce the behavior in the Ansible own implementation:\n\nhttps://github.com/ansible/ansible/blob/19b85ff4151f0f9daf8d50d853d34d7961248865/lib/ansible/utils/display.py#LL503C1-L505C3",
+      "parentUuid": "e9a9b054_10cc9b9e",
       "revId": "15cc430fdb9cacd46525437c840ab1fe1ebe03b1",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     },
@@ -54,6 +89,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "da48bc57_11884217",
+        "filename": "callback/dci.py",
+        "patchSetId": 21
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 789
+      },
+      "writtenOn": "2023-05-19T08:09:32Z",
+      "side": 1,
+      "message": "Same thing here. Just replicating Ansible\u0027s implementation:\n\nhttps://github.com/ansible/ansible/blob/19b85ff4151f0f9daf8d50d853d34d7961248865/lib/ansible/plugins/callback/__init__.py#LL286C6-L296C16",
+      "parentUuid": "60762ced_10c8bd7c",
+      "revId": "15cc430fdb9cacd46525437c840ab1fe1ebe03b1",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "652ed903_102096dc",
         "filename": "callback/dci.py",
         "patchSetId": 21
@@ -65,6 +118,24 @@
       "writtenOn": "2023-05-18T14:28:59Z",
       "side": 1,
       "message": "this feels like golang to me, if you use a list you can do `if warning in self._warns`",
+      "revId": "15cc430fdb9cacd46525437c840ab1fe1ebe03b1",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae99331a_c44c22cd",
+        "filename": "callback/dci.py",
+        "patchSetId": 21
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 789
+      },
+      "writtenOn": "2023-05-19T08:09:32Z",
+      "side": 1,
+      "message": "See my first comment.\nIt may be that you\u0027re right, though, and we can do with a simpler implementation.",
+      "parentUuid": "652ed903_102096dc",
       "revId": "15cc430fdb9cacd46525437c840ab1fe1ebe03b1",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     },
@@ -88,6 +159,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7b489e82_8ad506a5",
+        "filename": "callback/dci.py",
+        "patchSetId": 21
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 789
+      },
+      "writtenOn": "2023-05-19T08:09:32Z",
+      "side": 1,
+      "message": "Yup, same thing here.\n\nGiven that you mention it I\u0027d like to know your opinion. I\u0027d have rather go with simpler code, just like you described, but I was reluctant to think that the way the Ansible source code is written just follows the developer\u0027s own idiosyncrasy, but that they expected to get a better performance.",
+      "parentUuid": "bedad647_aabe687a",
+      "revId": "15cc430fdb9cacd46525437c840ab1fe1ebe03b1",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6c1a09fc_534512fe",
         "filename": "callback/dci.py",
         "patchSetId": 21
@@ -99,6 +188,24 @@
       "writtenOn": "2023-05-18T14:28:59Z",
       "side": 1,
       "message": "is the deprecation object different from a warning object? I don\u0027t know myself, just making sure, because the previous block you didn\u0027t handle warning.msg field and warning appears to be a string",
+      "revId": "15cc430fdb9cacd46525437c840ab1fe1ebe03b1",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93925219_4b4b7c82",
+        "filename": "callback/dci.py",
+        "patchSetId": 21
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 789
+      },
+      "writtenOn": "2023-05-19T08:09:32Z",
+      "side": 1,
+      "message": "Yes, the deprecation warning is different, it contains the message plus the Ansible version when they plan to discontinue the feature.",
+      "parentUuid": "6c1a09fc_534512fe",
       "revId": "15cc430fdb9cacd46525437c840ab1fe1ebe03b1",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     }
