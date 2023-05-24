@@ -35,6 +35,23 @@
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "53c722f1_da486b84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1440
+      },
+      "writtenOn": "2023-05-24T16:12:07Z",
+      "side": 1,
+      "message": "Hello Nacho,\n\nyou are not using self._warns, so you don\u0027t need to add this variable.\n\njust set a flag self._warn_prefix to change the task name once when there is a warning.\n\njust modify the content is enough\n\ncall the parent warning function like you did for the item loop\n\nThank you",
+      "revId": "15cc430fdb9cacd46525437c840ab1fe1ebe03b1",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9a9b054_10cc9b9e",
@@ -66,6 +83,29 @@
       "side": 1,
       "message": "Yup, I agree with you, but I tried to reproduce the behavior in the Ansible own implementation:\n\nhttps://github.com/ansible/ansible/blob/19b85ff4151f0f9daf8d50d853d34d7961248865/lib/ansible/utils/display.py#LL503C1-L505C3",
       "parentUuid": "e9a9b054_10cc9b9e",
+      "revId": "15cc430fdb9cacd46525437c840ab1fe1ebe03b1",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d824211d_fde7f3e0",
+        "filename": "callback/dci.py",
+        "patchSetId": 21
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1440
+      },
+      "writtenOn": "2023-05-24T16:12:07Z",
+      "side": 1,
+      "message": "you dont need to save the warning messages. you are not consuming the values\nyou can remove this variable",
+      "range": {
+        "startLine": 52,
+        "startChar": 8,
+        "endLine": 52,
+        "endChar": 24
+      },
       "revId": "15cc430fdb9cacd46525437c840ab1fe1ebe03b1",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     },
@@ -142,6 +182,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5509923c_80eea29a",
+        "filename": "callback/dci.py",
+        "patchSetId": 21
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1440
+      },
+      "writtenOn": "2023-05-24T16:12:07Z",
+      "side": 1,
+      "message": "not needed",
+      "range": {
+        "startLine": 94,
+        "startChar": 24,
+        "endLine": 94,
+        "endChar": 48
+      },
+      "revId": "15cc430fdb9cacd46525437c840ab1fe1ebe03b1",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d566febc_0a740de7",
+        "filename": "callback/dci.py",
+        "patchSetId": 21
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1440
+      },
+      "writtenOn": "2023-05-24T16:12:07Z",
+      "side": 1,
+      "message": "Don\u0027t set the variable in every loop.\nJust set the variable once when there is a warning.",
+      "range": {
+        "startLine": 95,
+        "startChar": 24,
+        "endLine": 95,
+        "endChar": 48
+      },
+      "revId": "15cc430fdb9cacd46525437c840ab1fe1ebe03b1",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bedad647_aabe687a",
         "filename": "callback/dci.py",
         "patchSetId": 21
@@ -206,6 +292,29 @@
       "side": 1,
       "message": "Yes, the deprecation warning is different, it contains the message plus the Ansible version when they plan to discontinue the feature.",
       "parentUuid": "6c1a09fc_534512fe",
+      "revId": "15cc430fdb9cacd46525437c840ab1fe1ebe03b1",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a05d4a1_cbe0ecbd",
+        "filename": "callback/dci.py",
+        "patchSetId": 21
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1440
+      },
+      "writtenOn": "2023-05-24T16:12:07Z",
+      "side": 1,
+      "message": "prefix +\u003d \"warn/\"",
+      "range": {
+        "startLine": 131,
+        "startChar": 16,
+        "endLine": 131,
+        "endChar": 41
+      },
       "revId": "15cc430fdb9cacd46525437c840ab1fe1ebe03b1",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     }
