@@ -69,6 +69,42 @@
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c42ecdbf_b28583e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 789
+      },
+      "writtenOn": "2023-05-25T08:16:11Z",
+      "side": 1,
+      "message": "That\u0027s a good point. I\u0027ll update the code as per your suggestions.\n\nThanks.",
+      "parentUuid": "fefa504f_8743c568",
+      "revId": "15cc430fdb9cacd46525437c840ab1fe1ebe03b1",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "925f11cc_66f44b24",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 789
+      },
+      "writtenOn": "2023-05-25T08:16:11Z",
+      "side": 1,
+      "message": "Hi Guillaume,\n\nI\u0027m not sure we have the same understanding here.\n\nThe idea behind the self._warns variable is to keep track of the warning message already printed, so the same warning message is not printed twice.\n\nThat\u0027s why in line #92 we check whether the warning message is already in self._warns and we only update the tasks content if it\u0027s not.",
+      "parentUuid": "53c722f1_da486b84",
+      "revId": "15cc430fdb9cacd46525437c840ab1fe1ebe03b1",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9a9b054_10cc9b9e",
@@ -117,6 +153,30 @@
       "writtenOn": "2023-05-24T16:12:07Z",
       "side": 1,
       "message": "you dont need to save the warning messages. you are not consuming the values\nyou can remove this variable",
+      "range": {
+        "startLine": 52,
+        "startChar": 8,
+        "endLine": 52,
+        "endChar": 24
+      },
+      "revId": "15cc430fdb9cacd46525437c840ab1fe1ebe03b1",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04b5cfad_e98179fd",
+        "filename": "callback/dci.py",
+        "patchSetId": 21
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 789
+      },
+      "writtenOn": "2023-05-25T08:16:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d824211d_fde7f3e0",
       "range": {
         "startLine": 52,
         "startChar": 8,
@@ -220,6 +280,30 @@
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3c9740c_7f2c766a",
+        "filename": "callback/dci.py",
+        "patchSetId": 21
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 789
+      },
+      "writtenOn": "2023-05-25T08:16:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5509923c_80eea29a",
+      "range": {
+        "startLine": 94,
+        "startChar": 24,
+        "endLine": 94,
+        "endChar": 48
+      },
+      "revId": "15cc430fdb9cacd46525437c840ab1fe1ebe03b1",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d566febc_0a740de7",
@@ -233,6 +317,30 @@
       "writtenOn": "2023-05-24T16:12:07Z",
       "side": 1,
       "message": "Don\u0027t set the variable in every loop.\nJust set the variable once when there is a warning.",
+      "range": {
+        "startLine": 95,
+        "startChar": 24,
+        "endLine": 95,
+        "endChar": 48
+      },
+      "revId": "15cc430fdb9cacd46525437c840ab1fe1ebe03b1",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a305e72e_1dc697a0",
+        "filename": "callback/dci.py",
+        "patchSetId": 21
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 789
+      },
+      "writtenOn": "2023-05-25T08:16:11Z",
+      "side": 1,
+      "message": "Actually, based on the condition in line #92 we only activate this variable when there\u0027s a new warning message. This is what we use in the banner function to enabled adding the \"warn/\" prefix to the task file name.",
+      "parentUuid": "d566febc_0a740de7",
       "range": {
         "startLine": 95,
         "startChar": 24,
@@ -326,6 +434,30 @@
       "writtenOn": "2023-05-24T16:12:07Z",
       "side": 1,
       "message": "prefix +\u003d \"warn/\"",
+      "range": {
+        "startLine": 131,
+        "startChar": 16,
+        "endLine": 131,
+        "endChar": 41
+      },
+      "revId": "15cc430fdb9cacd46525437c840ab1fe1ebe03b1",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da76e93e_e82b9ad8",
+        "filename": "callback/dci.py",
+        "patchSetId": 21
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 789
+      },
+      "writtenOn": "2023-05-25T08:16:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1a05d4a1_cbe0ecbd",
       "range": {
         "startLine": 131,
         "startChar": 16,
