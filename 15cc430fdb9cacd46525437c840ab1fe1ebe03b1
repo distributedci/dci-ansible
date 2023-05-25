@@ -187,6 +187,24 @@
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74ec2f80_750a86e4",
+        "filename": "callback/dci.py",
+        "patchSetId": 21
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 789
+      },
+      "writtenOn": "2023-05-25T13:03:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbb977a9_bc27aab8",
+      "revId": "15cc430fdb9cacd46525437c840ab1fe1ebe03b1",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60762ced_10c8bd7c",
@@ -218,6 +236,24 @@
       "side": 1,
       "message": "Same thing here. Just replicating Ansible\u0027s implementation:\n\nhttps://github.com/ansible/ansible/blob/19b85ff4151f0f9daf8d50d853d34d7961248865/lib/ansible/plugins/callback/__init__.py#LL286C6-L296C16",
       "parentUuid": "60762ced_10c8bd7c",
+      "revId": "15cc430fdb9cacd46525437c840ab1fe1ebe03b1",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d32e1695_f4de4652",
+        "filename": "callback/dci.py",
+        "patchSetId": 21
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 789
+      },
+      "writtenOn": "2023-05-25T13:03:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da48bc57_11884217",
       "revId": "15cc430fdb9cacd46525437c840ab1fe1ebe03b1",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     },
@@ -304,6 +340,24 @@
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "694829b5_41be1dc0",
+        "filename": "callback/dci.py",
+        "patchSetId": 21
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 789
+      },
+      "writtenOn": "2023-05-25T13:03:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae99331a_c44c22cd",
+      "revId": "15cc430fdb9cacd46525437c840ab1fe1ebe03b1",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d566febc_0a740de7",
@@ -351,6 +405,30 @@
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ccb1f1a_2e4f8cd6",
+        "filename": "callback/dci.py",
+        "patchSetId": 21
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 789
+      },
+      "writtenOn": "2023-05-25T13:03:17Z",
+      "side": 1,
+      "message": "As discussed, we\u0027ll keep the solution as it currently is. Otherwise the same warning message would be printed every time it occurred which is now how the default Ansible output works.",
+      "parentUuid": "a305e72e_1dc697a0",
+      "range": {
+        "startLine": 95,
+        "startChar": 24,
+        "endLine": 95,
+        "endChar": 48
+      },
+      "revId": "15cc430fdb9cacd46525437c840ab1fe1ebe03b1",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bedad647_aabe687a",
@@ -386,6 +464,24 @@
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64b02693_3f502729",
+        "filename": "callback/dci.py",
+        "patchSetId": 21
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 789
+      },
+      "writtenOn": "2023-05-25T13:03:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b489e82_8ad506a5",
+      "revId": "15cc430fdb9cacd46525437c840ab1fe1ebe03b1",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c1a09fc_534512fe",
@@ -417,6 +513,24 @@
       "side": 1,
       "message": "Yes, the deprecation warning is different, it contains the message plus the Ansible version when they plan to discontinue the feature.",
       "parentUuid": "6c1a09fc_534512fe",
+      "revId": "15cc430fdb9cacd46525437c840ab1fe1ebe03b1",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db27d634_ac940e21",
+        "filename": "callback/dci.py",
+        "patchSetId": 21
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 789
+      },
+      "writtenOn": "2023-05-25T13:03:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "93925219_4b4b7c82",
       "revId": "15cc430fdb9cacd46525437c840ab1fe1ebe03b1",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     },
