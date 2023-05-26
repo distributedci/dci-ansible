@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fea5086_39685c76",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1440
+      },
+      "writtenOn": "2023-05-26T07:15:23Z",
+      "side": 1,
+      "message": "this is better, thank you for addressing our comments\n\nsmall changes, before we can approve this review\n\nthanks",
+      "revId": "bee092c36fcc7faa00175b4b45e3e493aa857567",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7ce69d7_97f75f3b",
+        "filename": "callback/dci.py",
+        "patchSetId": 22
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1440
+      },
+      "writtenOn": "2023-05-26T07:15:23Z",
+      "side": 1,
+      "message": "this deletion is not needed here",
+      "range": {
+        "startLine": 96,
+        "startChar": 16,
+        "endLine": 96,
+        "endChar": 35
+      },
+      "revId": "bee092c36fcc7faa00175b4b45e3e493aa857567",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "274abf13_e716b70e",
+        "filename": "callback/dci.py",
+        "patchSetId": 22
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1440
+      },
+      "writtenOn": "2023-05-26T07:15:23Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 103,
+        "startChar": 15,
+        "endLine": 103,
+        "endChar": 39
+      },
+      "revId": "bee092c36fcc7faa00175b4b45e3e493aa857567",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbe0d980_afec2851",
+        "filename": "callback/dci.py",
+        "patchSetId": 22
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1440
+      },
+      "writtenOn": "2023-05-26T07:15:23Z",
+      "side": 1,
+      "message": "can you call parent _handle_warnings function at the end please ? \n\nsomething like\n\nsuper(CallbackModule, self)._handle_warnings(res)",
+      "revId": "bee092c36fcc7faa00175b4b45e3e493aa857567",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    }
+  ]
+}
