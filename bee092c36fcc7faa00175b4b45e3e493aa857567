@@ -79,6 +79,24 @@
       "message": "can you call parent _handle_warnings function at the end please ? \n\nsomething like\n\nsuper(CallbackModule, self)._handle_warnings(res)",
       "revId": "bee092c36fcc7faa00175b4b45e3e493aa857567",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe21ce3b_6cf22710",
+        "filename": "callback/dci.py",
+        "patchSetId": 22
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1440
+      },
+      "writtenOn": "2023-05-29T13:28:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbe0d980_afec2851",
+      "revId": "bee092c36fcc7faa00175b4b45e3e493aa857567",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     }
   ]
 }
