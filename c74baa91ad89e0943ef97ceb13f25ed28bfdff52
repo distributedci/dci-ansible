@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "baa982cd_ac9f9cd9",
+        "filename": "callback/dci.py",
+        "patchSetId": 24
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 667
+      },
+      "writtenOn": "2023-05-31T15:33:51Z",
+      "side": 1,
+      "message": "nit: Could you please reword this to be more clear?",
+      "revId": "c74baa91ad89e0943ef97ceb13f25ed28bfdff52",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    }
+  ]
+}
