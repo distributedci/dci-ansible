@@ -1,0 +1,9 @@
+Verified+1: dci-ci-bot <dci-ci-bot@redhat.com>
+Verified+2: Zuul CI <zuul@softwarefactory-project.io>
+Code-Review+2: Guillaume Vincent <gvincent@redhat.com>
+Workflow+1: Nacho Silla <nsilla@redhat.com>
+Submitted-by: Zuul CI <zuul@softwarefactory-project.io>
+Submitted-at: Thu, 01 Jun 2023 15:58:45 +0000
+Reviewed-on: https://softwarefactory-project.io/r/c/dci-ansible/+/28275
+Project: dci-ansible
+Branch: refs/heads/master
