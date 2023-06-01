@@ -41,6 +41,30 @@
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d51a5d28_cf8d36cc",
+        "filename": "callback/dci.py",
+        "patchSetId": 22
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 789
+      },
+      "writtenOn": "2023-06-01T13:47:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7ce69d7_97f75f3b",
+      "range": {
+        "startLine": 96,
+        "startChar": 16,
+        "endLine": 96,
+        "endChar": 35
+      },
+      "revId": "bee092c36fcc7faa00175b4b45e3e493aa857567",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "274abf13_e716b70e",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-05-26T07:15:23Z",
       "side": 1,
       "message": "same here",
+      "range": {
+        "startLine": 103,
+        "startChar": 15,
+        "endLine": 103,
+        "endChar": 39
+      },
+      "revId": "bee092c36fcc7faa00175b4b45e3e493aa857567",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4570bc3_6d241236",
+        "filename": "callback/dci.py",
+        "patchSetId": 22
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 789
+      },
+      "writtenOn": "2023-06-01T13:47:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "274abf13_e716b70e",
       "range": {
         "startLine": 103,
         "startChar": 15,
