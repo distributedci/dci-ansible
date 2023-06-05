@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef3f8597_ad6994d8",
+        "filename": "modules/dci_job_component.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 789
+      },
+      "writtenOn": "2023-06-05T08:05:01Z",
+      "side": 1,
+      "message": "This piece of code does not look correct, don\u0027t you thing?\n\nI\u0027m guessing what we\u0027re after here is \"if state is absent, remove component, else add component\".",
+      "revId": "15892f501fce1785a032498ea08544e5c7080b95",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    }
+  ]
+}
