@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acc90477_1c1d2689",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 789
+      },
+      "writtenOn": "2023-06-20T12:57:38Z",
+      "side": 1,
+      "message": "The below is an example of a loop task where all the items are skipped but one and this change is not active:\n\nhttps://www.distributed-ci.io/jobs/542f23c8-cac8-411f-bedd-e6db70da6d2b/jobStates?sort\u003ddate\u0026task\u003d025ddd03-24a1-459f-a3b5-6f187986dbaf\n\nThere, the banner is colored in blue.\n\nAfter applying the change, the same task is colored yellow, since the important fact is that, at least, one of the loop items took effect:\n\nhttps://www.distributed-ci.io/jobs/ef30538f-e35c-4908-a6f0-e1c6bfb573c8/jobStates?sort\u003ddate\u0026task\u003d3e6f1d87-10e0-4def-ad4f-27dab4b878ba",
+      "revId": "c51bac48b0231851e29c5f29163bee2913765827",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    }
+  ]
+}
