@@ -97,6 +97,7 @@ class ActionModule(ActionBase):
             job_id = task_vars['job_info']['job']['id']
             team_id = task_vars['job_info']['job']['team_id']
             topic_id = task_vars['job_info']['job']['topic_id']
+            product_id = task_vars['job_info']['job']['topic']['product_id']
             components = task_vars['job_info']['job']['components']
             _project_name = self._get_repo_project_name(git_args['repo'])
 
@@ -129,7 +130,7 @@ class ActionModule(ActionBase):
             version=_commit_id[0:7],
             uid=_commit_id,
             team_id=team_id,
-            topic_id=topic_id,
+            product_id=product_id,
             type=_project_name,
             defaults={
                 "url": cmpt_url})
