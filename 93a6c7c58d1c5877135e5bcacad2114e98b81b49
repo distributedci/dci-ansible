@@ -16,6 +16,24 @@
       "message": "Yassine are you missing a depends-on the dciclient patch ?",
       "revId": "93a6c7c58d1c5877135e5bcacad2114e98b81b49",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54f0e71d_41da6c6e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 648
+      },
+      "writtenOn": "2023-08-03T16:03:33Z",
+      "side": 1,
+      "message": "yeah I think this needs a Depends-On: I587e9ec2a2a3e02992e38ab572b2b61770bffe20",
+      "parentUuid": "d5fd7e6c_3acf320a",
+      "revId": "93a6c7c58d1c5877135e5bcacad2114e98b81b49",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     }
   ]
 }
