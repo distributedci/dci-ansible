@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c32c6e9_0463f97f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 800
+      },
+      "writtenOn": "2023-09-28T08:42:41Z",
+      "side": 1,
+      "message": "From my side it looks fine, waiting for some tests in DCI to confirm it\u0027s working in a running job",
+      "revId": "e4673b74777b403fd4656b98ccbf855ab25e0933",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    }
+  ]
+}
