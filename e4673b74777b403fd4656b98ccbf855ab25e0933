@@ -1,0 +1,11 @@
+Code-Review+2: Manuel Rodriguez <manuel.rodriguez@redhat.com>
+Verified+2: Zuul CI <zuul@softwarefactory-project.io>
+Code-Review+2: Yassine Lamgarchal <yassine.lamgarchal@redhat.com>
+Code-Review+1: Ramon Perez <raperez@redhat.com>
+Verified+1: dci-ci-bot <dci-ci-bot@redhat.com>
+Workflow+1: Tony Garcia <tonyg@redhat.com>
+Submitted-by: Zuul CI <zuul@softwarefactory-project.io>
+Submitted-at: Fri, 29 Sep 2023 13:03:06 +0000
+Reviewed-on: https://softwarefactory-project.io/r/c/dci-ansible/+/29591
+Project: dci-ansible
+Branch: refs/heads/master
