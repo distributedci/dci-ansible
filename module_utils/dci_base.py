@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (C) 2017 Red Hat, Inc
+# Copyright (C) 2017-2023 Red Hat, Inc
 #
 # Licensed under the Apache License, Version 2.0 (the "License"); you may
 # not use this file except in compliance with the License. You may obtain
@@ -39,7 +39,10 @@ class DciBase(object):
         try:
             message = res.json()['message']
         except Exception:
-            message = res.text
+            if type(res.text) == str:
+                message = res
+            else:
+                message = res.text
 
         if res.status_code == 404:
             raise DciError(
