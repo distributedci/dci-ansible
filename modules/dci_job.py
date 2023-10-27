@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (C) 2017-2022 Red Hat, Inc
+# Copyright (C) 2017-2023 Red Hat, Inc
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -71,6 +71,12 @@ options:
   tags:
     required: false
     description: Tags attached to the job
+  key:
+    required: false
+    description: Key to attach to the job. Required if value is set.
+  value:
+    required: false
+    description: Floating point value to attach to the job. Required if key is set.
   update:
     required: false
     description: Schedule an update job
@@ -152,6 +158,11 @@ EXAMPLES = '''
     components_by_query: [
       'name:4.4.5']
 
+- name: Set a key/value pair on a job
+  dci_job:
+    id: '{{ job_id }}'
+    key: 'answer'
+    value: 42.0
 '''
 
 # TODO
@@ -174,6 +185,8 @@ class DciJob(DciBase):
         self.tags = params.get('tags')
         self.update = params.get('update')
         self.upgrade = params.get('upgrade')
+        self.key = params.get('key')
+        self.value = params.get('value')
         self.components = params.get('components', [])
         self.components_by_query = params.get('components_by_query', [])
         self.team_id = params.get('team_id')
@@ -191,13 +204,25 @@ class DciJob(DciBase):
         self.deterministic_params = ['topic', 'comment', 'status',
                                      'tags', 'team_id', 'pipeline_id', 'url',
                                      'name', 'configuration', 'status_reason',
-                                     'previous_job_id']
+                                     'previous_job_id', 'key', 'value']
 
     def do_set_tags(self, context):
         for tag_name in self.tags:
             res = dci_job.add_tag(context, self.id, tag_name)
             if res.status_code != 200:
                 self.raise_error(res)
+
+        return dci_job.get(context, self.id)
+
+    def do_set_key_value(self, context):
+        if not self.key or not self.value:
+            self.raise_error('key and value are mandatory')
+        try:
+            res = dci_job.add_kv(context, self.id, self.key, float(self.value))
+        except ValueError:
+            self.raise_error('value must be a float')
+        if res.status_code != 200:
+            self.raise_error(res)
 
         return dci_job.get(context, self.id)
 
@@ -376,6 +401,8 @@ def main():
         where=dict(type='str'),
         get=dict(type='str'),
         query=dict(type='str')
+        key=dict(type='str')
+        value=dict(type='str')
     )
     resource_argument_spec.update(authentication_argument_spec())
 
