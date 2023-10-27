@@ -33,6 +33,12 @@
         job_id: "{{ job_id }}"
         component_id: "{{ comp.component.id }}"
 
+    - name: Set a key/value
+      dci_job:
+        id: "{{ job_id }}"
+        key: answer
+        value: 42
+
     - name: Remove a component
       dci_job_component:
         job_id: "{{ job_id }}"
