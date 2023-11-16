@@ -16,6 +16,23 @@
       "message": "Good thing to do 👍",
       "revId": "21bdcbeb885d7aaf9b37b2b82bdc05c07f1d6655",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47d81f52_6c468d17",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1440
+      },
+      "writtenOn": "2023-11-16T15:47:27Z",
+      "side": 1,
+      "message": "recheck",
+      "revId": "21bdcbeb885d7aaf9b37b2b82bdc05c07f1d6655",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     }
   ]
 }
