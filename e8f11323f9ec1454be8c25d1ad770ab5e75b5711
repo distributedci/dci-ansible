@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51dad1cd_024fb152",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 667
+      },
+      "writtenOn": "2023-11-21T17:55:43Z",
+      "side": 1,
+      "message": "LGTM, since packages are published on every change",
+      "revId": "e8f11323f9ec1454be8c25d1ad770ab5e75b5711",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    }
+  ]
+}
