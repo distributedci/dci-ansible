@@ -74,12 +74,9 @@ class ActionModule(ActionBase):
         for git_component in components:
             if git_component['type'] != repo_name:
                 continue
-            # support both naming: <commit id> or <repo name>=<commit id>
-            split_git_component = git_component['name'].split("=")
-            if len(split_git_component) == 2:
-                return split_git_component[1]
-            else:
-                return git_component['name']
+
+            return git_component['unique_id']
+
         return None
 
     def _get_repo_project_name(self, repo):
