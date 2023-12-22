@@ -16,6 +16,23 @@
       "message": "[This job](https://www.distributed-ci.io/jobs/524f5fdc-6537-470c-bdb0-35561b748357/jobStates?sort\u003ddate\u0026task\u003de313d826-a459-4bbc-ae8e-62d2131f5d58) shows a run where a git component is provided with version eb034b9, however version e130fe0 was the latest available at the time of the test.",
       "revId": "96fabb90d0eef5fff745a87ff233705d853d431b",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "622b150d_57e62a40",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 789
+      },
+      "writtenOn": "2023-12-22T14:43:03Z",
+      "side": 1,
+      "message": "In [this other job](https://www.distributed-ci.io/jobs/564b38be-02a3-4524-8e65-24430bebbb61/jobStates?sort\u003ddate\u0026task\u003d149b425a-dcfd-410d-9bd7-86b9a5b240e6), no component is provided, so DCI goes straight to the latest one available (e130fe0).",
+      "revId": "96fabb90d0eef5fff745a87ff233705d853d431b",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     }
   ]
 }
