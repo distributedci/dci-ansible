@@ -16,6 +16,23 @@
       "message": "Now is adding the ansible requirements correctly, the problem with ansible-packaging is that this repo does not include any collection/role/etc, so is not including the expected requirement.",
       "revId": "a7b70b3a10663beeb8136288c7890f5168c24d56",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db280db7_246fd946",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 667
+      },
+      "writtenOn": "2024-07-02T19:41:19Z",
+      "side": 1,
+      "message": "❯ rpm -qpR https://softwarefactory-project.io/logs/51/31851/2/check/dci-rpm-build-el8/3f1adb9/buildset/to_publish/el/8/x86_64/dci-ansible-0.7.0-1.202407021915gita7b70b3a.el8.noarch.rpm\n(ansible-core or (ansible \u003c 2.10.0 with ansible \u003e\u003d 2.9.10))\npython3-dciclient \u003e\u003d 3.2.0\nrpmlib(CompressedFileNames) \u003c\u003d 3.0.4-1\nrpmlib(FileDigests) \u003c\u003d 4.6.0-1\nrpmlib(PayloadFilesHavePrefix) \u003c\u003d 4.0-1\nrpmlib(PayloadIsXz) \u003c\u003d 5.2-1\nrpmlib(RichDependencies) \u003c\u003d 4.12.0-1\n\n❯ rpm -qpR https://softwarefactory-project.io/logs/51/31851/2/check/dci-rpm-build-el9/bb7a12e/buildset/to_publish/el/9/x86_64/dci-ansible-0.7.0-1.202407021915gita7b70b3a.el9.noarch.rpm\n(ansible-core or (ansible \u003c 2.10.0 with ansible \u003e\u003d 2.9.10))\npython3-dciclient \u003e\u003d 3.2.0\nrpmlib(CompressedFileNames) \u003c\u003d 3.0.4-1\nrpmlib(FileDigests) \u003c\u003d 4.6.0-1\nrpmlib(PayloadFilesHavePrefix) \u003c\u003d 4.0-1\nrpmlib(PayloadIsZstd) \u003c\u003d 5.4.18-1\nrpmlib(RichDependencies) \u003c\u003d 4.12.0-1",
+      "revId": "a7b70b3a10663beeb8136288c7890f5168c24d56",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     }
   ]
 }
