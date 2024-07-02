@@ -33,6 +33,23 @@
       "message": "Missed https://softwarefactory-project.io/r/c/dci-config/+/31852\n\nrecheck",
       "revId": "a4c0ea3c8e30a3da7157c822617dd922a8308fb3",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1705970_d0c451dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 166
+      },
+      "writtenOn": "2024-07-02T14:17:06Z",
+      "side": 1,
+      "message": "recheck",
+      "revId": "a4c0ea3c8e30a3da7157c822617dd922a8308fb3",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     }
   ]
 }
