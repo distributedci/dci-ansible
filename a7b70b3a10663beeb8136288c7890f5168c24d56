@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93e5957a_109c79d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 667
+      },
+      "writtenOn": "2024-07-02T19:39:23Z",
+      "side": 1,
+      "message": "Now is adding the ansible requirements correctly, the problem with ansible-packaging is that this repo does not include any collection/role/etc, so is not including the expected requirement.",
+      "revId": "a7b70b3a10663beeb8136288c7890f5168c24d56",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    }
+  ]
+}
