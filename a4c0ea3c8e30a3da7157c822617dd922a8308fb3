@@ -16,6 +16,23 @@
       "message": "Correct but ansible-packaging is not available on EL7 hence dci-rpmbuild job failure.\nMaybe we should consider dropping EL7 support (if not already acted), otherwise, you need to keep former requirements for EL7 in a conditional block.",
       "revId": "a4c0ea3c8e30a3da7157c822617dd922a8308fb3",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26b90442_4e18868c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 166
+      },
+      "writtenOn": "2024-07-02T13:31:07Z",
+      "side": 1,
+      "message": "Missed https://softwarefactory-project.io/r/c/dci-config/+/31852\n\nrecheck",
+      "revId": "a4c0ea3c8e30a3da7157c822617dd922a8308fb3",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     }
   ]
 }
