@@ -135,6 +135,23 @@
       "message": "regate",
       "revId": "a7b70b3a10663beeb8136288c7890f5168c24d56",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db40781e_ee77054b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 667
+      },
+      "writtenOn": "2024-07-05T16:53:17Z",
+      "side": 1,
+      "message": "Thanks Haïkel, I don\u0027t understand why the verified req is not satisfied, other repos are configured exactly the same way e.g. https://softwarefactory-project.io/r/c/dci-pipeline/+/31774 but this repo and these other two are behaving similarly:\n\n- https://softwarefactory-project.io/r/c/31801\n- https://softwarefactory-project.io/r/c/31802",
+      "revId": "a7b70b3a10663beeb8136288c7890f5168c24d56",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     }
   ]
 }
