@@ -186,6 +186,24 @@
       "message": "@tony you need a dci-ci-bot vote",
       "revId": "a7b70b3a10663beeb8136288c7890f5168c24d56",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af3754ea_1c434131",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 667
+      },
+      "writtenOn": "2024-07-08T17:21:03Z",
+      "side": 1,
+      "message": "Oh! thanks for the pointer!\n\nI\u0027m not sure why it hasn\u0027t triggered automatically, I guess is because some changes few weeks ago to the CI, I\u0027ll run it manually.",
+      "parentUuid": "0a26f3d8_d8a579e0",
+      "revId": "a7b70b3a10663beeb8136288c7890f5168c24d56",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     }
   ]
 }
