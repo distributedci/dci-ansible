@@ -169,6 +169,23 @@
       "message": "Fred, could you help with the approval of this one as well? Thanks!",
       "revId": "a7b70b3a10663beeb8136288c7890f5168c24d56",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a26f3d8_d8a579e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1440
+      },
+      "writtenOn": "2024-07-08T15:19:23Z",
+      "side": 1,
+      "message": "@tony you need a dci-ci-bot vote",
+      "revId": "a7b70b3a10663beeb8136288c7890f5168c24d56",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     }
   ]
 }
