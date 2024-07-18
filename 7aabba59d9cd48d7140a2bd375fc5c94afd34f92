@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1a19959_424220a5",
+        "filename": "callback/dcijunit.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 673
+      },
+      "writtenOn": "2024-07-18T09:41:56Z",
+      "side": 1,
+      "message": "There is an error when launching the job:\n  File \"/home/dciteam/github/dallas-pipelines-pr1120-2f51536f3bfa0effbc436e7e90a88c55/dci-ansible/callback/dcijunit.py\", line 19, in \u003cmodule\u003e\n    import dataclasses\nModuleNotFoundError: No module named \u0027dataclasses\u0027",
+      "revId": "7aabba59d9cd48d7140a2bd375fc5c94afd34f92",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    }
+  ]
+}
