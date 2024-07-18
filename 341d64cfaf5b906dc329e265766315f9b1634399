@@ -1,0 +1,9 @@
+Verified+2: Zuul CI <zuul@softwarefactory-project.io>
+Verified+1: dci-ci-bot <dci-ci-bot@redhat.com>
+Workflow+1: Prophidys Null <clecomte@redhat.com>
+Code-Review+2: Prophidys Null <clecomte@redhat.com>
+Submitted-by: Zuul CI <zuul@softwarefactory-project.io>
+Submitted-at: Thu, 18 Jul 2024 08:55:21 +0000
+Reviewed-on: https://softwarefactory-project.io/r/c/dci-ansible/+/32034
+Project: dci-ansible
+Branch: refs/heads/master
