@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6a53aee_bdf4c1b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 673
+      },
+      "writtenOn": "2024-07-19T07:15:53Z",
+      "side": 1,
+      "message": "I\u0027ll put +2 after a job passed",
+      "revId": "f66d03d8dbd228917ac87de9ed312962031ff557",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    }
+  ]
+}
