@@ -51,6 +51,23 @@
       "message": "retest",
       "revId": "1d0c7070180dd703326e1dc379f68a93fe8d3577",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98bb4192_6e0a0e3e",
+        "filename": "action_plugins/git.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 667
+      },
+      "writtenOn": "2024-09-18T16:23:28Z",
+      "side": 1,
+      "message": "When there are multiple tags, this only retrieves the last tag created. It is more of an edge case, but could you include this in the comment so it\u0027s clear.",
+      "revId": "1d0c7070180dd703326e1dc379f68a93fe8d3577",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     }
   ]
 }
