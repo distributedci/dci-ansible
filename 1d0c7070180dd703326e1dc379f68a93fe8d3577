@@ -16,6 +16,24 @@
       "message": "I don\u0027t see that the component is created properly in the tnf-test job, it\u0027s still showing the commitId instead of the tag. Is it because dci-ansible cannot be tested on CI? or because something is missed? because I tested the command locally and it\u0027s working:\n\n```\n$ git describe --tags --exact-match d703cf1\nv5.3.3\n```",
       "revId": "1d0c7070180dd703326e1dc379f68a93fe8d3577",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2cf9bf1_001ede83",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 20
+      },
+      "writtenOn": "2024-09-18T09:46:12Z",
+      "side": 1,
+      "message": "\u003e I don\u0027t see that the component is created properly in the tnf-test job, it\u0027s still showing the commitId instead of the tag. Is it because dci-ansible cannot be tested on CI? or because something is missed? because I tested the command locally and it\u0027s working:\n\u003e \n\u003e ```\n\u003e $ git describe --tags --exact-match d703cf1\n\u003e v5.3.3\n\u003e ```\n\nIt works with `git` but not with `ansible.builtin.git` in testing mode. I don\u0027t know why.",
+      "parentUuid": "b2827283_1f237c1f",
+      "revId": "1d0c7070180dd703326e1dc379f68a93fe8d3577",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     }
   ]
 }
