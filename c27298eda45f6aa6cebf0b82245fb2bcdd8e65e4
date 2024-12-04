@@ -16,6 +16,24 @@
       "message": "Testing with https://softwarefactory-project.io/r/c/dci-openshift-app-agent/+/32677, using this in BOS2: `dci-pipeline-check 32677 /var/lib/dci-openshift-agent/clusterconfigs-server03/kubeconfig control-plane`, looks like working. The super-long task comes after this one: https://www.distributed-ci.io/jobs/b5cb40dd-3ffa-481f-b954-a11fad4d4e7e/jobStates?sort\u003ddate\u0026task\u003dafb4f971-c14c-4f35-b6cc-526664017236, it\u0027s not reported, and then the report continues with the task that comes after.\n\nThe only thing is that I cannot see the ansible.log file in the job. From the execution I ran, I can see dci-pipelie tries to upload it and there\u0027s no error message, so in theory it should be good:\n\n```\n...\n2024-12-04 05:22:59,940 - dcipipeline.main - INFO - stats\u003d{\u0027skipped\u0027: {\u0027jumphost\u0027: 47}, \u0027ok\u0027: {\u0027jumphost\u0027: 535}, \u0027dark\u0027: {}, \u0027failures\u0027: {}, \u0027processed\u0027: {\u0027jumphost\u0027: 1}, \u0027changed\u0027: {\u0027jumphost\u0027: 88}}                                      \n2024-12-04 05:23:00,001 - dcipipeline.main - INFO - Uploading ansible.log from /tmp/dci-pipeline/control-plane/b5cb40dd-3ffa-481f-b954-a11fad4d4e7e/ansible.log                                                                              \n2024-12-04 05:23:00,398 - dcipipeline.main - INFO - Uploading junit file: /tmp/dci-pipeline-tmpdirzwx5m0vc/dci-openshift-app-agent-1733307779.2360163.xml                                                                                    \n2024-12-04 05:23:00,977 - dcipipeline.main - INFO - Result rc\u003d0 stats\u003d{\u0027skipped\u0027: {\u0027jumphost\u0027: 47}, \u0027ok\u0027: {\u0027jumphost\u0027: 535}, \u0027dark\u0027: {}, \u0027failures\u0027: {}, \u0027processed\u0027: {\u0027jumphost\u0027: 1}, \u0027changed\u0027: {\u0027jumphost\u0027: 88}}                          \n2024-12-04 05:23:01,098 - dcipipeline.main - INFO - Jobdef control-plane status\u003dsuccess                                                                                                                                                      \n2024-12-04 05:23:01,322 - dcipipeline.main - INFO - Successful end of pipeline                                                                                                                                                               \n...\n```\n\nAnd the log file is in the jumphost:\n\n```\n$ head /tmp/dci-pipeline/control-plane/b5cb40dd-3ffa-481f-b954-a11fad4d4e7e/ansible.log\n2024-12-04 05:09:38,716 p\u003d2652551 u\u003ddci-openshift-agent n\u003dansible | ansible-playbook 2.9.27\n  config file \u003d /tmp/dci-pipeline/control-plane/b5cb40dd-3ffa-481f-b954-a11fad4d4e7e/ansible.cfg\n  configured module search path \u003d [\u0027/var/lib/dci-openshift-agent/gerrit/32677-1a8f266ddda375a357dc22860f07b59c/dci-ansible/modules\u0027]\n  ansible python module location \u003d /usr/lib/python3.6/site-packages/ansible\n  executable location \u003d /usr/bin/ansible-playbook\n  python version \u003d 3.6.8 (default, Sep  9 2024, 06:12:39) [GCC 8.5.0 20210514 (Red Hat 8.5.0-22)]\n2024-12-04 05:09:38,716 p\u003d2652551 u\u003ddci-openshift-agent n\u003dansible | Using /tmp/dci-pipeline/control-plane/b5cb40dd-3ffa-481f-b954-a11fad4d4e7e/ansible.cfg as config file\n2024-12-04 05:09:39,207 p\u003d2652551 u\u003ddci-openshift-agent n\u003dansible | [WARNING]: Skipping plugin (/var/lib/dci-openshift-\nagent/gerrit/32677-1a8f266ddda375a357dc22860f07b59c/dci-\nansible/callback/test_dci.py) as it seems to be invalid: No module named\n```\n\nIn a very same job that was launched yesterday from the change I\u0027m using to test this new feature now, where we observed the issue we want to mitigate, I could see that, in that job, the ansible.log file was there: https://www.distributed-ci.io/jobs/eaee2d69-71f5-4ac3-b06d-6a4e843e6fdb/files\n\nSo I don\u0027t know if something has changed here and now ansible.log cannot be uploaded consequently, but should be reviewed",
       "revId": "c27298eda45f6aa6cebf0b82245fb2bcdd8e65e4",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0c1c20d_c72c6bed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 20
+      },
+      "writtenOn": "2024-12-04T10:53:18Z",
+      "side": 1,
+      "message": "I don\u0027t think the ansible.log upload is related to this. We should track it in another issue if needed.",
+      "parentUuid": "7953d27e_5789a96a",
+      "revId": "c27298eda45f6aa6cebf0b82245fb2bcdd8e65e4",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     }
   ]
 }
