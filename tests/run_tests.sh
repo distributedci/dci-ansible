@@ -60,11 +60,11 @@ function run_functional_tests() {
         clean_environment
 
         source ./feeder.sh
-        ansible-playbook "scenario-tests/${environment}/feeder.yml" -v
+        ansible-playbook "scenario-tests/${environment}/feeder.yml" -vvv
         clean_environment
 
         source ./remoteci.sh
-        ansible-playbook "scenario-tests/${environment}/remoteci.yml" -v
+        ansible-playbook "scenario-tests/${environment}/remoteci.yml" -vvv
         clean_environment
 
         rm -f feeder.sh remoteci.sh content.download
