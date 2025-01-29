@@ -23,10 +23,19 @@
       debug:
         msg: "This should appear in DCI UI"
 
+    - name: Wait a bit for the task to be created
+      pause:
+        seconds: 5
+
     - name: Check the task a long name has been created
       shell: |
         set -ex
-        dcictl job-list-file {{ job_id }} | grep supersupersuper
+        dcictl job-list-file {{ job_id }}
+      register: job_tasks
+
+    - name: Fail if long task name is not found
+      assert:
+        that: "'supersupersuper' in job_tasks.stdout"
       
     - name: "/long/pathlong/path/long/path//long/path/long/path/long/path/long/path/long/path/long/path/long/path/long/path/long/path/long/path/long/path/long/path/long/path/long/path/long/path/long/path/long/path/long/path/long/path/long/path/long/path/ : name of my task"
       debug:
@@ -92,6 +101,35 @@
           - job_info.job.components|length == 2
           - job_info.job.components[1].type == 'certsuite'
           - job_info.job.components[1].version == 'v5.3.3'
+
+
+- hosts: localhost
+  tasks:
+    - name: schedule a job
+      dci_job:
+        topic: OSP12
+        url: http://my.url
+        name: "my job name"
+        configuration: "my conf"
+      register: job_info
+
+    - name: Set global variables
+      set_fact:
+        job_id: '{{ hostvars.localhost.job_info.job.id }}'
+        topic_id: '{{ hostvars.localhost.job_info.job.topic_id }}'
+        team_id: '{{ hostvars.localhost.job_info.job.team_id }}'
+        components: '{{ hostvars.localhost.job_info.job.components }}'
+        job_url: '{{ hostvars.localhost.job_info.job.url }}'
+        job_name: '{{ hostvars.localhost.job_info.job.name }}'
+        job_conf: '{{ hostvars.localhost.job_info.job.configuration }}'
+
+    - name: Clone a git repo without previous components
+      git:
+        repo: 'https://github.com/redhat-best-practices-for-k8s/certsuite.git'
+        dest: /tmp/certsuite
+        version: "d703cf166"
+        depth: 1
+
 
 - hosts: localhost
   vars:
