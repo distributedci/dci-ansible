@@ -97,7 +97,7 @@ class ActionModule(ActionBase):
             job_id = task_vars['job_info']['job']['id']
             team_id = task_vars['job_info']['job']['team_id']
             topic_id = task_vars['job_info']['job']['topic_id']
-            components = task_vars['job_info']['job']['components']
+            components = task_vars['job_info']['job'].get('components')
             _project_name = self._get_repo_project_name(git_args['repo'])
 
             commit_id = self._git_to_reproduce(_project_name, components)
