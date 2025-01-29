@@ -23,10 +23,23 @@
       debug:
         msg: "This should appear in DCI UI"
 
+    - name: Wait a bit for the task to be created
+      pause:
+        seconds: 60
+
     - name: Check the task a long name has been created
       shell: |
         set -ex
-        dcictl job-list-file {{ job_id }} | grep supersupersuper
+        dcictl job-list-file {{ job_id }}
+      register: job_tasks
+
+    - name: Print the job tasks
+      debug:
+        var: job_tasks.stdout
+
+    - name: Fail if long task name is not found
+      assert:
+        that: "'supersupersuper' in job_tasks.stdout"
       
     - name: "/long/pathlong/path/long/path//long/path/long/path/long/path/long/path/long/path/long/path/long/path/long/path/long/path/long/path/long/path/long/path/long/path/long/path/long/path/long/path/long/path/long/path/long/path/long/path/long/path/ : name of my task"
       debug:
