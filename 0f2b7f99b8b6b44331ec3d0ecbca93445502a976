@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c05685a2_c3f7dc23",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 800
+      },
+      "writtenOn": "2025-01-30T08:12:33Z",
+      "side": 1,
+      "message": "Can this be tested with dci-pipeline somehow? Or do we need to merge this before?",
+      "revId": "0f2b7f99b8b6b44331ec3d0ecbca93445502a976",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da5b59e7_b2cd260e",
+        "filename": "tests/scenario-tests/openstack/remoteci.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 800
+      },
+      "writtenOn": "2025-01-30T08:12:33Z",
+      "side": 1,
+      "message": "The module that is hitting the issue is `ansible.legacy.git`, don\u0027t know that, if not using FQDN, it would use `ansible.builtin.git` by default",
+      "revId": "0f2b7f99b8b6b44331ec3d0ecbca93445502a976",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    }
+  ]
+}
