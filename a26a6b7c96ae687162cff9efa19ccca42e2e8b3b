@@ -33,6 +33,23 @@
       "message": "Sorry one of our changes broke the CI job, I\u0027m trying to fix it ASAP.",
       "revId": "a26a6b7c96ae687162cff9efa19ccca42e2e8b3b",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c2e89b3_77e833d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 28
+      },
+      "writtenOn": "2025-02-04T18:19:14Z",
+      "side": 1,
+      "message": "recheck\n\n\nThe following change has been merged and should fix the issue with \"monitoring\" https://softwarefactory-project.io/r/c/dci-infra/+/32961",
+      "revId": "a26a6b7c96ae687162cff9efa19ccca42e2e8b3b",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     }
   ]
 }
