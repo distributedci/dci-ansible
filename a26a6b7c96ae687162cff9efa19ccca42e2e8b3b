@@ -16,6 +16,23 @@
       "message": "recheck",
       "revId": "a26a6b7c96ae687162cff9efa19ccca42e2e8b3b",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f75306da_61b59ef8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 28
+      },
+      "writtenOn": "2025-02-04T18:00:38Z",
+      "side": 1,
+      "message": "Sorry one of our changes broke the CI job, I\u0027m trying to fix it ASAP.",
+      "revId": "a26a6b7c96ae687162cff9efa19ccca42e2e8b3b",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     }
   ]
 }
