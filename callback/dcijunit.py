@@ -402,6 +402,8 @@ class CallbackModule(CallbackBase):
         JUNIT_TEST_CASE_REGEX (optional): Consider a task only as test case if it matches this regular expression.
                                      test cases.
                                      Default: <empty>
+        JUNIT_GENERATE_TASK_NAME (optional): Name of the task to generate the jUnit report.
+                                     Default: Verify mandatory tests
     """
 
     CALLBACK_VERSION = 2.0
@@ -422,6 +424,7 @@ class CallbackModule(CallbackBase):
         self._hide_task_arguments = os.getenv('JUNIT_HIDE_TASK_ARGUMENTS', 'False').lower()
         self._test_case_regex = os.getenv('JUNIT_TEST_CASE_REGEX', '')
         self._replace_out_of_tree_path = os.getenv('JUNIT_REPLACE_OUT_OF_TREE_PATH', None)
+        self._generate_task_name = os.getenv('JUNIT_GENERATE_TASK_NAME', 'Verify mandatory tests')
         self._playbook_path = None
         self._playbook_name = None
         self._play_name = None
@@ -446,6 +449,7 @@ class CallbackModule(CallbackBase):
         if uuid in self._task_data:
             return
 
+        log = open('/tmp/dcijunit.log', 'a')
         play = self._play_name
         name = task.get_name().strip()
         path = task.get_path()
@@ -457,6 +461,13 @@ class CallbackModule(CallbackBase):
                 name += ' ' + args
 
         self._task_data[uuid] = TaskData(uuid, name, path, play, action)
+
+        log.write(('name=%s\n'))
+        if self._generate_task_name and name.find(self._generate_task_name) != -1:
+            log.write(('GENERATED\n'))
+            self._generate_report()
+
+        log.close()
 
     def _finish_task(self, status, result):
         """ record the results of a task for a single host """
