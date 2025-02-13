@@ -50,6 +50,24 @@
       "message": "The module that is hitting the issue is `ansible.legacy.git`, don\u0027t know that, if not using FQDN, it would use `ansible.builtin.git` by default",
       "revId": "0f2b7f99b8b6b44331ec3d0ecbca93445502a976",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7d1d6ce_29c27a0a",
+        "filename": "tests/scenario-tests/openstack/remoteci.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 667
+      },
+      "writtenOn": "2025-02-13T19:24:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da5b59e7_b2cd260e",
+      "revId": "0f2b7f99b8b6b44331ec3d0ecbca93445502a976",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     }
   ]
 }
