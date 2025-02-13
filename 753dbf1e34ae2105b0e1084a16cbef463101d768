@@ -33,6 +33,24 @@
       "message": "if there is a default, the first part of this condition is unnecessary",
       "revId": "753dbf1e34ae2105b0e1084a16cbef463101d768",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f11c231_0e0fed3f",
+        "filename": "callback/dcijunit.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 20
+      },
+      "writtenOn": "2025-02-13T13:09:00Z",
+      "side": 1,
+      "message": "not really. it is needed if the string is empty from the env var.",
+      "parentUuid": "49e6ad21_16631dd6",
+      "revId": "753dbf1e34ae2105b0e1084a16cbef463101d768",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     }
   ]
 }
