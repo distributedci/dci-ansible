@@ -69,6 +69,24 @@
       "parentUuid": "6f11c231_0e0fed3f",
       "revId": "753dbf1e34ae2105b0e1084a16cbef463101d768",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b961dad_3e88931f",
+        "filename": "callback/dcijunit.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 20
+      },
+      "writtenOn": "2025-02-14T09:46:11Z",
+      "side": 1,
+      "message": "It\u0027s the opposite in the code:\n\n```\n\u003e\u003e\u003e s \u003d \u0027foobarbaz\u0027\n\u003e\u003e\u003e s.find(\u0027\u0027)\n0\n```",
+      "parentUuid": "563807ea_b771f23b",
+      "revId": "753dbf1e34ae2105b0e1084a16cbef463101d768",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     }
   ]
 }
