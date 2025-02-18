@@ -451,7 +451,7 @@ class CallbackModule(CallbackBase):
         for host in ('jumphost', 'localhost'):
             try:
                 return vars['hostvars'][host]['job_logs']['path']
-            except KeyError:
+            except Exception:
                 continue
         return None
 
