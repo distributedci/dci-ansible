@@ -73,6 +73,8 @@ function run_functional_tests() {
 
 cd $BASEDIR
 
+ansible-playbook --version
+
 if [[ ! -z ${1+x} ]]; then
     if [[ "$1" == "unit" ]]; then
         run_unit_tests
