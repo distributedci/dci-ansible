@@ -73,6 +73,10 @@ function run_functional_tests() {
 
 cd $BASEDIR
 
+ansible-playbook --version
+rpm -qa
+$(ansible -i localhost, -c local -m debug -a "msg={{ ansible_playbook_python }}" localhost | grep python | awk -F'"' '/msg/ {print $4}')  -m pip freeze
+
 if [[ ! -z ${1+x} ]]; then
     if [[ "$1" == "unit" ]]; then
         run_unit_tests
