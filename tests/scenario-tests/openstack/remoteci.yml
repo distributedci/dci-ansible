@@ -170,7 +170,7 @@
     - name: Verify that update previous job id is correctly set
       assert:
         that:
-          - job_info.job.update_previous_job_id == '{{ job_id }}'
+          - job_info.job.update_previous_job_id == job_id
           - job_info.job.id is defined
 
 - hosts: localhost
