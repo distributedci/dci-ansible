@@ -170,7 +170,7 @@
     - name: Verify that update previous job id is correctly set
       assert:
         that:
-          - job_info.job.update_previous_job_id == '{{ job_id }}'
+          - job_info.job.update_previous_job_id == job_id
           - job_info.job.id is defined
 
 - hosts: localhost
@@ -214,47 +214,39 @@
         that: job_info.job.tags|length == 3
 
 
-- name: Test warning messages
+- name: Test dci ansible callback status
   hosts: localhost
   tasks:
-    - name: Single item OK warning
-      shell: dnf --version
-
-    - name: Loop item OK warning
+    - name: Single item warn
       shell: |
-          sed -e 's/foo/{{ item }}/g' << _EOF_
-          foo
-          _EOF_
+        mkdir /tmp/does.exist
+        rm -r /tmp/does.exist
+
+    - name: Loop item warn
+      shell: |
+          mkdir {{ item }}
+          rm -r {{ item }}
       loop:
-        - bar
-        - car
-        - zar
+        - /tmp/does.exist1
+        - /tmp/does.exist2
 
     - block:
-        - name: Single item KO warning
+        - name: Single item failed
           shell: rm /tmp/does.not.exist
       rescue:
         - debug:
-            msg: Single item KO warning failed as expected
+            msg: Single item failed failed as expected
 
     - block:
-        - name: Loop item KO warning
-          shell: "curl -I {{ item }}"
+        - name: Loop item failed
+          shell: "rm {{ item }}"
           loop:
-            - https://redhat.com
-            - https://does.no.exist
-            - https://docs.openshift.com
+            - /tmp/does.not.exist1
+            - /tmp/does.not.exist2
+            - /tmp/does.not.exist3
       rescue:
         - debug:
-            msg: Loop item KO warning failed as expected
-
-    - block:
-        - name: Deprecated warning
-          openssl_certificate:
-            key_usage_strict: no
-      rescue:
-        - debug:
-            msg: Deprecated warning failed as intended
+            msg: Loop item failed failed as expected
 
     - name: Loop item skipped
       debug:
@@ -266,25 +258,21 @@
       shell: "dcictl file-list {{ job_id }}"
       register: dcictl_file_list
 
-    - name: Assert single item OK warning
+    - name: Assert single item warn
       assert:
-        that: '"warn/TASK [Single item OK warning]" in dcictl_file_list.stdout'
+        that: '"warn/TASK [Single item warn]" in dcictl_file_list.stdout'
 
-    - name: Assert loop item OK warning
+    - name: Assert loop item warn
       assert:
-        that: '"warn/TASK [Loop item OK warning]" in dcictl_file_list.stdout'
+        that: '"warn/TASK [Loop item warn]" in dcictl_file_list.stdout'
 
-    - name: Assert single item KO warning
+    - name: Assert single item failed
       assert:
-        that: '"failed/warn/TASK [Single item KO warning]" in dcictl_file_list.stdout'
+        that: '"failed/TASK [Single item failed]" in dcictl_file_list.stdout'
 
-    - name: Assert loop item KO warning
+    - name: Assert loop item failed
       assert:
-        that: '"failed/warn/TASK [Loop item KO warning]" in dcictl_file_list.stdout'
-
-    - name: Assert deprecated warning
-      assert:
-        that: '"failed/warn/TASK [Deprecated warning]" in dcictl_file_list.stdout'
+        that: '"failed/TASK [Loop item failed]" in dcictl_file_list.stdout'
 
     - name: Assert loop item skipped
       assert:
