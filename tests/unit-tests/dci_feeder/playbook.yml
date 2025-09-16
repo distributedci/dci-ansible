@@ -1,57 +1,65 @@
 ---
 - hosts: localhost
   tasks:
-    - name: Create product-A team
-      dci_team:
-        name: product-A
-      register: producta_team
+    - name: Generate random variables
+      set_fact:
+        team_name: "{{ lookup('password', '/dev/null length=8 chars=ascii_letters') }}"
+        feeder_name: "{{ lookup('password', '/dev/null length=8 chars=ascii_letters') }}"
+        second_feeder_name: "{{ lookup('password', '/dev/null length=8 chars=ascii_letters') }}"
 
-    - name: Create dci feeder
+    - name: Create team
+      dci_team:
+        name: '{{ team_name }}'
+      register: team
+
+    - name: Create feeder
       dci_feeder:
-        name: feeder-product-A
-        team_id: '{{ producta_team.team.id }}'
-      register: feederproducta
+        name: '{{ feeder_name }}'
+        team_id: '{{ team.team.id }}'
+      register: feeder
 
     - name: Retrieve all feeders
       dci_feeder:
       register: all_feeders
 
-    - name: Ensure feeder-product-A exists
+    - name: Ensure feeder is in list
       assert:
         that:
-          - all_feeders.feeders[0].name == 'feeder-product-A'
+          - (all_feeders.feeders | selectattr('name', 'equalto', feeder_name) | list | length) > 0
+        fail_msg: "Feeder {{ feeder_name }} does not exist in all_feeders.feeders"
+        success_msg: "Feeder {{ feeder_name }} exists"
 
-    - name: Retrieve feeder-product-A feeders
+    - name: Retrieve feeder
       dci_feeder:
-        id: '{{ feederproducta.feeder.id }}'
-      register: feederproducta
+        id: '{{ feeder.feeder.id }}'
+      register: feeder
 
-    - name: Ensure feeder-product-A exists
+    - name: Ensure name is correct
       assert:
         that:
-          - feederproducta.feeder.name == 'feeder-product-A'
+          - feeder.feeder.name == feeder_name
 
-    - name: Update feeder-product-A_feeder
+    - name: Update feeder
       dci_feeder:
-        id: '{{ feederproducta.feeder.id }}'
-        name: feeder-newproduct-A
+        id: '{{ feeder.feeder.id }}'
+        name: '{{ second_feeder_name }}' 
 
-    - name: Retrieve feeder-newproduct-A feeder
+    - name: Retrieve feeder
       dci_feeder:
-        id: '{{ feederproducta.feeder.id }}'
-      register: feedernewproducta
+        id: '{{ feeder.feeder.id }}'
+      register: updated_feeder
 
-    - name: Ensure feeder-newproduct-A changed
+    - name: Ensure feeder name changed
       assert:
         that:
-          - feedernewproducta.feeder.name == 'feeder-newproduct-A'
+          - updated_feeder.feeder.name == second_feeder_name
 
-    - name: Delete feeder-newproduct-A feeder
+    - name: Delete feeder
       dci_feeder:
-        id: '{{ feedernewproducta.feeder.id }}'
+        id: '{{ updated_feeder.feeder.id }}'
         state: absent
 
-    - name: Delete foo team
+    - name: Delete team
       dci_team:
-        id: '{{ producta_team.team.id }}'
+        id: '{{ team.team.id }}'
         state: absent

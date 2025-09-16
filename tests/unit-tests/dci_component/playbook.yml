@@ -1,88 +1,100 @@
 ---
 - hosts: localhost
   tasks:
-    - name: Create product osp
+    - name: Generate random variables
+      set_fact:
+        product_name: "{{ lookup('password', '/dev/null length=8 chars=ascii_letters') }}"
+        topic_name: "{{ lookup('password', '/dev/null length=8 chars=ascii_letters') }}"
+        component_name: "{{ lookup('password', '/dev/null length=8 chars=ascii_letters') }}"
+        second_component_name: "{{ lookup('password', '/dev/null length=8 chars=ascii_letters') }}"
+
+    - name: Create product
       dci_product:
-        name: osp
-      register: product_osp
+        name: '{{ product_name }}'
+      register: product
 
-    - name: Create the OSPX topic
+    - name: Create topic
       dci_topic:
-        name: OSPX
-        product_id: "{{ product_osp.product.id }}"
+        name: '{{ topic_name }}'
+        product_id: "{{ product.product.id }}"
         component_types:
-          - osp_puddles
-      register: ospx_topic
+          - rpm
+      register: topic
 
-    - name: Create a DCI Component
+    - name: Create component
       dci_component:
-        name: OSP10-2017.10.08
-        type: osp_puddles
-        topic_id: '{{ ospx_topic.topic.id }}'
+        display_name: '{{ component_name }}'
+        type: rpm
+        topic_id: '{{ topic.topic.id }}'
         active: False
-      register: ospx_component
+      register: component
 
-    - name: Retrieve ospx component
-      dci_component:
-        id: '{{ ospx_component.component.id }}'
-      register: ospx_component
+    - name: Ensure create is correct
+      assert:
+        that:
+          - component.component.name == component_name
+          - component.component.state == 'inactive'
+          - component.component.tags == []
+          - component.component.url == ""
+          - component.component.data == {}
 
-    - name: Set a tag on the ospx component
+    - name: Retrieve component
       dci_component:
-        id: '{{ ospx_component.component.id }}'
+        id: '{{ component.component.id }}'
+      register: component
+
+    - name: Update component
+      dci_component:
+        id: '{{ component.component.id }}'
         url: 'https://www.redhat.com/'
         data:
           key: 'value'
         tags:
           - tag
-      register: ospx_component
+        active: True
+      register: component
 
-    - name: Ensure ospx component exists
+    - name: Ensure update is correct
       assert:
         that:
-          - ospx_component.component.name == 'OSP10-2017.10.08'
-          - ospx_component.component.state == 'inactive'
-          - ospx_component.component.tags == ['tag']
-          - ospx_component.component.url == 'https://www.redhat.com/'
-          - "{{ ospx_component.component.data == {'key': 'value'} }}"
+          - component.component.name == component_name
+          - component.component.state == 'active'
+          - component.component.tags == ['tag']
+          - component.component.url == 'https://www.redhat.com/'
+          - component.component.data.key == 'value'
 
-    - name: Update ospx component
+    - name: Create a second component
       dci_component:
-        id: '{{ ospx_component.component.id }}'
-        active: True
-
-    - name: Retrieve ospx component
-      dci_component:
-        id: '{{ ospx_component.component.id }}'
-      register: ospx_component
-
-    - name: Create a second Component
-      dci_component:
-        name: Linux
+        display_name: '{{ second_component_name }}'
         type: linux
-        topic_id: '{{ ospx_topic.topic.id }}'
+        topic_id: '{{ topic.topic.id }}'
         active: True
       register: other_component
 
     - name: search components and sort result
       dci_component:
         state: search
-        topic_id: '{{ ospx_topic.topic.id }}'
+        topic_id: '{{ topic.topic.id }}'
         sort: name
       register: list_components
 
     - name: assert components sorted by name
       ansible.builtin.assert:
         that:
-          - "list_components.components[0].name == 'Linux'"
-        msg: "first component myst be Linux"
+          - list_components.components | map(attribute='name') | list == (list_components.components | map(attribute='name') | list | sort)
+        fail_msg: "Components are not sorted by name"
+        success_msg: "Components are sorted by name"
 
-    - name: Delete ospx component
+    - name: Delete components
       dci_component:
-        id: '{{ ospx_component.component.id }}'
+        id: '{{ item.id }}'
+        etag: '{{ item.etag }}'
         state: absent
+      loop:
+        - "{{ component.component }}"
+        - "{{ other_component.component }}"
 
-    - name: Delete ospx topic
+    - name: Delete topic
       dci_topic:
-        id: '{{ ospx_topic.topic.id }}'
+        id: '{{ topic.topic.id }}'
         state: absent

@@ -1,59 +1,55 @@
 ---
 - hosts: localhost
   tasks:
-    - name: Create foo team
-      dci_team:
-        name: foo
-      register: foo_team
+    - name: Generate a random username
+      set_fact:
+        random_username: "{{ lookup('password', '/dev/null length=8 chars=ascii_letters') }}"
 
-    - name: Create jdoe user
+    - name: "Create {{ random_username }} user"
       dci_user:
-        name: jdoe
-        fullname: John Doe
+        name: "{{ random_username }}"
+        fullname: Random User
         password: password
-        email: jdoe@example.org
-      register: jdoe_user
+        email: "{{ random_username }}@example.org"
+      register: random_user
 
     - name: Retrieve all users
       dci_user:
       register: all_users
 
-    - name: Ensure jdoe user exists
+    - name: Ensure user is in list
       assert:
         that:
-          - all_users.users[0].name == 'jdoe'
+          - (all_users.users | selectattr('name', 'equalto', random_username) | list | length) > 0
+        fail_msg: "User {{ random_username }} does not exist in all_users.users"
+        success_msg: "User {{ random_username }} exists"
 
-    - name: Retrieve jdoe_user
+    - name: Get user created
       dci_user:
-        id: '{{ jdoe_user.user.id }}'
-      register: jdoe_user
+        id: '{{ random_user.user.id }}'
+      register: random_user
 
-    - name: Ensure jdoe user exists
+    - name: Ensure fullname is correctly setted
       assert:
         that:
-          - jdoe_user.user.name == 'jdoe'
+          - random_user.user.fullname == 'Random User'
 
-    - name: Update jdoe_user
+    - name: Update user
       dci_user:
-        id: '{{ jdoe_user.user.id }}'
-        name: jdoe2
+        id: '{{ random_user.user.id }}'
+        fullname: 'Random User Updated'
 
-    - name: Retrieve jdoe_user
+    - name: Get user
       dci_user:
-        id: '{{ jdoe_user.user.id }}'
-      register: jdoe_user
+        id: '{{ random_user.user.id }}'
+      register: random_user_updated
 
-    - name: Ensure jdoe name changed
+    - name: Ensure user full name changed
       assert:
         that:
-          - jdoe_user.user.name == 'jdoe2'
+          - random_user_updated.user.fullname == 'Random User Updated'
 
-    - name: Delete jdoe user
+    - name: Delete user
       dci_user:
-        id: '{{ jdoe_user.user.id }}'
-        state: absent
-
-    - name: Delete foo team
-      dci_team:
-        id: '{{ foo_team.team.id }}'
+        id: '{{ random_user_updated.user.id }}'
         state: absent

@@ -4,38 +4,38 @@ set -eux
 
 BASEDIR="$(cd "$(dirname "$0")"||exit 1; pwd)"
 
-export ANSIBLE_CONFIG=$PWD/ansible.cfg
+export DCI_LOGIN="${DCI_LOGIN:-admin}"
+export DCI_PASSWORD="${DCI_PASSWORD:-admin}"
+export DCI_CS_URL="${DCI_CS_URL:-http://localhost}"
 
-function clean_environment() {
-    unset DCI_LOGIN
-    unset DCI_PASSWORD
-    unset DCI_API_SECRET
-    unset DCI_CLIENT_ID
+function create_venv(){
+    rm -rf venv
+    python3 -m venv venv
+    source venv/bin/activate
+    python3 -m pip install --upgrade pip
+    python3 --version
+    pip --version
+    pip install ansible
+    pip install dciclient
 }
 
-function clean_db() {
-    DB_HOST="${DB_HOST:-localhost}"
-    echo "
-      truncate products cascade;
-      delete from teams where name <> 'admin';" | \
-        PGPASSWORD=dci psql -h ${DB_HOST} -U dci -d dci
+function activate_venv(){
+    source venv/bin/activate
 }
 
-
-# --- Starting unit-tests
+function debug(){
+    ansible --version
+    ansible-playbook --version
+}
 
 function run_unit_tests() {
     modules='dci_user dci_team dci_topic dci_component dci_feeder dci_product dci_job'
 
-    source $BASEDIR/admin.sh
     for module in $modules; do
         ansible-playbook unit-tests/$module/playbook.yml -v
-        clean_db
     done
-    clean_environment
 }
 
-# --- Start plugin tests
 function run_plugin_tests() {
     plugins='filter_plugins/version_sort filter_plugins/cmdline_to_json'
 
@@ -49,7 +49,6 @@ function run_plugin_tests() {
     grep -C 5 "All assertions passed" junit-playbook.xml
 }
 
-# --- Starting scenario-tests
 
 function run_functional_tests() {
 
@@ -71,7 +70,9 @@ function run_functional_tests() {
     done
 }
 
-cd $BASEDIR
+create_venv
+activate_venv
+debug
 
 if [[ ! -z ${1+x} ]]; then
     if [[ "$1" == "unit" ]]; then

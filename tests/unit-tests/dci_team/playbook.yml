@@ -1,46 +1,56 @@
 ---
 - hosts: localhost
   tasks:
-    - name: Create foo team
+    - name: Generate a random team_name
+      set_fact:
+        random_team_name: "{{ lookup('password', '/dev/null length=8 chars=ascii_letters') }}"
+
+    - name: Create team
       dci_team:
-        name: foo
-      register: foo_team
+        name: "{{ random_team_name }}"
+      register: team_created
 
     - name: Retrieve all teams
       dci_team:
       register: all_teams
 
-    - name: Ensure foo team exists
+    - name: Ensure team is in list
       assert:
         that:
-          - all_teams.teams[0].name == 'foo'
+          - (all_teams.teams | selectattr('name', 'equalto', random_team_name) | list | length) > 0
+        fail_msg: "Team {{ random_team_name }} does not exist in all_teams.teams"
+        success_msg: "Team {{ random_team_name }} exists"
 
-    - name: Retrieve foo team
+    - name: Retrieve team
       dci_team:
-        id: '{{ foo_team.team.id }}'
-      register: foo_team
+        id: '{{ team_created.team.id }}'
+      register: team_created
 
-    - name: Ensure foo team exists
+    - name: Ensure team name
       assert:
         that:
-          - foo_team.team.name == 'foo'
+          - team_created.team.name == random_team_name
 
-    - name: Update foo_team
+    - name: Generate a random team_name
+      set_fact:
+        new_team_name: "{{ lookup('password', '/dev/null length=8 chars=ascii_letters') }}"
+
+    - name: Update team_created
       dci_team:
-        id: '{{ foo_team.team.id }}'
-        name: foo2
+        id: '{{ team_created.team.id }}'
+        name: '{{ new_team_name }}'
 
-    - name: Retrieve foo team
+    - name: Retrieve team
       dci_team:
-        id: '{{ foo_team.team.id }}'
-      register: foo_team
+        id: '{{ team_created.team.id }}'
+      register: team_updated
 
-    - name: Ensure foo team changed
+    - name: Ensure team changed
       assert:
         that:
-          - foo_team.team.name == 'foo2'
+          - team_updated.team.name == new_team_name
 
-    - name: Delete foo team
+    - name: Delete team
       dci_team:
-        id: '{{ foo_team.team.id }}'
+        id: '{{ team_updated.team.id }}'
         state: absent
