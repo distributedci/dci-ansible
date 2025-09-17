@@ -16,6 +16,23 @@
       "message": "recheck",
       "revId": "8fb60a573a3bd52634821aeff6f38037cf1d2593",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77b6632b_95b8620f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1440
+      },
+      "writtenOn": "2025-09-17T06:36:42Z",
+      "side": 1,
+      "message": "Hello Fred,\ncan you rebase on top of the master branch ?\nyou will need to move the tests in tests/filter_plugins folder after the recent dci-integration-tests changes",
+      "revId": "8fb60a573a3bd52634821aeff6f38037cf1d2593",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     }
   ]
 }
