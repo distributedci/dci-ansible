@@ -56,6 +56,30 @@
       },
       "revId": "8fb60a573a3bd52634821aeff6f38037cf1d2593",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f6e7753_413800f9",
+        "filename": "tests/unit-tests/filter_plugins/dot_to_underscore/playbook.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1440
+      },
+      "writtenOn": "2025-09-17T09:33:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f22ef26e_60527c7f",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "8fb60a573a3bd52634821aeff6f38037cf1d2593",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0"
     }
   ]
 }
