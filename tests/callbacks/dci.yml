@@ -1,5 +1,6 @@
 ---
-- hosts: localhost
+- name: Setup DCI environment vars
+  hosts: localhost
   tasks:
     - name: Generate random variables
       set_fact:
@@ -58,7 +59,9 @@
           DCI_LOGIN: ""
           DCI_PASSWORD: ""
 
-- hosts: localhost
+
+- name: Test DCI callback banner names
+  hosts: localhost
   tasks:
     - name: schedule a job
       dci_job:
@@ -133,3 +136,50 @@
         that:
           - '"TASK [Loop item skipped]" in dcictl_file_list.stdout'
           - '"skipped/TASK [Loop item skipped]" not in dcictl_file_list.stdout'
+
+
+- name: Test DCI callback redact
+  hosts: localhost
+  vars:
+    redact_task_name: "Test redact callback"
+    fake_clientid: "remoteci/abcdef12-3456-7890-abcd-ef1234567890"
+    fake_old_api_secret: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789ab"
+    fake_new_api_secret: "DCI.abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567"
+  tasks:
+    - name: schedule a job
+      dci_job:
+        topic: "{{ topic_name }}"
+      register: job_info
+      environment: "{{ ansible_env }}"
+
+    - name: Set global variables
+      ansible.builtin.set_fact:
+        job_id: "{{ hostvars.localhost.job_info.job.id  }}"
+        redacted_enabled: "{{ lookup('env', 'ANSIBLE_CALLBACK_DCI_REDACT', default='true').lower() in ('true') }}"
+
+    - name: "{{ redact_task_name }}"
+      ansible.builtin.shell: |
+        echo "RemoteCI: {{ fake_clientid }}"
+        echo "Old API secret: {{ fake_old_api_secret }}"
+        echo "New API secret: {{ fake_new_api_secret }}"
+
+    - name: Download redact task content
+      ansible.builtin.shell: |
+        dcictl file-content $(dcictl file-list {{ job_id }} | awk '/{{ redact_task_name }}/ {print $2}')
+      register: redact_task_output
+
+    - name: Assert REDACTED content
+      ansible.builtin.assert:
+        that:
+          - fake_clientid not in redact_task_output.stdout
+          - fake_old_api_secret not in redact_task_output.stdout
+          - fake_new_api_secret not in redact_task_output.stdout
+      when: redacted_enabled
+
+    - name: Assert UNREDACTED content
+      ansible.builtin.assert:
+        that:
+          - fake_clientid in redact_task_output.stdout
+          - fake_old_api_secret in redact_task_output.stdout
+          - fake_new_api_secret in redact_task_output.stdout
+      when: not redacted_enabled

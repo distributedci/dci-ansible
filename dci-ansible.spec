@@ -1,5 +1,5 @@
 Name:		dci-ansible
-Version:	0.8.0
+Version:	0.9.0
 Release:	1.VERS%{?dist}
 Summary:	DCI Ansible modules and callback
 License:	ASL 2.0
@@ -39,6 +39,9 @@ chmod 755 %{buildroot}%{_datadir}/dci/*
 
 
 %changelog
+* Thu Feb  5 2026 Tony Garcia <tonyg@redhat.com> - 0.9.0-1
+- Add redact functionality for dci callback plugin
+
 * Thu Jul 18 2024 Frederic Lepied <flepied@redhat.com> 0.8.0-1
 - provide the dcijunit callback plugin
 

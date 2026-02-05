@@ -46,6 +46,7 @@ function run_filter_plugins_tests() {
 
 function run_callbacks_tests() {
     ansible-playbook callbacks/dci.yml -v
+    env ANSIBLE_CALLBACK_DCI_REDACT=false ansible-playbook callbacks/dci.yml -v
 
     rm -f junit-playbook.xml
     env JUNIT_OUTPUT_DIR=$PWD JUNIT_TEST_CASE_REGEX='(test|validate)_ ' ansible-playbook callbacks/junit-playbook.yml -vvvv
