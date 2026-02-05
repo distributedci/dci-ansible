@@ -18,6 +18,8 @@ def test_banner_error():
             self._name = 'a_name'
             self._content = 'this is the content'
             self.filename = ""
+            self._warn_prefix = False
+            self._item_failed = False
 
         def create_file(self, name, content):
             self.filename = name
@@ -41,6 +43,8 @@ failed: [localhost] (item=file3) => {"ansible_loop_var": "item", "changed": true
 changed: [localhost] => (item=file4)
 changed: [localhost] => (item=file5)"""
             self.filename = ""
+            self._warn_prefix = False
+            self._item_failed = True
 
         def create_file(self, name, content):
             self.filename = name
