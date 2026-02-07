@@ -3,6 +3,7 @@ from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
 
 import os
+import re
 
 from ansible import constants as C
 from ansible.plugins.callback.default import CallbackModule as CM_default
@@ -14,6 +15,44 @@ from dciclient.v1.api import file as dci_file
 from dciclient.v1.api import jobstate as dci_jobstate
 from dciclient.version import __version__ as dciclient_version
 
+
+DOCUMENTATION = r'''
+    callback: dci
+    type: aggregate
+    short_description: Upload Ansible output to DCI Control Server
+    version_added: "2.0"
+    description:
+      - This callback module uploads Ansible task output to a DCI (Distributed CI) Control Server
+      - Content is captured during playbook execution and uploaded as files associated with DCI jobs
+      - Supports automatic redaction of sensitive information before upload
+    requirements:
+      - dciclient Python library
+      - dciauth Python library
+    options:
+      redact:
+        description:
+          - Enable/disable automatic redaction of sensitive information before uploading to DCI
+          - When enabled, content is scanned for secrets, tokens, and credentials
+        default: true
+        type: bool
+        env:
+          - name: ANSIBLE_CALLBACK_DCI_REDACT
+      redact_patterns:
+        description:
+          - Colon-separated list of custom regex patterns to redact
+          - Patterns use Python regex syntax with re.MULTILINE flag
+          - When empty (default), uses built-in patterns for GitHub tokens, DCI credentials, and pull secrets
+          - When specified, uses ONLY the custom patterns (built-in patterns are disabled)
+          - Example, 'password=\S+:api_key=\S+:token_\w+'
+        default: ''
+        type: str
+        env:
+          - name: ANSIBLE_CALLBACK_DCI_REDACT_PATTERNS
+    notes:
+      - Authentication is configured via environment variables (DCI_CLIENT_ID, DCI_API_SECRET, DCI_CS_URL)
+      - Redaction complements Ansible's no_log feature but does not replace it
+      - All redacted content is replaced with '*******' (7 asterisks)
+'''
 
 COMPAT_OPTIONS = (('display_skipped_hosts', C.DISPLAY_SKIPPED_HOSTS),
                   ('display_ok_hosts', True),
@@ -54,6 +93,8 @@ server."""
         self._warns = []
         self._warn_prefix = False
         self._item_failed = False
+        self._redact_enabled = os.getenv('ANSIBLE_CALLBACK_DCI_REDACT', 'true').lower() in ('true')
+        self._redact_patterns = self._parse_redact_patterns()
 
     def get_option(self, name):
         for key, val in COMPAT_OPTIONS:
@@ -74,6 +115,113 @@ server."""
         url = os.getenv('DCI_CS_URL', 'https://api.distributed-ci.io')
 
         return login, password, url, client_id, api_secret
+
+    @staticmethod
+    def _get_default_redact_patterns():
+        """Return list of (pattern, replacement) tuples for common secrets.
+
+        Returns:
+            list: List of (pattern_string, replacement_string) tuples
+        """
+        return [
+            # GitHub tokens
+            (r'ghp_[a-zA-Z0-9]{36}', r'*******'),
+            (r'github_pat_[a-zA-Z0-9_]{82}', r'*******'),
+            (r'gho_[a-zA-Z0-9]{36}', r'*******'),
+
+            # DCI credentials
+            (r'remoteci/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}', r'*******'),
+            (r'DCI\.[a-zA-Z0-9]{60}', r'*******'),
+            (r'[a-zA-Z0-9]{64}', r'*******'),
+
+            # Pull secrets
+            (r'("auth"\s*:\s*")[^"]*(")', r'\1*******\2'),
+            (r'(auth:\s+)\S+', r'\1*******'),
+        ]
+
+    def _parse_redact_patterns(self):
+        """Parse and compile redact patterns from configuration and defaults.
+
+        When redact_patterns is empty, uses default patterns for common secrets.
+        When redact_patterns is specified, uses ONLY the custom patterns.
+        Invalid patterns are logged as warnings but don't stop execution.
+
+        Returns:
+            list: List of (compiled_regex, replacement_string) tuples
+        """
+        compiled_patterns = []
+        patterns = os.getenv('ANSIBLE_CALLBACK_DCI_REDACT_PATTERNS', '')
+
+        if patterns:
+            # Use ONLY custom patterns when specified
+            for pattern in patterns.split(':'):
+                pattern = pattern.strip()
+                if not pattern:
+                    continue
+                try:
+                    compiled_regex = re.compile(pattern, re.MULTILINE)
+                    compiled_patterns.append((compiled_regex, r'*******'))
+                except re.error as e:
+                    self._real_display.warning(
+                        f"Invalid user redact pattern '{pattern}': {e}"
+                    )
+        else:
+            # Use default patterns when no custom patterns specified
+            for pattern, replacement in self._get_default_redact_patterns():
+                try:
+                    compiled_regex = re.compile(pattern, re.MULTILINE)
+                    compiled_patterns.append((compiled_regex, replacement))
+                except re.error as e:
+                    self._real_display.warning(
+                        f"Invalid default redact pattern '{pattern}': {e}"
+                    )
+
+        return compiled_patterns
+
+    def _redact_content(self, content):
+        """Redact content using defined patterns.
+
+        Handles both string and bytes content, preserving the original type.
+
+        Args:
+            content: String or bytes content to redact
+
+        Returns:
+            Redacted content in same format as input (bytes or string)
+        """
+        # Handle None or empty content
+        if content is None:
+            return content
+        if isinstance(content, bytes) and len(content) == 0:
+            return content
+        if isinstance(content, str) and len(content) == 0:
+            return content
+
+        # Convert bytes to string for regex processing
+        if isinstance(content, bytes):
+            try:
+                text_content = content.decode('utf-8', errors='surrogateescape')
+                was_bytes = True
+            except (UnicodeDecodeError, AttributeError):
+                # If decode fails, return original content unchanged
+                return content
+        else:
+            text_content = str(content)
+            was_bytes = False
+
+        for pattern, replacement in self._redact_patterns:
+            try:
+                text_content = pattern.sub(replacement, text_content)
+            except Exception as e:
+                # Log error but continue with other patterns
+                self._real_display.warning(
+                    f"Redacting pattern failed: {e}"
+                )
+
+        # Convert back to original format
+        if was_bytes:
+            return text_content.encode('utf-8', errors='surrogateescape')
+        return text_content
 
     def _build_dci_context(self):
         login, password, url, client_id, api_secret = self._get_details()
@@ -169,6 +317,10 @@ server."""
                 return "warn/%s" % name, "invalid content, not able to encode to utf-8: %s" % str(ve)
 
         name, content = _content_to_utf8()
+
+        if self._redact_enabled:
+            content = self._redact_content(content)
+
         if self._jobstate_id is None:
             self.create_jobstate("implicit new state", "new", True)
 
