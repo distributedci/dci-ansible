@@ -6,7 +6,7 @@ DCI module to manage the file resources
 
 | Parameter | Required | Default | Description |
 | --------- | -------- | ------- | ----------- |
-| content | False |  | Contentn of the file to upload |
+| content | False |  | Content of the file to upload |
 | dci_cs_url | False |  | DCI Control Server URL |
 | dci_login | False |  | User's DCI login |
 | dci_password | False |  | User's DCI password |
@@ -17,6 +17,7 @@ DCI module to manage the file resources
 | name | False |  | Name under which the file will be saved on the control-server |
 | path | True |  | Path of the document to upload |
 | query | False |  | query language |
+| redact | False | true | Redact sensitive data (tokens, credentials, pull secrets) before uploading. Can be overridden globally with the DCI_REDACT environment variable. |
 | state | False |  | Desired state of the resource |
 
 ## Examples
@@ -57,4 +58,12 @@ DCI module to manage the file resources
     mime: 'application/junit'
   with_items:
     - '/tmp/result.xml'
+
+
+- name: Attach file without redaction
+  dci_file:
+    job_id: '{{ job_id }}'
+    path: '/tmp/result.log'
+    name: 'result.log'
+    redact: false
 ```
