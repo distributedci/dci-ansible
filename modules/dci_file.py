@@ -61,7 +61,11 @@ options:
     description: Name under which the file will be saved on the control-server
   content:
     required: false
-    description: Contentn of the file to upload
+    description: Content of the file to upload
+  max_size:
+    required: false
+    default: 256
+    description: Maximum file size in MB. Files exceeding this limit will be rejected before upload.
   embed:
     required: false
     description:
@@ -126,6 +130,7 @@ class DciFile(DciBase):
         self.job_id = params.get('job_id')
         self.jobstate_id = params.get('jobstate_id')
         self.mime = params.get('mime')
+        self.max_size = params.get('max_size')
         self.search_criterias = {
             'embed': params.get('embed'),
             'where': params.get('where'),
@@ -152,6 +157,16 @@ class DciFile(DciBase):
         if self.path and not os.path.exists(self.path):
             raise DciParameterError('%s: No such file' % self.path)
 
+        if self.path and self.max_size:
+            file_size = os.path.getsize(self.path)
+            max_size_bytes = self.max_size * 1024 * 1024
+            if file_size > max_size_bytes:
+                raise DciParameterError(
+                    '%s: file too large (%d MB > %d MB limit)' % (
+                        self.path,
+                        file_size // (1024 * 1024),
+                        self.max_size))
+
         return super(DciFile, self).do_create(context)
 
     def do_delete(self, context):
@@ -171,6 +186,7 @@ def main():
         job_id=dict(type='str'),
         jobstate_id=dict(type='str'),
         mime=dict(default='text/plain', type='str'),
+        max_size=dict(default=256, type='int'),
         embed=dict(type='str'),
         where=dict(type='str'),
         query=dict(type='str')
