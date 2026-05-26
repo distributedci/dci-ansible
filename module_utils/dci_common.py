@@ -154,6 +154,9 @@ def parse_http_response(response, resource, context, module):
     elif response.status_code in [401, 412]:
         module.fail_json(msg='Unauthorized resource access')
 
+    elif response.status_code == 413:
+        module.fail_json(msg='Request Entity Too Large: file exceeds server size limit')
+
     elif response.status_code == 500:
         module.fail_json(msg='Internal Server Error')
 
