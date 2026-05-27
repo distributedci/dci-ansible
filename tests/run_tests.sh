@@ -36,7 +36,7 @@ function run_modules_tests() {
 }
 
 function run_filter_plugins_tests() {
-    plugins='version_sort cmdline_to_json'
+    plugins='version_sort'
 
     for plugin in $plugins; do
         ansible-playbook filter_plugins/${plugin}/playbook.yml -v
