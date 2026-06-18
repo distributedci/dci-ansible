@@ -87,6 +87,7 @@
         job_id: '{{ job_id }}'
         path: "./content"
         name: job-test-result
+      environment: "{{ ansible_env }}"
 
 - hosts: localhost
   vars:
