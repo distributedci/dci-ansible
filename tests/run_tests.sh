@@ -45,7 +45,13 @@ function run_filter_plugins_tests() {
 }
 
 function run_callbacks_tests() {
-    ansible-playbook callbacks/dci.yml -v
+    # Provision required products, components, teams, remoteCIs with admin creds
+    ansible-playbook callbacks/dci-provisioning.yml -v
+    # Use remoteCI creds now to test the callback
+    source /tmp/remoteci.rc
+    rm -f /tmp/remoteci.rc
+    ansible-playbook -e @/tmp/extra_vars.yml callbacks/dci.yml -v
+    rm -f /tmp/extra_vars.yml
 
     rm -f junit-playbook.xml
     env JUNIT_OUTPUT_DIR=$PWD JUNIT_TEST_CASE_REGEX='(test|validate)_ ' ansible-playbook callbacks/junit-playbook.yml -vvvv

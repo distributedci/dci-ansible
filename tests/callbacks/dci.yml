@@ -1,75 +1,15 @@
 ---
 - hosts: localhost
   tasks:
-    - name: Generate random variables
-      set_fact:
-        team_name: "{{ lookup('password', '/dev/null length=8 chars=ascii_letters') }}"
-        product_name: "{{ lookup('password', '/dev/null length=8 chars=ascii_letters') }}"
-        topic_name: "{{ lookup('password', '/dev/null length=8 chars=ascii_letters') }}"
-        component_name: "{{ lookup('password', '/dev/null length=8 chars=ascii_letters') }}"
-        remoteci_name: "{{ lookup('password', '/dev/null length=8 chars=ascii_letters') }}"
-
-    - name: Create team
-      dci_team:
-        name: '{{ team_name }}'
-        has_pre_release_access: true
-      register: team
-
-    - name: Create product
-      dci_product:
-        name: '{{ product_name }}'
-      register: product
-
-    - name: Attach the product to the team
-      dci_product:
-        id: "{{ product.product.id }}"
-        team_ids:
-          - "{{ team.team.id }}"
-
-    - name: Create topic
-      dci_topic:
-        name: '{{ topic_name }}'
-        component_types:
-          - rpm
-        product_id: '{{ product.product.id }}'
-        data:
-          foo: 'bar'
-        export_control: true
-      register: topic
-
-    - name: Create component
-      dci_component:
-        display_name: '{{ component_name }}'
-        type: rpm
-        topic_id: '{{ topic.topic.id }}'
-      register: component
-
-    - name: Create a remoteci
-      dci_remoteci:
-        name: '{{ remoteci_name }}'
-        team_id: '{{ team.team.id }}'
-      register: remoteci
-
-    - name: Export env vars
-      set_fact:
-        ansible_env:
-          DCI_CLIENT_ID: "remoteci/{{ remoteci.remoteci.id }}"
-          DCI_API_SECRET: "{{ remoteci.remoteci.api_secret }}"
-          DCI_LOGIN: ""
-          DCI_PASSWORD: ""
-
-- hosts: localhost
-  tasks:
     - name: schedule a job
       dci_job:
-        topic: '{{ topic_name }}'
+        topic: "{{ topic_name }}"
       register: job_info
-      environment: "{{ ansible_env }}"
 
     - name: Set global variables
       set_fact:
-        job_id: '{{ hostvars.localhost.job_info.job.id  }}'
-        components: '{{ hostvars.localhost.job_info.job.components  }}'
+        job_id: "{{ hostvars.localhost.job_info.job.id }}"
+        components: "{{ hostvars.localhost.job_info.job.components }}"
 
     - name: Single item warn
       shell: |
