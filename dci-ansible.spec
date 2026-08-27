@@ -1,5 +1,5 @@
 Name:		dci-ansible
-Version:	0.8.0
+Version:	0.9.0
 Release:	1.VERS%{?dist}
 Summary:	DCI Ansible modules and callback
 License:	ASL 2.0
@@ -7,7 +7,7 @@ URL:		https://github.com/redhat-cip/dci-ansible
 Source0:	dci-ansible-%{version}.tar.gz
 
 BuildArch:   noarch
-Requires:    python3-dciclient
+Requires:    python3-dciclient >= 4.2.0
 Requires:    python3-dciauth
 
 Requires:    (ansible-core or (ansible < 2.10.0 with ansible >= 2.9.10))
@@ -39,6 +39,9 @@ chmod 755 %{buildroot}%{_datadir}/dci/*
 
 
 %changelog
+* Fri Aug 21 2026 Tony Garcia <tonyg@redhat.com> 0.9.0-1
+- Add redact functionality from dciclient
+
 * Thu Jul 18 2024 Frederic Lepied <flepied@redhat.com> 0.8.0-1
 - provide the dcijunit callback plugin
 

@@ -1,5 +1,6 @@
 ---
-- hosts: localhost
+- name: Test DCI callback banner names
+  hosts: localhost
   tasks:
     - name: schedule a job
       dci_job:
@@ -50,6 +51,10 @@
       shell: "dcictl file-list {{ job_id }}"
       register: dcictl_file_list
 
+    - name: Show dcictl_file_list
+      debug:
+        var: dcictl_file_list
+
     - name: Assert single item warn
       assert:
         that: '"warn/TASK [Single item warn]" in dcictl_file_list.stdout'
@@ -73,3 +78,90 @@
         that:
           - '"TASK [Loop item skipped]" in dcictl_file_list.stdout'
           - '"skipped/TASK [Loop item skipped]" not in dcictl_file_list.stdout'
+
+- name: Test DCI callback redact
+  hosts: localhost
+  vars:
+    redact_task_name: "Test redact callback"
+    fake_clientid: "remoteci/abcdef12-3456-7890-abcd-ef1234567890"
+    fake_api_secret: "DCI.abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567"
+  tags:
+    - redact
+  tasks:
+    - name: schedule a job
+      dci_job:
+        topic: "{{ topic_name }}"
+      register: job_info
+
+    - name: Set global variables
+      ansible.builtin.set_fact:
+        job_id: "{{ hostvars.localhost.job_info.job.id  }}"
+        redacted_enabled: "{{ lookup('env', 'DCI_REDACT', default='true').lower() in ('true') }}"
+
+    - name: "{{ redact_task_name }}"
+      ansible.builtin.shell: |
+        echo "RemoteCI: {{ fake_clientid }}"
+        echo "New API secret: {{ fake_api_secret }}"
+
+    - name: Download redact task content
+      ansible.builtin.shell: |
+        dcictl file-content $(dcictl file-list {{ job_id }} | awk '/{{ redact_task_name }}/ {print $2}')
+      register: redact_task_output
+
+    - name: Assert REDACTED content
+      ansible.builtin.assert:
+        that:
+          - fake_clientid not in redact_task_output.stdout
+          - fake_api_secret not in redact_task_output.stdout
+      when: redacted_enabled
+
+    - name: Assert UNREDACTED content
+      ansible.builtin.assert:
+        that:
+          - fake_clientid in redact_task_output.stdout
+          - fake_api_secret in redact_task_output.stdout
+      when: not redacted_enabled
+
+- name: Test dci_file redact
+  hosts: localhost
+  vars:
+    fake_clientid: "remoteci/abcdef12-3456-7890-abcd-ef1234567890"
+    fake_api_secret: "DCI.abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567"
+  tags:
+    - redact
+  tasks:
+    - name: schedule a job
+      dci_job:
+        topic: "{{ topic_name }}"
+      register: job_info
+
+    - name: Set variables
+      ansible.builtin.set_fact:
+        job_id: "{{ hostvars.localhost.job_info.job.id }}"
+        redacted_enabled: "{{ lookup('env', 'DCI_REDACT', default='true').lower() in ('true') }}"
+
+    - name: Upload content with sensitive data
+      dci_file:
+        job_id: "{{ job_id }}"
+        content: "RemoteCI: {{ fake_clientid }}\nAPI secret: {{ fake_api_secret }}"
+        name: "redact_file_test.log"
+      register: file_result
+
+    - name: Download uploaded file
+      ansible.builtin.shell: |
+        dcictl file-content {{ file_result.file.id }}
+      register: file_output
+
+    - name: Assert content was REDACTED
+      ansible.builtin.assert:
+        that:
+          - fake_clientid not in file_output.stdout
+          - fake_api_secret not in file_output.stdout
+      when: redacted_enabled
+
+    - name: Assert content was NOT redacted
+      ansible.builtin.assert:
+        that:
+          - fake_clientid in file_output.stdout
+          - fake_api_secret in file_output.stdout
+      when: not redacted_enabled

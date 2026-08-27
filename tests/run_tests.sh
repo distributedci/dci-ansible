@@ -15,8 +15,7 @@ function create_venv(){
     python3 -m pip install --upgrade pip
     python3 --version
     pip --version
-    pip install ansible
-    pip install dciclient
+    pip install -r ../requirements.txt
 }
 
 function activate_venv(){
@@ -51,6 +50,7 @@ function run_callbacks_tests() {
     source /tmp/remoteci.rc
     rm -f /tmp/remoteci.rc
     ansible-playbook -e @/tmp/extra_vars.yml callbacks/dci.yml -v
+    env DCI_REDACT=false ansible-playbook -e @/tmp/extra_vars.yml callbacks/dci.yml -v
     rm -f /tmp/extra_vars.yml
 
     rm -f junit-playbook.xml

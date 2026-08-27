@@ -17,6 +17,7 @@ import os
 
 try:
     from dciclient.v1.api import file as dci_file
+    from dciclient.v1.api import redact as dci_redact
 except ImportError:
     dciclient_found = False
 else:
@@ -66,6 +67,10 @@ options:
     required: false
     default: 256
     description: Maximum file size in MB. Files exceeding this limit will be rejected before upload.
+  redact:
+    required: false
+    default: true
+    description: Redact sensitive data (tokens, credentials, pull secrets) before uploading. Can be overridden globally with the DCI_REDACT environment variable.
   embed:
     required: false
     description:
@@ -131,6 +136,7 @@ class DciFile(DciBase):
         self.jobstate_id = params.get('jobstate_id')
         self.mime = params.get('mime')
         self.max_size = params.get('max_size')
+        self.redact = params.get('redact')
         self.search_criterias = {
             'embed': params.get('embed'),
             'where': params.get('where'),
@@ -166,8 +172,23 @@ class DciFile(DciBase):
                         self.path,
                         file_size // (1024 * 1024),
                         self.max_size))
+        redacted_path = None
+        if dci_redact.should_redact(self.redact):
+            if self.content:
+                self.content = dci_redact.redact_content(self.content)
+            elif self.path:
+                dir_name = os.path.dirname(self.path)
+                base_name = os.path.basename(self.path)
+                redacted_path = os.path.join(dir_name, ".%s.redacted" % base_name)
+                dci_redact.redact_file(self.path, redacted_path)
+                self.path = redacted_path
+                self.file_path = redacted_path
 
-        return super(DciFile, self).do_create(context)
+        try:
+            return super(DciFile, self).do_create(context)
+        finally:
+            if redacted_path and os.path.exists(redacted_path):
+                os.remove(redacted_path)
 
     def do_delete(self, context):
         return self.resource.delete(context, self.id)
@@ -187,6 +208,7 @@ def main():
         jobstate_id=dict(type='str'),
         mime=dict(default='text/plain', type='str'),
         max_size=dict(default=256, type='int'),
+        redact=dict(default=True, type='bool'),
         embed=dict(type='str'),
         where=dict(type='str'),
         query=dict(type='str')

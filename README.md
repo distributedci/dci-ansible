@@ -85,6 +85,57 @@ total 837
 -rw-rw-r--. 1 jdoe jdoe 223 Oct 19 14:51 playbook.yml
 ```
 
+#### Redact
+
+The DCI callback plugin and the dci_file module supports automatic redaction of sensitive information before uploading content to the DCI Control Server. This helps prevent accidental exposure of secrets, tokens, and credentials in task output.
+
+> [!WARNING]
+> `Redact` does not modify the actual task output shown in the Ansible logs.
+> It only redacts content in the files uploaded to DCI.
+> This ensures you can still see the full output locally while keeping sensitive data protected in DCI.
+> To redact content in the Ansible logs as well, consider using Ansible's `no_log` feature.
+
+##### Configuration
+
+Redact in the callback module is configured via environment variables.
+Using environment variables for `dci_file` will affect all tasks.
+
+```bash
+export DCI_REDACT=True
+export DCI_REDACT_PATTERNS='custom_api_key=\S+:internal_token_\w+'
+```
+
+##### Default Patterns
+
+By default, the following sensitive data is automatically redacted:
+
+- **GitHub tokens**: Personal access tokens (ghp_...), fine-grained PATs (github_pat_...), OAuth tokens (gho_...)
+- **DCI remoteci credentials**: RemoteCI IDs (remoteci/UUID) and secrets (64 alphanumeric or DCI.+60 alphanumeric)
+- **Pull secrets**: Container registry authentication in JSON (`"auth": "..."`) or YAML (`auth: ...`) format
+
+All redacted content is replaced with `***REDACTED***`.
+
+##### Examples
+
+**Disable redact entirely:**
+
+```bash
+# Via environment variable
+export DCI_REDACT=False
+```
+
+**Use only custom patterns (no defaults):**
+
+```bash
+export DCI_REDACT_PATTERNS='my_secret=\S+:my_token=\S+'
+```
+
+**View plugin documentation:**
+
+```bash
+ansible-doc -t callback dci
+```
+
 #### File organization
 
 Since the modules of dci-ansible are not part of Ansible, one needs to tell Ansible where to look for the extra modules and callbacks this project is providing.

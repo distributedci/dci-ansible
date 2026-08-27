@@ -12,8 +12,47 @@ from dciauth.version import __version__ as dciauth_version
 from dciclient.v1.api import context as dci_context
 from dciclient.v1.api import file as dci_file
 from dciclient.v1.api import jobstate as dci_jobstate
+from dciclient.v1.api import redact as dci_redact
 from dciclient.version import __version__ as dciclient_version
 
+
+DOCUMENTATION = r'''
+    callback: dci
+    type: aggregate
+    short_description: Upload Ansible output to DCI Control Server
+    version_added: "2.0"
+    description:
+      - This callback module uploads Ansible task output to a DCI (Distributed CI) Control Server
+      - Content is captured during playbook execution and uploaded as files associated with DCI jobs
+      - Supports automatic redaction of sensitive information before upload
+    requirements:
+      - dciclient Python library
+      - dciauth Python library
+    options:
+      redact:
+        description:
+          - Enable/disable automatic redaction of sensitive information before uploading to DCI
+          - When enabled, content is scanned for secrets, tokens, and credentials
+        default: true
+        type: bool
+        env:
+          - name: DCI_REDACT
+      redact_patterns:
+        description:
+          - Colon-separated list of custom regex patterns to redact
+          - Patterns use Python regex syntax with re.MULTILINE flag
+          - When empty (default), uses built-in patterns from the dciclient
+          - When specified, uses ONLY the custom patterns (built-in patterns are disabled)
+          - Example, 'password=\S+:api_key=\S+:token_\w+'
+        default: ''
+        type: str
+        env:
+          - name: DCI_REDACT_PATTERNS
+    notes:
+      - Authentication is configured via environment variables (DCI_CLIENT_ID, DCI_API_SECRET, DCI_CS_URL)
+      - Redaction complements Ansible's no_log feature but does not replace it
+      - All redacted content is replaced with '***REDACTED***'
+'''
 
 COMPAT_OPTIONS = (('display_skipped_hosts', C.DISPLAY_SKIPPED_HOSTS),
                   ('display_ok_hosts', True),
@@ -162,13 +201,17 @@ server."""
             self._backlog.append({'name': name, 'content': content})
             return
 
-        def _content_to_utf8():
+        def _redact_and_encode_content():
             try:
-                return name, content and content.encode('UTF-8')
+                redacted = content
+                # Default redact to True, use DCI_REDACT to override its value
+                if content and dci_redact.should_redact(redact=True):
+                    redacted = dci_redact.redact_content(content)
+                return name, redacted and redacted.encode('UTF-8')
             except ValueError as ve:
                 return "warn/%s" % name, "invalid content, not able to encode to utf-8: %s" % str(ve)
 
-        name, content = _content_to_utf8()
+        name, content = _redact_and_encode_content()
         if self._jobstate_id is None:
             self.create_jobstate("implicit new state", "new", True)
 
