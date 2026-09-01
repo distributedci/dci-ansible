@@ -123,6 +123,21 @@ RETURN = '''
 '''
 
 
+def _is_bin_file(path):
+    """Return True when the file contains a NUL byte.
+
+    A NUL-byte does not occur in text, its presence flags a binary file.
+    """
+    try:
+        with open(path, "rb") as f:
+            for chunk in iter(lambda: f.read(65536), b""):
+                if b"\x00" in chunk:
+                    return True
+    except OSError:
+        return False
+    return False
+
+
 class DciFile(DciBase):
 
     def __init__(self, params):
@@ -176,7 +191,7 @@ class DciFile(DciBase):
         if dci_redact.should_redact(self.redact):
             if self.content:
                 self.content = dci_redact.redact_content(self.content)
-            elif self.path:
+            elif self.path and not _is_bin_file(self.path):
                 dir_name = os.path.dirname(self.path)
                 base_name = os.path.basename(self.path)
                 redacted_path = os.path.join(dir_name, ".%s.redacted" % base_name)
