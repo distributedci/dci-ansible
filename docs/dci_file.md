@@ -13,6 +13,7 @@ DCI module to manage the file resources
 | embed | False |  | ['List of field to embed within the retrieved resource'] |
 | job_id | False |  | ID of the job to attach the file to |
 | jobstate_id | False |  | ID of the jobstate to attach the file to |
+| max_size | False | 256 | Maximum file size in MB. Files exceeding this limit will be rejected before upload. |
 | mime | False | text/plain | mime-type of the document to upload |
 | name | False |  | Name under which the file will be saved on the control-server |
 | path | True |  | Path of the document to upload |
