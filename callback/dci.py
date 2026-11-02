@@ -96,6 +96,7 @@ server."""
         self._item_actioned = False
         self._task_failed = False
         self._task_unreachable = False
+        self._task_ignored = False
 
     def get_option(self, name):
         for key, val in COMPAT_OPTIONS:
@@ -169,9 +170,11 @@ server."""
         # of task/play/playbook...)
 
         if self._name:
-            # Explicitly prefix unreachable/failed tasks regardless of color
+            # Explicitly prefix ignored/unreachable/failed tasks regardless of color
             # to avoid hiding them (skip, warnings)
-            if self._task_unreachable:
+            if self._task_ignored:
+                prefix = "ignored/"
+            elif self._task_unreachable:
                 prefix = "unreachable/"
             elif self._task_failed or self._item_failed:
                 prefix = "failed/"
@@ -187,6 +190,7 @@ server."""
             else:
                 prefix = ''
 
+            self._task_ignored = False
             self._task_failed = False
             self._task_unreachable = False
             self._item_failed = False
@@ -396,8 +400,12 @@ server."""
         return name
 
     def v2_runner_on_unreachable(self, result):
-        self._task_unreachable = True
-        self.create_jobstate(comment=self.task_name(result), status='failure')
+        if getattr(result._task, "ignore_unreachable", False):
+            self._task_ignored = True
+        else:
+            self._task_unreachable = True
+            self.create_jobstate(comment=self.task_name(result),
+                                 status='failure')
         super(CallbackModule, self).v2_runner_on_unreachable(result)
 
     def v2_runner_on_failed(self, result, ignore_errors=False):
@@ -408,6 +416,8 @@ server."""
             self._task_failed = True
             self.create_jobstate(comment=self.task_name(result),
                                  status='failure')
+        else:
+            self._task_ignored = True
 
         super(CallbackModule, self).v2_runner_on_failed(result, ignore_errors)
 
